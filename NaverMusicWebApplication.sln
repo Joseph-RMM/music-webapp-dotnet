@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaverMusicWebApplication", "NaverMusicWebApplication\NaverMusicWebApplication.csproj", "{8BACD411-7F08-41FF-86BB-2BD90AE8617E}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NaverMusicApp", "NaverMusicApp\NaverMusicApp.vbproj", "{02748BAF-DDA6-4611-8E5D-7BAD85A15166}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logica", "Logica", "{3633A54D-2377-4955-AA1C-3CB3EE7BA8D1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logica", "Logica", "{A8AF1A6A-BDA4-48A8-95D8-9AC6472FCFA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaverMusicLogica", "NaverMusicLogica\NaverMusicLogica.csproj", "{87BE7EA1-E294-404D-AFEC-EA1115A3A519}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNaverMusic", "LogicaNaverMusic\LogicaNaverMusic.csproj", "{B18AE9FD-EC2B-4831-BD83-73BBD66E365E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,20 +15,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8BACD411-7F08-41FF-86BB-2BD90AE8617E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BACD411-7F08-41FF-86BB-2BD90AE8617E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BACD411-7F08-41FF-86BB-2BD90AE8617E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BACD411-7F08-41FF-86BB-2BD90AE8617E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87BE7EA1-E294-404D-AFEC-EA1115A3A519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87BE7EA1-E294-404D-AFEC-EA1115A3A519}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87BE7EA1-E294-404D-AFEC-EA1115A3A519}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87BE7EA1-E294-404D-AFEC-EA1115A3A519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02748BAF-DDA6-4611-8E5D-7BAD85A15166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02748BAF-DDA6-4611-8E5D-7BAD85A15166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02748BAF-DDA6-4611-8E5D-7BAD85A15166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02748BAF-DDA6-4611-8E5D-7BAD85A15166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B18AE9FD-EC2B-4831-BD83-73BBD66E365E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18AE9FD-EC2B-4831-BD83-73BBD66E365E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18AE9FD-EC2B-4831-BD83-73BBD66E365E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18AE9FD-EC2B-4831-BD83-73BBD66E365E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{87BE7EA1-E294-404D-AFEC-EA1115A3A519} = {3633A54D-2377-4955-AA1C-3CB3EE7BA8D1}
+		{B18AE9FD-EC2B-4831-BD83-73BBD66E365E} = {A8AF1A6A-BDA4-48A8-95D8-9AC6472FCFA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39180B06-DD96-4FD4-B269-26B1E22286F5}
