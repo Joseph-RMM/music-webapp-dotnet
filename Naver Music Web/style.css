@@ -112,6 +112,8 @@ body {
 
 #username {
     display: none;
+    font-size: 1.4em;
+    margin-bottom: 20px;
 }
 
 a {

@@ -24,8 +24,8 @@
                 <li class="usuario">
                     <a href="Usuario.aspx">
                         <div class="wrapperusuario">
-                            <img src="assets/nouser.png" alt="Error al cargar foto de perfil" id="userimg">
-                            <p id="username">Usuario X</p>
+                            <asp:Image ID="userimg" runat="server" ImageUrl="~/assets/nouser.png" AlternateText="Tu cuenta:" />
+                            <asp:Label ID="username" runat="server" Text="NombreUsuario"></asp:Label>
                         </div>
                     </a>
                 </li>
