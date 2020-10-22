@@ -1,0 +1,68 @@
+﻿h1 {
+    margin: 0px 0px;
+}
+
+.wrappercanciones {
+    background-color: whitesmoke;
+    display: inline-flex;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+    .wrappercanciones::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+.wrappercancionesbody::-webkit-scrollbar-track {
+    background-color: #E7F7F4;
+}
+
+.wrappercanciones::-webkit-scrollbar-thumb {
+    background-color: #29A686;
+    border-radius: 1rem;
+}
+
+.wrappermusicitem {
+    width: 200px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgcovermusic {
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.songname {
+    width: 80%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.artistname {
+    width: 80%;
+    text-align: center;
+}
+
+
+.textboxbuscar {
+    width: 100%;
+    height: 3em;
+    border-color: whitesmoke;
+    font-size: 1.3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px) {
+    .wrappermusicitem {
+        min-width: 30%;
+    }
+}

@@ -1,0 +1,195 @@
+﻿:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+}
+
+body {
+    color: black;
+    background-color: #E7F7F4;
+    margin: 0px;
+    padding: 0px;
+}
+
+    body::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+    body::-webkit-scrollbar-track {
+        background-color: #E7F7F4;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #29A686;
+        border-radius: 0.2rem;
+    }
+
+.icon {
+    fill: white;
+}
+
+
+.navbar {
+    position: fixed;
+    background-color: #29A686;
+    transition: width 600ms ease;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: white;
+    text-decoration: none;
+    transition: 600ms;
+}
+
+    .nav-link:hover {
+        background: gray;
+        font-weight: bold;
+    }
+
+.link-text {
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+}
+
+.logoimg {
+    width: 80%;
+    align-self: center;
+    padding: 10% 10%;
+    margin-top: 3vh;
+}
+
+.logo-text {
+    display: none;
+}
+
+.wrapperusuario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#userimg {
+    display: none;
+    border-radius: 50%;
+}
+
+#username {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    padding: 2% 2%;
+    margin-left: 5rem;
+    padding: 1rem;
+}
+
+section {
+    background-color: white;
+    border-radius: 25px;
+    padding: 20px 20px;
+}
+/* Small screens */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .usuario {
+        display: none;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .nav-link {
+        justify-content: center;
+    }
+
+    main {
+        margin: 0;
+    }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+    .navbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+
+        .navbar:hover {
+            width: 16rem;
+        }
+
+            .navbar:hover .link-text {
+                display: inline;
+            }
+
+            .navbar:hover img {
+                display: none;
+            }
+
+            .navbar:hover .logo-text {
+                display: flex;
+                margin-top: 3vh;
+            }
+
+            .navbar:hover #userimg {
+                display: flex;
+                width: 80%;
+            }
+
+            .navbar:hover #username {
+                display: flex;
+            }
+}

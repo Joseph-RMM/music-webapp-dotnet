@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="Default.aspx" class="nav-link">
+                    <a href="Inicio.aspx" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 250 250" width="250"  class="iconmeta"><defs><clipPath id="_clipPath_wi39RtNWXKnuT4ymHVTmH8ddSoZJwxPT"><rect width="250" height="250"/></clipPath></defs><g clip-path="url(#_clipPath_wi39RtNWXKnuT4ymHVTmH8ddSoZJwxPT)"><path class="icon" d=" M 152 240 L 176.59 240 C 185.095 240 192 233.095 192 224.59 L 192 132 L 232.414 132 C 241.106 132 242.899 127.299 236.417 121.51 L 186.581 77 L 136.746 32.49 C 130.263 26.701 119.737 26.701 113.254 32.49 L 63.419 77 L 13.583 121.51 C 7.101 127.299 8.894 132 17.586 132 L 58 132 L 58 224.59 C 58 233.095 64.905 240 73.41 240 L 98 240 L 98 163 L 152 163 L 152 240 Z " fill-rule="evenodd" fill="rgb(0,0,0)"/></g></svg>
                         <span class="link-text">Inicio</span>
                     </a>
