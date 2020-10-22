@@ -67,6 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\logofake.png" />
+    <Content Include="assets\music.png" />
+    <Content Include="assets\nouser.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
