@@ -46,11 +46,13 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Controllers\APIDeezerController.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\DeezerObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

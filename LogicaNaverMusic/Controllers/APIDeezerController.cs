@@ -8,5 +8,11 @@ namespace LogicaNaverMusic.Controllers
 {
     class APIDeezerController
     {
+        private string url = "https://api.deezer.com/search?q=awake";
+
+        public void GetDataFromDeezer()
+        {
+
+        }
     }
 }
