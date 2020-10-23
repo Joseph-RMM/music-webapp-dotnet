@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\background.jpg" />
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
     <Content Include="assets\nouser.png" />
@@ -71,9 +72,9 @@
     <Content Include="Favoritos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
-    <Content Include="inicio.css" />
+    <Content Include="CSS\inicio.css" />
     <Content Include="Rankings.aspx" />
-    <Content Include="style.css" />
+    <Content Include="CSS\style.css" />
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -105,6 +106,7 @@
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
