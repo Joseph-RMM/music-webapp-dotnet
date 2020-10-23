@@ -13,6 +13,15 @@ namespace Naver_Music_Web {
     public partial class Registrar {
         
         /// <summary>
+        /// txbUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbUsuario;
+        
+        /// <summary>
         /// txbEmail control.
         /// </summary>
         /// <remarks>
@@ -20,15 +29,6 @@ namespace Naver_Music_Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txbEmail;
-        
-        /// <summary>
-        /// TextBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// txbContrasena control.
