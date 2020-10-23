@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0px;
     margin-top: 10px;
-    background-image: url("assets/background.jpg");
+    background-image: url(../assets/background.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
     overflow: hidden;
