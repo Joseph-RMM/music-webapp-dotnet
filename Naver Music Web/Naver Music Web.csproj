@@ -68,6 +68,7 @@
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
     <Content Include="assets\nouser.png" />
+    <Content Include="CSS\landing.css" />
     <Content Include="favicon.ico" />
     <Content Include="Favoritos.aspx" />
     <Content Include="Global.asax" />
@@ -96,6 +97,13 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Landing.Master.cs">
+      <DependentUpon>Landing.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Landing.Master.designer.cs">
+      <DependentUpon>Landing.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rankings.aspx.cs">
       <DependentUpon>Rankings.aspx</DependentUpon>
@@ -121,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
+    <Content Include="Landing.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

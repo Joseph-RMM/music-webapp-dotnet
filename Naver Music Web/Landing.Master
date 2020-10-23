@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Landing.master.cs" Inherits="Naver_Music_Web.Landing" %>
+
+<!DOCTYPE html>
+
+<html lang ="es-mx">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naver Music</title>
+    <link href="CSS/landing.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <img src="assets/logofake.png" class="logo"/>
+            <span class="logoText">Naver Music</span>
+        </header>
+        <div class="big-wrapper">
+            <div class="mini-wrapper">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <img src="assets/background.jpg" class="phoneImg" />
+    </form>
+</body>
+</html>
