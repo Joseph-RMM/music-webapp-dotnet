@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NaverMusicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NaverMusicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FavAlbum">
           <Key>
             <PropertyRef Name="idFavAlbum" />
           </Key>
           <Property Name="idFavAlbum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCancion" Type="int" />
+          <Property Name="idAlbum" Type="int" />
           <Property Name="idUser" Type="int" />
         </EntityType>
         <EntityType Name="FavArtista">
@@ -18,7 +18,7 @@
             <PropertyRef Name="idFavArtista" />
           </Key>
           <Property Name="idFavArtista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCancion" Type="int" />
+          <Property Name="idArtista" Type="int" />
           <Property Name="idUser" Type="int" />
         </EntityType>
         <EntityType Name="FavCancion">
@@ -71,7 +71,7 @@
           <Property Name="idUser" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
-        <Association Name="FK__FavAlbum__idUser__34C8D9D1">
+        <Association Name="FK__FavAlbum__idUser__4CA06362">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavAlbum" Type="Self.FavAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -83,7 +83,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavArtist__idUse__31EC6D26">
+        <Association Name="FK__FavArtist__idUse__49C3F6B7">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavArtista" Type="Self.FavArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -151,11 +151,11 @@
           <EntitySet Name="VotoAlbum" EntityType="Self.VotoAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoArtista" EntityType="Self.VotoArtista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoCancion" EntityType="Self.VotoCancion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__FavAlbum__idUser__34C8D9D1" Association="Self.FK__FavAlbum__idUser__34C8D9D1">
+          <AssociationSet Name="FK__FavAlbum__idUser__4CA06362" Association="Self.FK__FavAlbum__idUser__4CA06362">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavAlbum" EntitySet="FavAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavArtist__idUse__31EC6D26" Association="Self.FK__FavArtist__idUse__31EC6D26">
+          <AssociationSet Name="FK__FavArtist__idUse__49C3F6B7" Association="Self.FK__FavArtist__idUse__49C3F6B7">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavArtista" EntitySet="FavArtista" />
           </AssociationSet>
@@ -176,8 +176,7 @@
             <End Role="VotoCancion" EntitySet="VotoCancion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NaverMusicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -186,18 +185,18 @@
             <PropertyRef Name="idFavAlbum" />
           </Key>
           <Property Name="idFavAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCancion" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK__FavAlbum__idUser__34C8D9D1" FromRole="FavAlbum" ToRole="Usuarios" />
+          <Property Name="idAlbum" Type="Int32" />
         </EntityType>
         <EntityType Name="FavArtista">
           <Key>
             <PropertyRef Name="idFavArtista" />
           </Key>
           <Property Name="idFavArtista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCancion" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK__FavArtist__idUse__31EC6D26" FromRole="FavArtista" ToRole="Usuarios" />
+          <Property Name="idArtista" Type="Int32" />
         </EntityType>
         <EntityType Name="FavCancion">
           <Key>
@@ -373,8 +372,8 @@
           <EntitySetMapping Name="FavAlbum">
             <EntityTypeMapping TypeName="NaverMusicDBModel.FavAlbum">
               <MappingFragment StoreEntitySet="FavAlbum">
+                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
                 <ScalarProperty Name="idFavAlbum" ColumnName="idFavAlbum" />
-                <ScalarProperty Name="idCancion" ColumnName="idCancion" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -382,8 +381,8 @@
           <EntitySetMapping Name="FavArtista">
             <EntityTypeMapping TypeName="NaverMusicDBModel.FavArtista">
               <MappingFragment StoreEntitySet="FavArtista">
+                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
                 <ScalarProperty Name="idFavArtista" ColumnName="idFavArtista" />
-                <ScalarProperty Name="idCancion" ColumnName="idCancion" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
               </MappingFragment>
             </EntityTypeMapping>

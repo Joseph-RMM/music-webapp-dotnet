@@ -15,8 +15,8 @@ namespace LogicaNaverMusic.BaseDatos
     public partial class FavAlbum
     {
         public int idFavAlbum { get; set; }
-        public Nullable<int> idCancion { get; set; }
         public Nullable<int> idUser { get; set; }
+        public Nullable<int> idAlbum { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }
     }
