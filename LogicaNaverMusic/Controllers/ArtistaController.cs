@@ -27,6 +27,11 @@ namespace LogicaNaverMusic.Controllers
         {
             FavArtista favArtista = new FavArtista();
 
+            favArtista.idUser = idUser;
+            favArtista.idArtista = idArtist;
+
+            modelDb.FavArtista.Add(favArtista);
+            modelDb.SaveChanges();
         }
 
         public void RemoveTrackToFav()
