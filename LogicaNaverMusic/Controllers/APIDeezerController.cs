@@ -6,15 +6,18 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+using LogicaNaverMusic.Models;
+using Newtonsoft.Json;
+
 namespace LogicaNaverMusic.Controllers
 {
     class APIDeezerController
     {
-        private string url = "https://api.deezer.com/search?q=awake";
+        private string url = "https://api.deezer.com/search?q=";
 
-        public void GetDataFromDeezer()
+        public Data GetDataFromSearchDeezer(string busqueda)
         {
-            WebRequest request = WebRequest.Create(url);
+            WebRequest request = WebRequest.Create(url+busqueda);
             request.Method = "GET";
 
             HttpWebResponse reponse = null;
@@ -27,6 +30,11 @@ namespace LogicaNaverMusic.Controllers
                 resultAPI = sr.ReadToEnd();
                 sr.Close();
             }
+
+            Data reponseFromSearch;
+            reponseFromSearch = JsonConvert.DeserializeObject<Data>(resultAPI);
+
+            return reponseFromSearch;
         }
     }
 }
