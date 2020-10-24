@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="842e06fd0c884106a40019188790a2dd" Name="Diagram1">
+        <EntityTypeShape EntityType="NaverMusicDBModel.FavAlbum" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicDBModel.FavArtista" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicDBModel.FavCancion" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicDBModel.Usuarios" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicDBModel.VotoAlbum" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicDBModel.VotoArtista" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicDBModel.VotoCancion" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <AssociationConnector Association="NaverMusicDBModel.FK__FavAlbum__idUser__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicDBModel.FK__FavArtist__idUse__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicDBModel.FK__FavCancio__idUse__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicDBModel.FK__VotoAlbum__idUse__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicDBModel.FK__VotoArtis__idUse__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicDBModel.FK__VotoCanci__idUse__267ABA7A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
