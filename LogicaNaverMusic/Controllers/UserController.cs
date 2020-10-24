@@ -8,7 +8,7 @@ using LogicaNaverMusic.BaseDatos;
 
 namespace LogicaNaverMusic.Controllers
 {
-    class UserController
+    public class UserController
     {
         private NaverMusicDBEntities modelDb = new NaverMusicDBEntities();
         public bool CreateUser(string username, string password, string nombre, string apellido, string sexo,
