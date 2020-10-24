@@ -15,7 +15,7 @@ namespace LogicaNaverMusic.Controllers
     {
         private string url = "https://api.deezer.com/search?q=";
 
-        public Data GetDataFromSearchDeezer(string busqueda)
+        public List<Data> GetDataFromSearchDeezer(string busqueda)
         {
             WebRequest request = WebRequest.Create(url+busqueda);
             request.Method = "GET";
@@ -31,10 +31,10 @@ namespace LogicaNaverMusic.Controllers
                 sr.Close();
             }
 
-            Data reponseFromSearch;
-            reponseFromSearch = JsonConvert.DeserializeObject<Data>(resultAPI);
+            DeezerObject reponseFromSearch;
+            reponseFromSearch = JsonConvert.DeserializeObject<DeezerObject>(resultAPI);
 
-            return reponseFromSearch;
+            return reponseFromSearch.data;
         }
     }
 }
