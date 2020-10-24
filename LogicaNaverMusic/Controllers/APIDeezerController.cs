@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace LogicaNaverMusic.Controllers
 {
-    class APIDeezerController
+    public class APIDeezerController
     {
         private string url = "https://api.deezer.com/search?q=";
 

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNaverMusic", "LogicaN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naver Music Web", "Naver Music Web\Naver Music Web.csproj", "{FBEDF973-D80D-43C5-B4FC-FE0882763212}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AplicacionTest", "AplicacionTest", "{8E454063-5D8A-47FA-AF37-7F55712AE9B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{DAE13EB9-D621-44F7-ACEA-B0841504335C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,17 @@ Global
 		{FBEDF973-D80D-43C5-B4FC-FE0882763212}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBEDF973-D80D-43C5-B4FC-FE0882763212}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBEDF973-D80D-43C5-B4FC-FE0882763212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE13EB9-D621-44F7-ACEA-B0841504335C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE13EB9-D621-44F7-ACEA-B0841504335C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE13EB9-D621-44F7-ACEA-B0841504335C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE13EB9-D621-44F7-ACEA-B0841504335C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B18AE9FD-EC2B-4831-BD83-73BBD66E365E} = {A8AF1A6A-BDA4-48A8-95D8-9AC6472FCFA9}
+		{DAE13EB9-D621-44F7-ACEA-B0841504335C} = {8E454063-5D8A-47FA-AF37-7F55712AE9B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39180B06-DD96-4FD4-B269-26B1E22286F5}
