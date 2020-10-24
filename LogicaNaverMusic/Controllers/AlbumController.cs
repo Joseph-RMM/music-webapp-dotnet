@@ -23,5 +23,16 @@ namespace LogicaNaverMusic.Controllers
             modelDb.VotoAlbum.Add(votoAlbum);
             modelDb.SaveChanges();
         }
+
+        public void AddAlbumToFav(int idUser, int idAlbum)
+        {
+            VotoAlbum votoAlbum = new VotoAlbum();
+
+            votoAlbum.idAlbum = idAlbum;
+            votoAlbum.idUser = idUser;
+
+            modelDb.VotoAlbum.Add(votoAlbum);
+            modelDb.SaveChanges();
+        }
     }
 }
