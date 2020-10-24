@@ -88,8 +88,14 @@
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\APIDeezerController.cs" />
+    <Compile Include="Controllers\ArtistaController.cs" />
+    <Compile Include="Controllers\CancionController.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\RankingController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VotoController.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Data.cs" />
