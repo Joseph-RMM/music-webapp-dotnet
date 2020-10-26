@@ -2,6 +2,14 @@
     margin: 0px 0px;
 }
 
+.btn {
+    outline: none;
+    background: none;
+    cursor:  pointer;
+    border: none;
+    font-size: 1.2em;
+}
+
 .wrappercanciones {
     background-color: whitesmoke;
     display: inline-flex;
@@ -46,6 +54,26 @@
 .artistname {
     width: 80%;
     text-align: center;
+}
+
+.wrapper-ratefav {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rate {
+    color: darkred;
+}
+
+.fav {
+    color: #b5b028;
+    font-size: 1.2em;
+    font-weight:bolder;
+}
+
+.rate:hover, .fav:hover {
+    font-size: 1.3em;
 }
 
 

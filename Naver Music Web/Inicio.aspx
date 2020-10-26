@@ -16,49 +16,73 @@
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
         <div class="wrappermusicitem">
             <img src="assets/music.png" alt="" class="imgcovermusic">
             <span class="songname">Nombre De La Canción</span>
             <span class="artistname">Artista</span>
-            <span class="rate">♥ 7,500</span>
+            <div class="wrapper-ratefav">
+                <button class="btn rate">♥ 7,500</button>
+                <button class="btn fav">★</button>
+            </div>
         </div>
     </div>
 </asp:Content>
