@@ -70,6 +70,7 @@
     <Content Include="assets\nouser.png" />
     <Content Include="CSS\landing.css" />
     <Content Include="CSS\sublanding.css" />
+    <Content Include="CSS\Usuario.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Favoritos.aspx" />

@@ -1,0 +1,43 @@
+﻿.btn {
+    background-color: #29A686;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    padding: 0.3em;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+
+    .btn:hover {
+        background-color: #4dc9a9;
+        cursor: pointer;
+    }
+
+.wrapper-userimg {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.imgperfil {
+    width: 30%;
+    max-width: 300px;
+}
+.wrapper-cambiarimg {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+    .wrapper-userimg {
+        flex-direction: column;
+    }
+
+    .imgperfil {
+        width: 100%;
+        max-width: none;
+    }
+}
