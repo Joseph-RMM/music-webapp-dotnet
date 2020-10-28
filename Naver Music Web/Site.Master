@@ -55,7 +55,9 @@
                 </asp:ContentPlaceHolder>
             </section>
         </main>
-        
+        <div class="wrapper-audioplayer">
+            <asp:ContentPlaceHolder ID="AudioPlayerCPH" runat="server"></asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>
