@@ -13,11 +13,11 @@ namespace Naver_Music_Web {
         static int VotesDB2 = 558;
         protected void Page_Load(object sender, EventArgs e) {
             //Simulacion de consulta a la API y llenado del panel
-            panelMusic.Controls.Add(createMusicItem("https://pbs.twimg.com/media/DrEPUf1WsAIxCby.jpg", "POP/STARS", "K/DA", VotesDB, true, 1));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/350x350.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2));
+            panelMusic.Controls.Add(createMusicItem("https://pbs.twimg.com/media/DrEPUf1WsAIxCby.jpg", "POP/STARS", "K/DA", VotesDB, true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/350x350.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
         }
 
-        public Panel createMusicItem(string URLCover, string SongName, string ArtistName, int Votos, bool isFav, int SongID) {
+        public Panel createMusicItem(string URLCover, string SongName, string ArtistName, int Votos, bool isFav, int SongID, string MP3) {
 
             Panel wrapper = new Panel {
                 CssClass = "wrappermusicitem"
@@ -32,6 +32,7 @@ namespace Naver_Music_Web {
                 ImageUrl = "assets/playcover.png",
                 CssClass = "imgplaymusic"
             };
+            play.Click += delegate (object sender, ImageClickEventArgs e) { PlayMusic(sender, e, MP3); };
             playMusic.Controls.Add(cover);
             playMusic.Controls.Add(play);
             Label nombre = new Label {
@@ -77,6 +78,10 @@ namespace Naver_Music_Web {
                 Votes = VotesDB2;
             }
             btnRate.Text = "♥ " + (Votes);
+        }
+
+        public void PlayMusic(object sender, ImageClickEventArgs e, string MP3URL) {
+            Reproductor.Src = MP3URL;
         }
     }
 }

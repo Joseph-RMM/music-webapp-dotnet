@@ -15,3 +15,6 @@
 
     </asp:Panel>
 </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="AudioPlayerCPH" runat="server">
+    <audio id="Reproductor" src="" controls class="audio-player" autoplay runat="server"></audio>
+</asp:Content>

@@ -49,15 +49,16 @@
                 </li>
             </ul>
         </nav>
+        <div class="wrapper-audioplayer">
+            <asp:ContentPlaceHolder ID="AudioPlayerCPH" runat="server"></asp:ContentPlaceHolder>
+        </div>
         <main>
             <section>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </section>
         </main>
-        <div class="wrapper-audioplayer">
-            <asp:ContentPlaceHolder ID="AudioPlayerCPH" runat="server"></asp:ContentPlaceHolder>
-        </div>
+        
     </form>
 </body>
 </html>
