@@ -38,11 +38,33 @@
     align-items: center;
 }
 
-.imgcovermusic {
+.wrapper-playmusic {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgcovermusic, .imgplaymusic {
     width: 80%;
     margin-top: 20px;
     margin-bottom: 10px;
     border-radius: 20px;
+    outline: none;
+    border: none;
+}
+
+.imgplaymusic {
+    display: none;
+}
+
+.wrapper-playmusic:hover .imgcovermusic {
+    display: none;
+}
+
+.wrapper-playmusic:hover .imgplaymusic {
+    display: unset;
 }
 
 .songname {

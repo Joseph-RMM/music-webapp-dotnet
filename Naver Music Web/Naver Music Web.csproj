@@ -68,6 +68,7 @@
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
     <Content Include="assets\nouser.png" />
+    <Content Include="assets\playcover.png" />
     <Content Include="CSS\landing.css" />
     <Content Include="CSS\sublanding.css" />
     <Content Include="CSS\Usuario.css" />
