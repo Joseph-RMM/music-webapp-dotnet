@@ -11,10 +11,12 @@ namespace Naver_Music_Web {
         //TODO: Borrar cuando se implemente la base de datos
         static int VotesDB = 13455;
         static int VotesDB2 = 558;
+        static int VotesDB3 = 210;
         protected void Page_Load(object sender, EventArgs e) {
             //Simulacion de consulta a la API y llenado del panel
-            panelMusic.Controls.Add(createMusicItem("https://pbs.twimg.com/media/DrEPUf1WsAIxCby.jpg", "POP/STARS", "K/DA", VotesDB, true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/350x350.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/0019510a69161d7af10e25493dc6d544/250x250-000000-80-0-0.jpg", "POP/STARS", "K/DA", VotesDB, true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/a06a47a2b7c23bdba9099053302cb35c/250x250-000000-80-0-0.jpg", "MORE", "K/DA", VotesDB3, false, 3, "https://cdns-preview-4.dzcdn.net/stream/c-4c33ef6d1f98034b98cc9a5688d29bd0-2.mp3"));
         }
 
         public Panel createMusicItem(string URLCover, string SongName, string ArtistName, int Votos, bool isFav, int SongID, string MP3) {
@@ -54,6 +56,7 @@ namespace Naver_Music_Web {
                 CssClass = "btn fav",
                 Text = isFav ? "★" : "✩"
             };
+            btnFav.Click += delegate (object sender, EventArgs e) { FavClick(sender, e, SongID); };
             //Añadirlos al mini div
             ratefav.Controls.Add(btnRate);
             ratefav.Controls.Add(btnFav);
@@ -65,6 +68,7 @@ namespace Naver_Music_Web {
             return wrapper;
         }
 
+
         public void RateClick(object sender, EventArgs e, int SongID) {
             Button btnRate = (Button)sender;
             int Votes = 0;
@@ -73,11 +77,22 @@ namespace Naver_Music_Web {
             if (SongID == 1) { //SELECT Votos FROM VotosCancion WHERE IDCancion = ##
                 VotesDB++;
                 Votes = VotesDB;
-            } else {
-                VotesDB2++;
-                Votes = VotesDB2;
+            } else { 
+                if(SongID == 2) {
+                    VotesDB2++;
+                    Votes = VotesDB2;
+                } else {
+                    VotesDB3++;
+                    Votes = VotesDB3;
+                }
+                
             }
             btnRate.Text = "♥ " + (Votes);
+        }
+
+        public void FavClick(object sender, EventArgs e, int SongID) {
+            Button btnFav = (Button)sender;
+            btnFav.Text = (btnFav.Text == "✩") ? "★" : "✩";
         }
 
         public void PlayMusic(object sender, ImageClickEventArgs e, string MP3URL) {
