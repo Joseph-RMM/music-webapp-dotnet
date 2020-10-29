@@ -1,6 +1,6 @@
 ﻿:root {
     font-size: 16px;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -176,6 +176,10 @@ section {
         width: 100%;
     }
 
+    .wrapper-musicinfo {
+        display: none;
+    }
+
     .audio-player {
         width: 100%;
     }
@@ -223,6 +227,9 @@ section {
         width: calc(100% - 5rem);
         background-color: #E7F7F4;
         transition: ease 600ms;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .navbar:hover +.wrapper-audioplayer {
@@ -230,9 +237,35 @@ section {
         width: calc(100% - 16rem);
         transition: ease 600ms;
     }
+
+    .wrapper-musicinfo {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .miniaturaCover {
+        max-height: 2.5rem;
+        width: auto;
+        margin: 0.2em;
+    }
+
+    .miniwrapper-musicinfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .miniNombreCancion {
+        font-weight: bolder;
+        font-size: large;
+    }
     
+    .miniNombreArtista {
+
+    }
+
     .audio-player {
-        width:100%;
+        width: inherit;
+        max-width: 85%;
     }
 
     .audio-player:focus {

@@ -34,7 +34,7 @@ namespace Naver_Music_Web {
                 ImageUrl = "assets/playcover.png",
                 CssClass = "imgplaymusic"
             };
-            play.Click += delegate (object sender, ImageClickEventArgs e) { PlayMusic(sender, e, MP3); };
+            play.Click += delegate (object sender, ImageClickEventArgs e) { PlayMusic(sender, e, MP3,URLCover,SongName,ArtistName); };
             playMusic.Controls.Add(cover);
             playMusic.Controls.Add(play);
             Label nombre = new Label {
@@ -95,8 +95,11 @@ namespace Naver_Music_Web {
             btnFav.Text = (btnFav.Text == "✩") ? "★" : "✩";
         }
 
-        public void PlayMusic(object sender, ImageClickEventArgs e, string MP3URL) {
+        public void PlayMusic(object sender, ImageClickEventArgs e, string MP3URL, string URLCover, string SongName, string ArtistName) {
             Reproductor.Src = MP3URL;
+            miniaturaCover.ImageUrl = URLCover;
+            miniNombreCancion.Text = SongName;
+            miniNombreArtista.Text = ArtistName;
         }
     }
 }

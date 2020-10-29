@@ -31,6 +31,33 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Panel panelMusic;
         
         /// <summary>
+        /// miniaturaCover control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image miniaturaCover;
+        
+        /// <summary>
+        /// miniNombreCancion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label miniNombreCancion;
+        
+        /// <summary>
+        /// miniNombreArtista control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label miniNombreArtista;
+        
+        /// <summary>
         /// Reproductor control.
         /// </summary>
         /// <remarks>

@@ -16,5 +16,12 @@
     </asp:Panel>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="AudioPlayerCPH" runat="server">
+    <div class="wrapper-musicinfo">
+        <asp:Image ID="miniaturaCover" runat="server" CssClass="miniaturaCover" ImageUrl="~/assets/music.png" />
+        <div class="miniwrapper-musicinfo">
+            <asp:Label ID="miniNombreCancion" runat="server" Text="Puedes escuchar" CssClass="miniNombreCancion"></asp:Label>
+            <asp:Label ID="miniNombreArtista" runat="server" Text="hasta 30 segundos" CssClass="miniNombreArtista"></asp:Label>
+        </div>
+    </div>
     <audio id="Reproductor" src="" controls class="audio-player" autoplay runat="server"></audio>
 </asp:Content>
