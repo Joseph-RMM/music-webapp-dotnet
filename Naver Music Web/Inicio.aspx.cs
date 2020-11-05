@@ -12,7 +12,17 @@ namespace Naver_Music_Web {
         static int VotesDB = 13455;
         static int VotesDB2 = 558;
         static int VotesDB3 = 210;
+        
         protected void Page_Load(object sender, EventArgs e) {
+            int[] songsID = (int[])Session["songsID"];
+            Session["songsID"] = songsID;
+            panelResultados.Controls.Clear();
+            if (songsID != null) {
+                foreach (int ID in songsID) {
+                    panelResultados.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
+                }
+                divBuscar.Visible = true;
+            }
             //Simulacion de consulta a la API y llenado del panel
             panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/0019510a69161d7af10e25493dc6d544/250x250-000000-80-0-0.jpg", "POP/STARS", "K/DA", VotesDB, true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
             panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
@@ -88,11 +98,13 @@ namespace Naver_Music_Web {
                 
             }
             btnRate.Text = "♥ " + (Votes);
+            Response.Redirect("Inicio.aspx");
         }
 
         public void FavClick(object sender, EventArgs e, int SongID) {
             Button btnFav = (Button)sender;
             btnFav.Text = (btnFav.Text == "✩") ? "★" : "✩";
+            Response.Redirect("Inicio.aspx");
         }
 
         public void PlayMusic(object sender, ImageClickEventArgs e, string MP3URL, string URLCover, string SongName, string ArtistName) {
@@ -100,6 +112,12 @@ namespace Naver_Music_Web {
             miniaturaCover.ImageUrl = URLCover;
             miniNombreCancion.Text = SongName;
             miniNombreArtista.Text = ArtistName;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e) {
+            Session["songsID"] = new int[] { 1, 2,3,4,5,6 };
+            divBuscar.Visible = true;
+            //Response.Redirect("Inicio.aspx");
         }
     }
 }
