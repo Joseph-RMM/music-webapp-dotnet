@@ -9,6 +9,7 @@
         <asp:TextBox ID="txbEmail" runat="server" CssClass="txb" TextMode="Email" ValidateRequestMode="Inherit"></asp:TextBox>
         <span>Contraseña:</span>
         <asp:TextBox ID="txbContrasena" runat="server" CssClass="txb" TextMode="Password"></asp:TextBox>
-        <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn foot" />
+        <asp:CheckBox ID="chbAuto" runat="server" Text="Recordarme" CssClass="CheckBox" />
+        <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn foot" OnClick="btnLogin_Click" />
     </div>
 </asp:Content>
