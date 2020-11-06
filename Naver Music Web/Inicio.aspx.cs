@@ -5,6 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+using LogicaNaverMusic;
+using LogicaNaverMusic.Controllers; //CONTROLADORES DE LOGICA NEGOCIOS
+using LogicaNaverMusic.Models;      //MODELOS DE LOGICA NEGOCIOS     
+
+
 namespace Naver_Music_Web {
     public partial class Inicio : System.Web.UI.Page {
         //Simulacion de datos recuperados de la base de datos
@@ -14,12 +20,11 @@ namespace Naver_Music_Web {
         static int VotesDB3 = 210;
         
         protected void Page_Load(object sender, EventArgs e) {
-            int[] songsID = (int[])Session["songsID"];
-            Session["songsID"] = songsID;
+            List<Data> data = (List <Data>) Session["busqueda"];
             panelResultados.Controls.Clear();
-            if (songsID != null) {
-                foreach (int ID in songsID) {
-                    panelResultados.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
+            if (data != null) {
+                foreach (Data song in data) {
+                    panelResultados.Controls.Add(createMusicItem(song.album.cover_medium,song.title_short,song.artist.name,int.Parse(song.rank),false,int.Parse(song.id),song.preview));
                 }
                 divBuscar.Visible = true;
             }
@@ -115,9 +120,12 @@ namespace Naver_Music_Web {
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e) {
-            Session["songsID"] = new int[] { 1, 2,3,4,5,6 };
+            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+            List<Data> data = new List<Data>();
+            data = aPIDeezer.GetDataFromSearchDeezer(txbBuscar.Text);
+            Session["busqueda"] = data;
             divBuscar.Visible = true;
-            //Response.Redirect("Inicio.aspx");
+            Response.Redirect("Inicio.aspx");
         }
     }
 }

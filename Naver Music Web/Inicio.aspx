@@ -7,8 +7,10 @@
     <p>Work in progress!</p>
     <div class="buscar">
         <h3>Buscar</h3>
-        <asp:TextBox ID="txbBuscar" runat="server" CssClass="textboxbuscar" placeholder="🔎 Canción, Artista, Álbum..."></asp:TextBox>
-        <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
+        <div class="wrapper-linea">
+            <asp:TextBox ID="txbBuscar" runat="server" CssClass="textboxbuscar" placeholder="🔎 Canción, Artista, Álbum..."></asp:TextBox>
+            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" CssClass="btnverde" />
+        </div>
         <asp:Panel ID="divBuscar" runat="server" Visible="False">
             <h4>Resultados de búsqueda</h4>
             <asp:Panel ID="panelResultados" runat="server" CssClass="wrappercanciones"></asp:Panel>

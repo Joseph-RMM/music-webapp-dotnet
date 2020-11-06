@@ -10,6 +10,38 @@
     font-size: 1.2em;
 }
 
+.btnverde {
+    background-color: #29A686;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1.3em;
+    width: 6em;
+}
+
+    .btnverde:hover {
+        background-color: #4dc9a9;
+    }
+
+.wrapper-linea {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.textboxbuscar {
+    width: calc(100% - 6em);
+    height: 3em;
+    border-color: whitesmoke;
+    font-size: 1.3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .wrappercanciones {
     background-color: whitesmoke;
     display: inline-flex;
@@ -99,17 +131,6 @@
 }
 
 
-.textboxbuscar {
-    width: 100%;
-    height: 3em;
-    border-color: whitesmoke;
-    font-size: 1.3em;
-    padding-left: 1em;
-    padding-right: 1em;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 @media only screen and (max-width: 600px) {
     .wrappermusicitem {
