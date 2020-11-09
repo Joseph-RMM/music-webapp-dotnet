@@ -13,22 +13,22 @@ namespace Naver_Music_Web {
     public partial class Rankings {
         
         /// <summary>
-        /// lblName1 control.
+        /// lblSName1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName1;
+        protected global::System.Web.UI.WebControls.Label lblSName1;
         
         /// <summary>
-        /// lblArtist1 control.
+        /// lblSArtist1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArtist1;
+        protected global::System.Web.UI.WebControls.Label lblSArtist1;
         
         /// <summary>
         /// playSong1 control.
@@ -40,31 +40,31 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.ImageButton playSong1;
         
         /// <summary>
-        /// btnVotarSong1 control.
+        /// btnRateSong1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVotarSong1;
+        protected global::System.Web.UI.WebControls.Button btnRateSong1;
         
         /// <summary>
-        /// lblName2 control.
+        /// lblSName2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName2;
+        protected global::System.Web.UI.WebControls.Label lblSName2;
         
         /// <summary>
-        /// lblArtist2 control.
+        /// lblSArtist2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArtist2;
+        protected global::System.Web.UI.WebControls.Label lblSArtist2;
         
         /// <summary>
         /// playSong2 control.
@@ -76,31 +76,31 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.ImageButton playSong2;
         
         /// <summary>
-        /// btnVotarSong2 control.
+        /// btnRateSong2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVotarSong2;
+        protected global::System.Web.UI.WebControls.Button btnRateSong2;
         
         /// <summary>
-        /// lblName3 control.
+        /// lblSName3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName3;
+        protected global::System.Web.UI.WebControls.Label lblSName3;
         
         /// <summary>
-        /// lblArtist3 control.
+        /// lblSArtist3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblArtist3;
+        protected global::System.Web.UI.WebControls.Label lblSArtist3;
         
         /// <summary>
         /// playSong3 control.
@@ -112,12 +112,201 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.ImageButton playSong3;
         
         /// <summary>
-        /// btnVotarSong3 control.
+        /// btnRateSong3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVotarSong3;
+        protected global::System.Web.UI.WebControls.Button btnRateSong3;
+        
+        /// <summary>
+        /// lblAlbumName1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlbumName1;
+        
+        /// <summary>
+        /// lblAlbumArtist1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlbumArtist1;
+        
+        /// <summary>
+        /// albumCover1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image albumCover1;
+        
+        /// <summary>
+        /// btnRateAlbum1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRateAlbum1;
+        
+        /// <summary>
+        /// lblAlbumName2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlbumName2;
+        
+        /// <summary>
+        /// lblAlbumArtist2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlbumArtist2;
+        
+        /// <summary>
+        /// albumCover2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image albumCover2;
+        
+        /// <summary>
+        /// btnRateAlbum2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRateAlbum2;
+        
+        /// <summary>
+        /// lblAlbumName3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlbumName3;
+        
+        /// <summary>
+        /// lblAlbumArtist3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlbumArtist3;
+        
+        /// <summary>
+        /// albumCover3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image albumCover3;
+        
+        /// <summary>
+        /// btnRateAlbum3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRateAlbum3;
+        
+        /// <summary>
+        /// lblArtistName1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtistName1;
+        
+        /// <summary>
+        /// artistPhoto1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image artistPhoto1;
+        
+        /// <summary>
+        /// btnRateArtist1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRateArtist1;
+        
+        /// <summary>
+        /// lblArtistName2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtistName2;
+        
+        /// <summary>
+        /// artistPhoto2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image artistPhoto2;
+        
+        /// <summary>
+        /// btnRateArtist2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRateArtist2;
+        
+        /// <summary>
+        /// lblArtistName3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtistName3;
+        
+        /// <summary>
+        /// artistPhoto3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image artistPhoto3;
+        
+        /// <summary>
+        /// btnRateArtist3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRateArtist3;
     }
 }
