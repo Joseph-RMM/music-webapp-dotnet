@@ -1,11 +1,21 @@
-﻿:root {
+﻿/*Temas*/
+.naver {
+    --bg-oscuro: #29A686;
+    --bg-claro: #E7F7F4;
+    --bg-extraclaro: #FFFFFF;
+    --btn-hover: #4dc9a9;
+    --txt-color: #000000;
+}
+
+/*Propiedades*/
+:root {
     font-size: 16px;
     font-family: 'Open Sans','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
-    color: black;
-    background-color: #E7F7F4;
+    color: var(--txt-color);
+    background-color: var(--bg-claro);
     margin: 0px;
     padding: 0px;
 }
@@ -15,11 +25,11 @@ body {
     }
 
     body::-webkit-scrollbar-track {
-        background-color: #E7F7F4;
+        background-color:var(--bg-claro);
     }
 
     body::-webkit-scrollbar-thumb {
-        background-color: #29A686;
+        background-color: var(--bg-oscuro);
         border-radius: 0.2rem;
     }
 
@@ -30,7 +40,7 @@ body {
 
 .navbar {
     position: fixed;
-    background-color: #29A686;
+    background-color: var(--bg-oscuro);
     transition: width 600ms ease;
 }
 
@@ -136,17 +146,17 @@ main {
 }
 
 section {
-    background-color: white;
+    background-color: var(--bg-extraclaro);
     border-radius: 25px;
     padding: 20px 20px;
 }
 
 .audio-player::-webkit-media-controls-panel {
-    background-color: #E7F7F4;
+    background-color: var(--bg-claro);
 }
 
 .audio-player::-webkit-media-controls-enclosure {
-    background-color: #E7F7F4;
+    background-color: var(--bg-claro);
 }
 /* Small screens */
 @media only screen and (max-width: 600px) {
@@ -179,7 +189,7 @@ section {
 
     .wrapper-audioplayer {
         position: fixed;
-        background-color: #E7F7F4;
+        background-color: var(--bg-claro);
         bottom: 5rem;
         width: 100%;
     }
@@ -233,7 +243,7 @@ section {
         bottom: 0;
         left: 5rem;
         width: calc(100% - 5rem);
-        background-color: #E7F7F4;
+        background-color: var(--bg-claro);
         transition: ease 600ms;
         display: flex;
         flex-direction: row;

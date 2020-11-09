@@ -13,7 +13,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body class="naver">
     <form id="form1" runat="server">
         <nav class="navbar">
             <ul class="navbar-nav">

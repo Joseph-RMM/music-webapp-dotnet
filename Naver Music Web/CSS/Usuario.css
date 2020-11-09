@@ -1,5 +1,13 @@
-﻿.btn {
-    background-color: #29A686;
+﻿/*Variables disponibles:
+    --bg-oscuro 
+    --bg-claro 
+    --bg-extraclaro 
+    --btn-hover
+    --txt-color
+*/
+
+.btn {
+    background-color: var(--bg-oscuro);
     color: white;
     font-size: 1.2em;
     border: none;
@@ -9,7 +17,7 @@
 }
 
     .btn:hover {
-        background-color: #4dc9a9;
+        background-color: var(--btn-hover);
         cursor: pointer;
     }
 

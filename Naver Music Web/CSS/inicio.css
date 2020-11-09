@@ -1,4 +1,12 @@
-﻿h1 {
+﻿/*Variables disponibles:
+    --bg-oscuro 
+    --bg-claro 
+    --bg-extraclaro 
+    --btn-hover
+    --txt-color
+*/
+
+h1 {
     margin: 0px 0px;
 }
 
@@ -11,7 +19,7 @@
 }
 
 .btnverde {
-    background-color: #29A686;
+    background-color: var(--bg-oscuro);
     color: white;
     outline: none;
     cursor: pointer;
@@ -21,7 +29,7 @@
 }
 
     .btnverde:hover {
-        background-color: #4dc9a9;
+        background-color: var(--btn-hover);
     }
 
 .wrapper-linea {
@@ -54,11 +62,11 @@
     }
 
 .wrappercancionesbody::-webkit-scrollbar-track {
-    background-color: #E7F7F4;
+    background-color: var(--bg-claro);
 }
 
 .wrappercanciones::-webkit-scrollbar-thumb {
-    background-color: #29A686;
+    background-color: var(--bg-oscuro);
     border-radius: 1rem;
 }
 
