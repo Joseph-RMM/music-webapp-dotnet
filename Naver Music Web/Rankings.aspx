@@ -4,6 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Lo más votado</h1>
+    <div class="wrapper-botones">
+        <asp:Button ID="btnDiario" runat="server" Text="Diario" CssClass="btn-menu" OnClick="btnDiario_Click" />
+        <asp:Button ID="btnSemanal" runat="server" Text="Semanal" CssClass="btn-menu" OnClick="btnSemanal_Click" />
+        <asp:Button ID="btnMensual" runat="server" Text="Mensual" CssClass="btn-menu" OnClick="btnMensual_Click" />
+        <asp:Button ID="btnGeneral" runat="server" Text="General" CssClass="btn-menu" OnClick="btnGeneral_Click" />
+    </div>
     <h2>Canciones</h2>
     <div class="wrapper-top3">
         <div class="wrapper-top">
@@ -39,6 +45,10 @@
             </div>
             <asp:Button ID="btnRateSong3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>
+    </div>
+    <div class="ver-mas">
+        <asp:Button ID="btnvermascanciones" runat="server" Text="Ver más" CssClass="btn-vermas" />
+        <asp:GridView ID="GridView1" runat="server" CssClass="gridView" ></asp:GridView>
     </div>
     <h2>Álbumes</h2>
     <div class="wrapper-top3">
