@@ -17,7 +17,7 @@
         </asp:Panel>
     </div>
 
-    <h3>Nuevos Lanzamientos</h3>
+    <h3>Recomendados para tí</h3>
     <asp:Panel ID="panelMusic" runat="server" CssClass="wrappercanciones">
 
     </asp:Panel>
