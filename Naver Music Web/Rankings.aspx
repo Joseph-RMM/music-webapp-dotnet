@@ -3,7 +3,7 @@
     <link href="CSS/Rankings.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Lo más votado</h1>
+    <h1>♥ Lo más votado ♥</h1>
     <div class="wrapper-botones">
         <asp:Button ID="btnDiario" runat="server" Text="Diario" CssClass="btn-menu" OnClick="btnDiario_Click" />
         <asp:Button ID="btnSemanal" runat="server" Text="Semanal" CssClass="btn-menu" OnClick="btnSemanal_Click" />
@@ -86,6 +86,10 @@
             <asp:Button ID="btnRateAlbum3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>
     </div>
+    <div class="ver-mas">
+        <asp:Button ID="btnVerMasAlbums" runat="server" Text="Ver más" CssClass="btn-vermas" />
+        <asp:GridView ID="GridView2" runat="server" CssClass="gridView" ></asp:GridView>
+    </div>
     <h2>Artistas</h2>
      <div class="wrapper-top3">
         <div class="wrapper-top">
@@ -118,5 +122,9 @@
             </div>
             <asp:Button ID="btnRateArtist3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>
+    </div>
+    <div class="ver-mas">
+        <asp:Button ID="btnVerMasArtistas" runat="server" Text="Ver más" CssClass="btn-vermas" />
+        <asp:GridView ID="GridView3" runat="server" CssClass="gridView" ></asp:GridView>
     </div>
 </asp:Content>
