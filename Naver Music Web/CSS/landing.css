@@ -3,10 +3,24 @@
     margin-top: 10px;
     background-image: url(../assets/background.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
-    overflow: hidden;
+    background-size: cover;
     background-color: black;
+    font-family: 'Open Sans','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+
+    body::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+    body::-webkit-scrollbar-track {
+        background-color: black;
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #6307a0;
+        border-radius: 0.2rem;
+    }
 
 header {
     display: inline-flex;
@@ -106,6 +120,7 @@ a {
 
     .buttons-wrapper {
         width: 80%;
+        justify-content: space-around;
     }
 
     .btn {
