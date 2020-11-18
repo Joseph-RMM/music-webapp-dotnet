@@ -14,8 +14,6 @@ namespace LogicaNaverMusic.Controllers
     public class APIDeezerController
     {
         private string url = "https://api.deezer.com/";
-        private string urlTrack = "https://api.deezer.com/track/";
-        private string urlAlbum = "https://api.deezer.com/album/  https://api.deezer.com/artist/27";
 
 
         public List<Data> GetDataFromSearchDeezer(string busqueda)

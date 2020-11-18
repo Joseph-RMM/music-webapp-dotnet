@@ -18,7 +18,8 @@ namespace ConsoleAppTest
             int eleccion = 0;
             while (eleccion != 10)
             {
-                Console.WriteLine("1 para busqueda, 2 para crear usuario, 10 para salir");
+                Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
+                    "4 para buscar album\n 5 para buscar artista\n 10 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -28,6 +29,15 @@ namespace ConsoleAppTest
                         break;
                     case 2:
                         CreateUser();
+                        break;
+                    case 3:
+                        SearchTrack();
+                        break;
+                    case 4:
+                        SearchAlbum();
+                        break;
+                    case 5:
+                        SearchArtist();
                         break;
                     case 10:
                         Environment.Exit(0);
@@ -50,7 +60,7 @@ namespace ConsoleAppTest
 
             foreach (Data current in data)
             {
-                Console.WriteLine(current.artist.name + " " + current.album.title + " " + current.title_short);
+                Console.WriteLine(current.artist.name + " " + current.album.title + " " + current.title_short + "\n");
             }
         }
 
@@ -90,6 +100,49 @@ namespace ConsoleAppTest
                 Console.WriteLine("ERROR");
             }
 
+        }
+
+        static void SearchTrack()
+        {
+            Console.WriteLine("Introduzca Id de la cancion");
+
+            string busqueda = (Console.ReadLine());
+
+            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+
+            Data track = new Data();
+            track = aPIDeezer.GetTrack(int.Parse(busqueda));
+
+            Console.WriteLine(track.artist.name + " " + track.album.title + " " + track.title_short + "\n");
+            
+        }
+
+        static void SearchAlbum()
+        {
+            Console.WriteLine("Introduzca Id del Album");
+
+            string busqueda = (Console.ReadLine());
+
+            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+
+            Album album = new Album();
+            album = aPIDeezer.GetAlbum(int.Parse(busqueda));
+
+            Console.WriteLine(album.artist.name + " " + album.title + "\n");
+        }
+
+        static void SearchArtist()
+        {
+            Console.WriteLine("Introduzca Id del Artista");
+
+            string busqueda = (Console.ReadLine());
+
+            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+
+            Artist artist = new Artist();
+            artist = aPIDeezer.GetArtist(int.Parse(busqueda));
+
+            Console.WriteLine(artist.name + "\n");
         }
     }
 }

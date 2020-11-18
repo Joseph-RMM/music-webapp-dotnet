@@ -18,5 +18,6 @@ namespace LogicaNaverMusic.Models
         public string md5_image { get; set; }
         public string tracklist { get; set; }
         public string type { get; set; }
+        public Artist artist { get; set; }
     }
 }
