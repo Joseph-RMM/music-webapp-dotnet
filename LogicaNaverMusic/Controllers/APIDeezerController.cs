@@ -83,6 +83,28 @@ namespace LogicaNaverMusic.Controllers
 
             return reponseFromSearch;
         }
+
+        public Artist GetArtist(int idArtist)
+        {
+            WebRequest request = WebRequest.Create(url + "artist/" + idArtist);
+            request.Method = "GET";
+
+            HttpWebResponse reponse = null;
+            reponse = (HttpWebResponse)request.GetResponse();
+
+            string resultAPI;
+            using (Stream stream = reponse.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(stream);
+                resultAPI = sr.ReadToEnd();
+                sr.Close();
+            }
+
+            Artist reponseFromSearch;
+            reponseFromSearch = JsonConvert.DeserializeObject<Artist>(resultAPI);
+
+            return reponseFromSearch;
+        }
     }
 
     
