@@ -64,6 +64,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Album.aspx" />
     <Content Include="assets\background.jpg" />
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
@@ -72,6 +73,7 @@
     <Content Include="assets\Rank1.png" />
     <Content Include="assets\Rank2.png" />
     <Content Include="assets\Rank3.png" />
+    <Content Include="CSS\Album.css" />
     <Content Include="CSS\landing.css" />
     <Content Include="CSS\Rankings.css" />
     <Content Include="CSS\sublanding.css" />
@@ -90,6 +92,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Album.aspx.cs">
+      <DependentUpon>Album.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Album.aspx.designer.cs">
+      <DependentUpon>Album.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
