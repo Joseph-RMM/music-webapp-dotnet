@@ -7,34 +7,38 @@
     <div class="wrapper-albumTittle">
         <asp:Image runat="server" ID="albumCover" CssClass="albumCover" ImageUrl="~/assets/music.png" ></asp:Image>
         <div class="wrapper-albumInfo">
-            <asp:Label runat="server" Text="Título del álbum" CssClass="lblTitulo"></asp:Label>
-            <asp:Label runat="server" Text="Artista(s)" CssClass="lblArtistas"></asp:Label>
+            <asp:Label runat="server" ID="lblTitulo" Text="Título del álbum" CssClass="lblTitulo"></asp:Label>
+            <asp:Label runat="server" ID="lblArtistas" Text="Artista(s)" CssClass="lblArtistas"></asp:Label>
             <div class="wrapper-votefav">
-                <asp:Button runat="server" Text="♥ votos" CssClass="btnVote nobtn" />
-                <asp:Button runat="server" Text="☆" CssClass="btnFav nobtn" />
+                <asp:Button runat="server" ID="btnVote" Text="♥ votos" CssClass="btnVote nobtn" />
+                <asp:Button runat="server" ID="btnFav" Text="☆" CssClass="btnFav nobtn" />
             </div>
         </div>
     </div>
-    <asp:GridView runat="server" CssClass="gv" AutoGenerateColumns="False">
+    <asp:GridView runat="server" ID="gvCanciones" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvCanciones_RowCommand">
         <Columns>
-            <asp:BoundField HeaderText="Canción" />
-            <asp:BoundField HeaderText="Artista(s)">
+            <asp:BoundField HeaderText="ID" Visible="False" DataField="id" />
+            <asp:BoundField DataField="preview" HeaderText="MP3" />
+            <asp:BoundField HeaderText="Canción" DataField="tittle" >
             <ControlStyle CssClass="gvData" />
             <HeaderStyle CssClass="gvHead" />
             </asp:BoundField>
-            <asp:ButtonField ButtonType="Button" HeaderText="♥">
-            <ControlStyle CssClass="btnVote" />
+            <asp:BoundField HeaderText="Artista(s)" DataField="artist">
+            <ControlStyle CssClass="gvData" />
+            <HeaderStyle CssClass="gvHead" />
+            </asp:BoundField>
+            <asp:ButtonField ButtonType="Button" HeaderText="♥" DataTextField="votes" CommandName="Vote">
+            <ControlStyle CssClass="btnVote nobtn gvbtn" />
             <HeaderStyle CssClass="gvHead" />
             </asp:ButtonField>
-            <asp:ButtonField ButtonType="Button" HeaderText="☆">
-            <ControlStyle CssClass="btnFav" />
+            <asp:ButtonField ButtonType="Button" HeaderText="☆" DataTextField="favs" CommandName="Fav">
+            <ControlStyle CssClass="btnFav nobtn gvbtn" />
             <HeaderStyle CssClass="gvHead" />
             </asp:ButtonField>
-            <asp:ButtonField ButtonType="Button" HeaderText="►" Text="►">
-            <ControlStyle CssClass="btnPlay" />
+            <asp:ButtonField ButtonType="Button" HeaderText="►" Text="►" CommandName="Play">
+            <ControlStyle CssClass="btnPlay gvbtn" />
             <HeaderStyle CssClass="gvHead" />
             </asp:ButtonField>
-            <asp:BoundField HeaderText="Metadata" Visible="False" />
         </Columns>
     </asp:GridView>
     

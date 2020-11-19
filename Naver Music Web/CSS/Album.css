@@ -1,5 +1,5 @@
 ﻿.wrapper-albumTittle{
-    width: 100%;
+    width: 90%;
     padding: 10px 5%;
     display: flex;
     flex-direction: row;
@@ -47,6 +47,37 @@
 
 .btnFav {
     color: #b5b028;
+}
+
+.gvHead {
+    background-color: var(--bg-oscuro);
+    color: white;
+}
+
+.gvbtn {
+    width:100%;
+    font-size: 1.2em;
+}
+
+.gv {
+    width: 100%;
+}
+
+.btnPlay {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin: 0px;
+    background-color: var(--bg-oscuro);
+    color: white;
+}
+
+.btnPlay:hover {
+    background-color: var(--btn-hover);
+}
+
+.hidden {
+    display:none;
 }
 
 @media only screen and (max-width: 600px) {
