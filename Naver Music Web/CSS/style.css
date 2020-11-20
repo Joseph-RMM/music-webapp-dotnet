@@ -7,6 +7,22 @@
     --txt-color: #000000;
 }
 
+.dark {
+    --bg-oscuro: black;
+    --bg-claro: grey;
+    --bg-extraclaro: lightgray;
+    --btn-hover: #8a8787;
+    --txt-color: #FFF;
+}
+
+.solar {
+    --bg-oscuro: #001391;
+    --bg-claro: #475bde;
+    --bg-extraclaro: #bac3ff;
+    --btn-hover: #001ee3;
+    --txt-color: #000000;
+}
+
 /*Propiedades*/
 :root {
     font-size: 16px;
@@ -57,6 +73,9 @@ body {
 .nav-item {
     width: 100%;
 }
+    .nav-item:last-child {
+        margin-top: auto;
+    }
 
 .nav-link {
     display: flex;

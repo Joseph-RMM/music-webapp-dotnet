@@ -88,6 +88,7 @@
     <Content Include="Rankings.aspx" />
     <Content Include="CSS\style.css" />
     <Content Include="Registrar.aspx" />
+    <Content Include="themes.js" />
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
