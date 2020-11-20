@@ -19,5 +19,6 @@ namespace LogicaNaverMusic.Models
         public string tracklist { get; set; }
         public string type { get; set; }
         public Artist artist { get; set; }
+        public Tracks tracks { get; set; }
     }
 }

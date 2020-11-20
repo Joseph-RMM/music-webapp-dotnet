@@ -128,9 +128,16 @@ namespace ConsoleAppTest
             Album album = new Album();
             album = aPIDeezer.GetAlbum(int.Parse(busqueda));
 
-            Console.WriteLine(album.artist.name + " " + album.title + "\n");
+            Console.WriteLine(album.artist.name + " " + album.title + "\n CANCIONES: \n");
+
+            foreach (Data current in album.tracks.data)
+            {
+                Console.WriteLine(current.title_short);
+            }
 
             //comentario de prueba
+
+
         }
 
         static void SearchArtist()
