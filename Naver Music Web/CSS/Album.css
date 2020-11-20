@@ -1,4 +1,11 @@
-﻿.wrapper-albumTittle{
+﻿/*Variables disponibles:
+    --bg-oscuro 
+    --bg-claro 
+    --bg-extraclaro 
+    --btn-hover
+    --txt-color
+*/
+.wrapper-albumTittle{
     width: 90%;
     padding: 10px 5%;
     display: flex;
