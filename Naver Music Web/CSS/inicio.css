@@ -48,10 +48,12 @@ h1 {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    background-color: var(--bg-aunmasclaro);
+    color: var(--txt-color);
 }
 
 .wrappercanciones {
-    background-color: whitesmoke;
+    background-color: var(--bg-aunmasclaro);
     display: inline-flex;
     width: 100%;
     overflow-x: scroll;
@@ -125,11 +127,11 @@ h1 {
 }
 
 .rate {
-    color: darkred;
+    color: var(--rate);
 }
 
 .fav {
-    color: #b5b028;
+    color: var(--fav);
     font-size: 1.2em;
     font-weight:bolder;
 }

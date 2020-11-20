@@ -80,7 +80,7 @@
 }
 
 .btn-rate {
-    color: darkred;
+    color: var(--rate);
     outline: none;
     background: none;
     cursor: pointer;
@@ -102,7 +102,7 @@
 .btn-vermas {
     outline: none;
     background-color: var(--bg-oscuro);
-    color: var(--bg-claro);
+    color: var(--txt-color);
     cursor: pointer;
     border: none;
     font-size: 1.3em;

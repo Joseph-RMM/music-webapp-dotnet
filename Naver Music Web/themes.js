@@ -12,11 +12,10 @@ const bodyClass = document.body.classList;
 bodyClass.add(theme);
 
 function toggleTheme() {
-  const current = localStorage.getItem('theme');
-  const next = themeMap[current];
-
-  bodyClass.replace(current, next);
-  localStorage.setItem('theme', next);
+    const current = localStorage.getItem('theme');
+    const next = themeMap[current];
+    bodyClass.replace(current, next);
+    localStorage.setItem('theme', next);
 }
 
 document.getElementById('themeButton').onclick = toggleTheme;

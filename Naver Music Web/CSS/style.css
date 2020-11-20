@@ -3,25 +3,47 @@
     --bg-oscuro: #29A686;
     --bg-claro: #E7F7F4;
     --bg-extraclaro: #FFFFFF;
+    --bg-aunmasclaro: #FFFFFF;
     --btn-hover: #4dc9a9;
     --txt-color: #000000;
+    --rate: darkred;
+    --fav: #b5b028;
 }
 
 .dark {
     --bg-oscuro: black;
-    --bg-claro: grey;
-    --bg-extraclaro: lightgray;
-    --btn-hover: #8a8787;
-    --txt-color: #FFF;
+    --bg-claro: #1c1c1c;
+    --bg-extraclaro: #303030;
+    --bg-aunmasclaro: #4d4d4d;
+    --btn-hover: #424242;
+    --txt-color: #c2c2c2;
+    --rate: whitesmoke;
+    --fav: whitesmoke;
 }
 
 .solar {
     --bg-oscuro: #001391;
     --bg-claro: #475bde;
     --bg-extraclaro: #bac3ff;
+    --bg-aunmasclaro: #FFFFFF;
     --btn-hover: #001ee3;
     --txt-color: #000000;
+    --rate: darkred;
+    --fav: #b5b028;
 }
+
+/*Iconos de temas*/
+.naver #naverIcon {
+    display: block;
+}
+
+.dark #darkIcon {
+    display: block;
+}
+.dark #naverIcon {
+    display: none;
+}
+
 
 /*Propiedades*/
 :root {
@@ -34,6 +56,7 @@ body {
     background-color: var(--bg-claro);
     margin: 0px;
     padding: 0px;
+    
 }
 
     body::-webkit-scrollbar {
@@ -58,6 +81,7 @@ body {
     position: fixed;
     background-color: var(--bg-oscuro);
     transition: width 600ms ease;
+   
 }
 
 .navbar-nav {
@@ -158,6 +182,13 @@ a {
     color: white;
 }
 
+.theme-icon {
+    display: none;
+}
+
+
+
+
 main {
     padding: 2% 2%;
     margin-left: 5rem;
@@ -169,6 +200,8 @@ section {
     border-radius: 25px;
     padding: 20px 20px;
 }
+
+
 
 .audio-player::-webkit-media-controls-panel {
     background-color: var(--bg-claro);

@@ -49,11 +49,11 @@
 }
 
 .btnVote {
-    color: darkred;
+    color: var(--rate);
 }
 
 .btnFav {
-    color: #b5b028;
+    color: var(--fav);
 }
 
 .gvHead {
