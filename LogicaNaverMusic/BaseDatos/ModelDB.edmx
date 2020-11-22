@@ -71,7 +71,7 @@
           <Property Name="idUser" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
-        <Association Name="FK__FavAlbum__idUser__4CA06362">
+        <Association Name="FK__FavAlbum__idUser__1DE57479">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavAlbum" Type="Self.FavAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -83,7 +83,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavArtist__idUse__49C3F6B7">
+        <Association Name="FK__FavArtist__idUse__1B0907CE">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavArtista" Type="Self.FavArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,7 +95,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavCancio__idUse__2F10007B">
+        <Association Name="FK__FavCancio__idUse__182C9B23">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavCancion" Type="Self.FavCancion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -107,7 +107,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoAlbum__idUse__2C3393D0">
+        <Association Name="FK__VotoAlbum__idUse__15502E78">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoAlbum" Type="Self.VotoAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -119,7 +119,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoArtis__idUse__29572725">
+        <Association Name="FK__VotoArtis__idUse__1273C1CD">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoArtista" Type="Self.VotoArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -143,6 +143,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="proc_topTenTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NaverMusicDBModelStoreContainer">
           <EntitySet Name="FavAlbum" EntityType="Self.FavAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavArtista" EntityType="Self.FavArtista" Schema="dbo" store:Type="Tables" />
@@ -151,23 +152,23 @@
           <EntitySet Name="VotoAlbum" EntityType="Self.VotoAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoArtista" EntityType="Self.VotoArtista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoCancion" EntityType="Self.VotoCancion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__FavAlbum__idUser__4CA06362" Association="Self.FK__FavAlbum__idUser__4CA06362">
+          <AssociationSet Name="FK__FavAlbum__idUser__1DE57479" Association="Self.FK__FavAlbum__idUser__1DE57479">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavAlbum" EntitySet="FavAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavArtist__idUse__49C3F6B7" Association="Self.FK__FavArtist__idUse__49C3F6B7">
+          <AssociationSet Name="FK__FavArtist__idUse__1B0907CE" Association="Self.FK__FavArtist__idUse__1B0907CE">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavArtista" EntitySet="FavArtista" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavCancio__idUse__2F10007B" Association="Self.FK__FavCancio__idUse__2F10007B">
+          <AssociationSet Name="FK__FavCancio__idUse__182C9B23" Association="Self.FK__FavCancio__idUse__182C9B23">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavCancion" EntitySet="FavCancion" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoAlbum__idUse__2C3393D0" Association="Self.FK__VotoAlbum__idUse__2C3393D0">
+          <AssociationSet Name="FK__VotoAlbum__idUse__15502E78" Association="Self.FK__VotoAlbum__idUse__15502E78">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoAlbum" EntitySet="VotoAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoArtis__idUse__29572725" Association="Self.FK__VotoArtis__idUse__29572725">
+          <AssociationSet Name="FK__VotoArtis__idUse__1273C1CD" Association="Self.FK__VotoArtis__idUse__1273C1CD">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoArtista" EntitySet="VotoArtista" />
           </AssociationSet>
@@ -362,7 +363,12 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoCancion" EntitySet="VotoCancion" />
           </AssociationSet>
+          <FunctionImport Name="proc_topTenTracks" ReturnType="Collection(NaverMusicDBModel.proc_topTenTracks_Result)" />
         </EntityContainer>
+        <ComplexType Name="proc_topTenTracks_Result">
+          <Property Type="Int32" Name="idTrack" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -442,6 +448,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_topTenTracks" FunctionName="NaverMusicDBModel.Store.proc_topTenTracks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenTracks_Result">
+                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

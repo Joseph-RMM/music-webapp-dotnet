@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using LogicaNaverMusic;
 using LogicaNaverMusic.Controllers; //CONTROLADORES DE LOGICA NEGOCIOS
 using LogicaNaverMusic.Models;      //MODELOS DE LOGICA NEGOCIOS     
+using LogicaNaverMusic.BaseDatos;   //MODELOS DE BASE DE DATOS   
 
 namespace ConsoleAppTest
 {
@@ -19,7 +20,7 @@ namespace ConsoleAppTest
             while (eleccion != 10)
             {
                 Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
-                    "4 para buscar album\n 5 para buscar artista\n 10 para salir");
+                    "4 para buscar album\n 5 para buscar artista\n 6 para ver top tracks\n 10 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -38,6 +39,9 @@ namespace ConsoleAppTest
                         break;
                     case 5:
                         SearchArtist();
+                        break;
+                    case 6:
+                        TopTrack();
                         break;
                     case 10:
                         Environment.Exit(0);
@@ -152,6 +156,19 @@ namespace ConsoleAppTest
             artist = aPIDeezer.GetArtist(int.Parse(busqueda));
 
             Console.WriteLine(artist.name + "\n");
+        }
+
+        static void TopTrack()
+        {
+            VotoController votoController = new VotoController();
+
+            List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();
+            proc = votoController.TopTrack();
+
+            foreach (proc_topTenTracks_Result current in proc)
+            {
+                Console.WriteLine(current.idTrack + " " + current.total + "\n");
+            }
         }
     }
 }

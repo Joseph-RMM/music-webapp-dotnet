@@ -12,6 +12,9 @@ namespace LogicaNaverMusic.BaseDatos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class NaverMusicDBEntities : DbContext
     {
@@ -32,5 +35,10 @@ namespace LogicaNaverMusic.BaseDatos
         public DbSet<VotoAlbum> VotoAlbum { get; set; }
         public DbSet<VotoArtista> VotoArtista { get; set; }
         public DbSet<VotoCancion> VotoCancion { get; set; }
+    
+        public virtual ObjectResult<proc_topTenTracks_Result> proc_topTenTracks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenTracks_Result>("proc_topTenTracks");
+        }
     }
 }
