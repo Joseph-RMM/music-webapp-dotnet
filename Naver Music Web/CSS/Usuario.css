@@ -14,6 +14,7 @@
     padding: 0.3em;
     border-radius: 5px;
     margin-top: 1em;
+    width: 100%;
 }
 
     .btn:hover {
@@ -21,10 +22,40 @@
         cursor: pointer;
     }
 
-.wrapper-userimg {
+.textbox {
+    height: 1.2em;
+    border-color: whitesmoke;
+    font-size: 1.1em;
+    padding: 0.1em 0.3em;
+    background-color: var(--bg-aunmasclaro);
+    color: var(--txt-color);
+}
+
+.error {
+    border-color: red;
+}
+
+.wrapper-row {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+}
+
+.wrappper-column {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+}
+
+.user-img {
+    justify-content: center;
+}
+
+.user-info {
+    margin: 1em 5%;
+    background-color: var(--bg-claro);
+    border-radius: 1em;
+    padding-bottom: 1.5em;
 }
 
 .imgperfil {
@@ -39,13 +70,48 @@
     margin-left: 5%;
 }
 
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.no-margin {
+    margin-top: 0em;
+}
+
 @media only screen and (max-width: 600px) {
-    .wrapper-userimg {
+    .wrapper-row {
         flex-direction: column;
     }
 
     .imgperfil {
         width: 100%;
         max-width: none;
+    }
+
+    .user-info {
+        margin: 1em 0.4em;
+        background-color: var(--bg-claro);
+        border-radius: 1em;
+        padding: 0em 1em 1em 1em;
+    }
+
+    .btn {
+        margin-bottom: 2em;
+    }
+
+    .no-margin {
+        margin-top: 0.5em;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .user-info {
+        flex-direction: column; 
+    }
+
+    table {
+        width: 100%;
     }
 }
