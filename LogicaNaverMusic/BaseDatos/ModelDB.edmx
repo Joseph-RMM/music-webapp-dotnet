@@ -143,6 +143,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="proc_RankingSemanalTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_topTenAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_topTenArtists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NaverMusicDBModelStoreContainer">
           <EntitySet Name="FavAlbum" EntityType="Self.FavAlbum" Schema="dbo" store:Type="Tables" />
@@ -364,8 +367,23 @@
             <End Role="VotoCancion" EntitySet="VotoCancion" />
           </AssociationSet>
           <FunctionImport Name="proc_topTenTracks" ReturnType="Collection(NaverMusicDBModel.proc_topTenTracks_Result)" />
+          <FunctionImport Name="proc_topTenArtists" ReturnType="Collection(NaverMusicDBModel.proc_topTenArtists_Result)" />
+          <FunctionImport Name="proc_topTenAlbum" ReturnType="Collection(NaverMusicDBModel.proc_topTenAlbum_Result)" />
+          <FunctionImport Name="proc_RankingSemanalTracks" ReturnType="Collection(NaverMusicDBModel.proc_RankingSemanalTracks_Result)" />
         </EntityContainer>
         <ComplexType Name="proc_topTenTracks_Result">
+          <Property Type="Int32" Name="idTrack" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_topTenArtists_Result">
+          <Property Type="Int32" Name="idArtist" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_topTenAlbum_Result">
+          <Property Type="Int32" Name="idAlbumm" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_RankingSemanalTracks_Result">
           <Property Type="Int32" Name="idTrack" Nullable="true" />
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
@@ -451,6 +469,30 @@
           <FunctionImportMapping FunctionImportName="proc_topTenTracks" FunctionName="NaverMusicDBModel.Store.proc_topTenTracks">
             <ResultMapping>
               <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenTracks_Result">
+                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_topTenArtists" FunctionName="NaverMusicDBModel.Store.proc_topTenArtists">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenArtists_Result">
+                <ScalarProperty Name="idArtist" ColumnName="idArtist" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_topTenAlbum" FunctionName="NaverMusicDBModel.Store.proc_topTenAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenAlbum_Result">
+                <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingSemanalTracks" FunctionName="NaverMusicDBModel.Store.proc_RankingSemanalTracks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_RankingSemanalTracks_Result">
                 <ScalarProperty Name="idTrack" ColumnName="idTrack" />
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>

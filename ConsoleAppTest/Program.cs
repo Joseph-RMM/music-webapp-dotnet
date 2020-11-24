@@ -13,14 +13,15 @@ namespace ConsoleAppTest
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             int eleccion = 0;
             while (eleccion != 10)
             {
                 Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
-                    "4 para buscar album\n 5 para buscar artista\n 6 para ver top tracks\n 10 para salir");
+                    "4 para buscar album\n 5 para buscar artista\n 6 para ver top ten tracks\n " +
+                    "7 para ver top ten artistas\n 8 para ver top ten album\n 9 ver rank semanal tracks\n 100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -41,9 +42,18 @@ namespace ConsoleAppTest
                         SearchArtist();
                         break;
                     case 6:
-                        TopTrack();
+                        TopTenTrack();
                         break;
-                    case 10:
+                    case 7:
+                        TopTenArtists();
+                        break;
+                    case 8:
+                        TopTenAlbum();
+                        break;
+                    case 9:
+                        RankingSemanalTracks();
+                        break;
+                    case 100:
                         Environment.Exit(0);
                         break;
 
@@ -92,7 +102,7 @@ namespace ConsoleAppTest
 
             UserController userController = new UserController();
 
-            bool userCreate = userController.CreateUser(username,password,nombre,apellido,sexo,foto,estatus,correo,
+            bool userCreate = userController.CreateUser(username, password, nombre, apellido, sexo, foto, estatus, correo,
                 telefono);
 
             if (userCreate)
@@ -118,7 +128,7 @@ namespace ConsoleAppTest
             track = aPIDeezer.GetTrack(int.Parse(busqueda));
 
             Console.WriteLine(track.artist.name + " " + track.album.title + " " + track.title_short + "\n");
-            
+
         }
 
         static void SearchAlbum()
@@ -158,17 +168,58 @@ namespace ConsoleAppTest
             Console.WriteLine(artist.name + "\n");
         }
 
-        static void TopTrack()
+        static void TopTenTrack()
         {
-            VotoController votoController = new VotoController();
+            RankingController rankingController = new RankingController();
 
             List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();
-            proc = votoController.TopTrack();
+            proc = rankingController.TopTenTrack();
 
             foreach (proc_topTenTracks_Result current in proc)
             {
                 Console.WriteLine(current.idTrack + " " + current.total + "\n");
             }
         }
+
+        static void TopTenArtists()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_topTenArtists_Result> proc = new List<proc_topTenArtists_Result>();
+            proc = rankingController.TopTenArtists();
+
+            foreach (proc_topTenArtists_Result current in proc)
+            {
+                Console.WriteLine(current.idArtist + " " + current.total + "\n");
+            }
+        }
+
+        static void TopTenAlbum()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_topTenAlbum_Result> proc = new List<proc_topTenAlbum_Result>();
+            proc = rankingController.TopTenAlbum();
+
+            foreach (proc_topTenAlbum_Result current in proc)
+            {
+                Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
+            }
+        }
+
+        static void RankingSemanalTracks()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_RankingSemanalTracks_Result> proc = new List<proc_RankingSemanalTracks_Result>();
+            proc = rankingController.RankingSemanalTracks();
+
+            foreach (proc_RankingSemanalTracks_Result current in proc)
+            {
+                Console.WriteLine(current.idTrack + " " + current.total + "\n");
+            }
+        }
+
+
     }
 }

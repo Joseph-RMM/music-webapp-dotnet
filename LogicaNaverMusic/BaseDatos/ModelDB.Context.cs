@@ -40,5 +40,20 @@ namespace LogicaNaverMusic.BaseDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenTracks_Result>("proc_topTenTracks");
         }
+    
+        public virtual ObjectResult<proc_topTenArtists_Result> proc_topTenArtists()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenArtists_Result>("proc_topTenArtists");
+        }
+    
+        public virtual ObjectResult<proc_topTenAlbum_Result> proc_topTenAlbum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenAlbum_Result>("proc_topTenAlbum");
+        }
+    
+        public virtual ObjectResult<proc_RankingSemanalTracks_Result> proc_RankingSemanalTracks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalTracks_Result>("proc_RankingSemanalTracks");
+        }
     }
 }
