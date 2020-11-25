@@ -55,5 +55,36 @@ namespace LogicaNaverMusic.BaseDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalTracks_Result>("proc_RankingSemanalTracks");
         }
+    
+        public virtual ObjectResult<proc_RankingMensualTracks_Result> proc_RankingMensualTracks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingMensualTracks_Result>("proc_RankingMensualTracks");
+        }
+    
+        public virtual ObjectResult<proc_GetVotesByUser_Result> proc_GetVotesByUser(Nullable<int> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_GetVotesByUser_Result>("proc_GetVotesByUser", idUserParameter);
+        }
+    
+        public virtual int proc_VotarCancion(Nullable<int> idCancion, Nullable<int> idUser, Nullable<System.DateTime> fecha)
+        {
+            var idCancionParameter = idCancion.HasValue ?
+                new ObjectParameter("idCancion", idCancion) :
+                new ObjectParameter("idCancion", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarCancion", idCancionParameter, idUserParameter, fechaParameter);
+        }
     }
 }

@@ -46,7 +46,12 @@ namespace LogicaNaverMusic.Controllers
         }
 
         /*PROCEDURE PARA RANKING MENSUAL TRACKS*/
-
+        List<proc_RankingMensualTracks_Result> proc5 = new List<proc_RankingMensualTracks_Result>();
+        public List<proc_RankingMensualTracks_Result> RankingMensualTracks()
+        {
+            proc5 = mddb.proc_RankingMensualTracks().ToList();
+            return proc5;
+        }
 
     }
 }

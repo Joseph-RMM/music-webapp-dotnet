@@ -21,7 +21,8 @@ namespace ConsoleAppTest
             {
                 Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
                     "4 para buscar album\n 5 para buscar artista\n 6 para ver top ten tracks\n " +
-                    "7 para ver top ten artistas\n 8 para ver top ten album\n 9 ver rank semanal tracks\n 100 para salir");
+                    "7 para ver top ten artistas\n 8 para ver top ten album\n 9 ver rank semanal tracks\n " +
+                    "10 ver rank mensual tracks\n 11 consulta votos de user por dia\n 12 votar por cancion\n 100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -52,6 +53,15 @@ namespace ConsoleAppTest
                         break;
                     case 9:
                         RankingSemanalTracks();
+                        break;
+                    case 10:
+                        RankingMensualTracks();
+                        break;
+                    case 11:
+                        GetVotesByUser();
+                        break;
+                    case 12:
+                        proc_VotarCancion();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -220,6 +230,50 @@ namespace ConsoleAppTest
             }
         }
 
+        static void RankingMensualTracks()
+        {
+            RankingController rankingController = new RankingController();
 
+            List<proc_RankingMensualTracks_Result> proc = new List<proc_RankingMensualTracks_Result>();
+            proc = rankingController.RankingMensualTracks();
+
+            foreach (proc_RankingMensualTracks_Result current in proc)
+            {
+                Console.WriteLine(current.idTrack + " " + current.total + "\n");
+            }
+        }
+
+        static void GetVotesByUser()
+        {
+            VotoController votoController = new VotoController();
+
+            Console.WriteLine("Ingrese el ID del usuario");
+            int id = int.Parse(Console.ReadLine());
+
+            proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();
+            proc = votoController.GetVotesByUser(id);
+            Console.WriteLine(proc.total + "");
+        }
+
+        static void proc_VotarCancion()
+        {
+            VotoController votoController = new VotoController();
+
+            Console.WriteLine("Ingresa el id cancion");
+            int idcancion = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingresa el id user");
+            int iduser = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingresa la fecha");
+            DateTime fecha = DateTime.Parse(Console.ReadLine());
+
+            bool voto = votoController.proc_VotarCancion(idcancion, iduser, fecha);
+
+            if (voto)
+            {
+                Console.WriteLine("se ha votado la cancion");
+            }
+            else
+                Console.WriteLine("error, no se ha votado la cancion");
+        }
     }
 }
