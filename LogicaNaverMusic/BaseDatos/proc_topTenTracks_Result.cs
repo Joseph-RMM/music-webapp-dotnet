@@ -13,7 +13,7 @@ namespace LogicaNaverMusic.BaseDatos
     
     public partial class proc_topTenTracks_Result
     {
-        public Nullable<int> idTrack { get; set; }
+        public int idTrack { get; set; }
         public Nullable<int> total { get; set; }
     }
 }

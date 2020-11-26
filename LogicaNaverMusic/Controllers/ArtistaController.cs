@@ -10,13 +10,13 @@ namespace LogicaNaverMusic.Controllers
 {
     class ArtistaController
     {
-        NaverMusicDBEntities modelDb = new NaverMusicDBEntities();
+        NaverMusicBDEntitiesAWS1 modelDb = new NaverMusicBDEntitiesAWS1();
         public void VoteArtist(int idUser, int idArtist, DateTime date)
         {
             VotoArtista votoArtista = new VotoArtista();
 
             votoArtista.idUser = idUser;
-            votoArtista.idArtista = idArtist;
+            votoArtista.idArtist = idArtist;
             votoArtista.fecha = date;
 
             modelDb.VotoArtista.Add(votoArtista);

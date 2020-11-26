@@ -16,12 +16,12 @@ namespace LogicaNaverMusic.BaseDatos
     {
         public Usuarios()
         {
-            this.FavAlbum = new HashSet<FavAlbum>();
-            this.FavArtista = new HashSet<FavArtista>();
-            this.FavCancion = new HashSet<FavCancion>();
             this.VotoAlbum = new HashSet<VotoAlbum>();
             this.VotoArtista = new HashSet<VotoArtista>();
             this.VotoCancion = new HashSet<VotoCancion>();
+            this.FavAlbum = new HashSet<FavAlbum>();
+            this.FavArtista = new HashSet<FavArtista>();
+            this.FavCancion = new HashSet<FavCancion>();
         }
     
         public int idUsuario { get; set; }
@@ -35,11 +35,11 @@ namespace LogicaNaverMusic.BaseDatos
         public string correo { get; set; }
         public string telefono { get; set; }
     
-        public virtual ICollection<FavAlbum> FavAlbum { get; set; }
-        public virtual ICollection<FavArtista> FavArtista { get; set; }
-        public virtual ICollection<FavCancion> FavCancion { get; set; }
         public virtual ICollection<VotoAlbum> VotoAlbum { get; set; }
         public virtual ICollection<VotoArtista> VotoArtista { get; set; }
         public virtual ICollection<VotoCancion> VotoCancion { get; set; }
+        public virtual ICollection<FavAlbum> FavAlbum { get; set; }
+        public virtual ICollection<FavArtista> FavArtista { get; set; }
+        public virtual ICollection<FavCancion> FavCancion { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace LogicaNaverMusic.Controllers
     
     public class VotoController
     {
-        NaverMusicDBEntities modldb = new NaverMusicDBEntities();
+        NaverMusicBDEntitiesAWS1 modldb = new NaverMusicBDEntitiesAWS1();
 
         /*PROCEDURE PARA OBTENER NUMERO DE VOTOS DE USUARIO POR CANCION POR DIA*/
         proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();

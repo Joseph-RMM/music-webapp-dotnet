@@ -51,6 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDatos\Album.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\Artista.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\Cancion.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\FavAlbum.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -78,7 +87,19 @@
     <Compile Include="BaseDatos\proc_GetVotesByUser_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaseDatos\proc_RankingDiarioArtistas_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_RankingDiarioTracks_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_RankingMensualArtistas_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\proc_RankingMensualTracks_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_RankingSemanalArtistas_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseDatos\proc_RankingSemanalTracks_Result.cs">
@@ -114,7 +135,7 @@
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VotoController.cs" />
-    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\AlbumModel.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\DeezerObject.cs" />
@@ -122,29 +143,28 @@
     <Compile Include="Models\UsuariosModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <EntityDeploy Include="BaseDatos\ModelDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="App.Config" />
-    <None Include="BaseDatos\ModelDB.edmx.diagram">
-      <DependentUpon>ModelDB.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="BaseDatos\ModelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
       <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
     </Content>
     <Content Include="BaseDatos\ModelDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelDB.edmx</DependentUpon>
       <LastGenOutput>ModelDB.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="BaseDatos\ModelDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BaseDatos\ModelDB.edmx.diagram">
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

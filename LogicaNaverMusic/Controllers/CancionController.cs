@@ -10,7 +10,7 @@ namespace LogicaNaverMusic.Controllers
 {
     class CancionController
     {
-        private NaverMusicDBEntities modelDb = new NaverMusicDBEntities();
+        private NaverMusicBDEntitiesAWS1 modelDb = new NaverMusicBDEntitiesAWS1();
         public void VoteTrack(int idTrack, int idUser, DateTime date)
         {
             VotoCancion votoCancion = new VotoCancion();
