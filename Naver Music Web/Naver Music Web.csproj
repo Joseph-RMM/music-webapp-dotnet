@@ -88,6 +88,7 @@
     <Content Include="Rankings.aspx" />
     <Content Include="CSS\style.css" />
     <Content Include="Registrar.aspx" />
+    <Content Include="Seleccion.aspx" />
     <Content Include="themes.js" />
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
@@ -152,6 +153,13 @@
     </Compile>
     <Compile Include="Registrar.aspx.designer.cs">
       <DependentUpon>Registrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seleccion.aspx.cs">
+      <DependentUpon>Seleccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seleccion.aspx.designer.cs">
+      <DependentUpon>Seleccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

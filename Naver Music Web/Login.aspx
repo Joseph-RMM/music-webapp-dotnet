@@ -10,6 +10,7 @@
         <span>Contraseña:</span>
         <asp:TextBox ID="txbContrasena" runat="server" CssClass="txb" TextMode="Password"></asp:TextBox>
         <asp:CheckBox ID="chbAuto" runat="server" Text="Recordarme" CssClass="CheckBox" />
+        <asp:Label ID="lblInfo" runat="server" Text="" CssClass="lblInfo"></asp:Label>
         <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn foot" OnClick="btnLogin_Click" />
     </div>
 </asp:Content>

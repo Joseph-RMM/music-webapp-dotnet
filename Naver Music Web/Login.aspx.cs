@@ -12,7 +12,19 @@ namespace Naver_Music_Web {
         }
 
         protected void btnLogin_Click(object sender, EventArgs e) {
-            Response.Redirect("Inicio.aspx");
+            txbEmail.CssClass = txbContrasena.CssClass = "txb";
+            bool isCorrect = true;
+            if(txbEmail.Text == "") {
+                lblInfo.Text = "Escriba su e-mail";
+                txbEmail.CssClass = "txb error";
+                isCorrect = false;
+            }
+            if (txbContrasena.Text == "") {
+                lblInfo.Text = "Escriba su contraseña";
+                txbContrasena.CssClass = "txb error";
+                isCorrect = false;
+            }
+            if (isCorrect) Response.Redirect("Inicio.aspx");
         }
     }
 }

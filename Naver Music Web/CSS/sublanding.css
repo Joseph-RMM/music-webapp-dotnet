@@ -18,6 +18,11 @@ h2 {
     text-align: center;
 }
 
+.error {
+    border:outset;
+    border-color: red;
+}
+
 .foot {
     border-radius: 0.7em;
     margin-top: 1em;
@@ -26,4 +31,11 @@ h2 {
 .CheckBox {
     align-content: center;
     align-self: center;
+}
+
+.lblInfo {
+    color: red;
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 1em;
 }

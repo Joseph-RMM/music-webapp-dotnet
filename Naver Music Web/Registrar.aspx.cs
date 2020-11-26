@@ -10,5 +10,31 @@ namespace Naver_Music_Web {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e) {
+            bool isCorrect = true;
+            txbUsuario.CssClass = txbEmail.CssClass = txbContrasena.CssClass = "txb";
+            if (txbContrasena.Text == "") {
+                txbContrasena.CssClass = "txb error";
+                lblInfo.Text = "Escriba una contraseña";
+                isCorrect = false;
+            }
+            if(txbEmail.Text == "") {
+                txbEmail.CssClass = "txb error";
+                lblInfo.Text = "Escriba su e-mail";
+                isCorrect = false;
+            }
+            if (txbUsuario.Text == "") {
+                txbUsuario.CssClass = "txb error";
+                lblInfo.Text = "Escriba un nombre de usuario";
+                isCorrect = false;
+            }
+            if (isCorrect) {
+                Session["user"] = txbUsuario.Text;
+                Session["email"] = txbEmail.Text;
+                Session["pass"] = txbContrasena.Text;
+                Response.Redirect("Seleccion.aspx");
+            }
+        }
     }
 }
