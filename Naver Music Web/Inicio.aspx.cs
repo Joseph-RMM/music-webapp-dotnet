@@ -18,19 +18,22 @@ namespace Naver_Music_Web {
         static int VotesDB = 13455;
         static int VotesDB2 = 558;
         static int VotesDB3 = 210;
-        
+
         protected void Page_Load(object sender, EventArgs e) {
-            List<Data> data = (List <Data>) Session["busqueda"];
+            List<Data> data = (List<Data>)Session["busqueda"];
             panelResultados.Controls.Clear();
             if (data != null) {
+                List<AlbumModel> listaAlbums = albumsInData(data);
+                foreach (AlbumModel albumModel  in listaAlbums) {
+                    panelResultAlbums.Controls.Add(createAlbumItem(albumModel));
+                }
                 foreach (Data song in data) {
                     panelResultados.Controls.Add(createMusicItem(song));
                 }
                 divBuscar.Visible = true;
             }
             //Simulacion de consulta a la API y llenado del panel
-            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
-
+            APIDeezerController aPIDeezer = new APIDeezerController();
             AlbumModel album = new AlbumModel();
             album = aPIDeezer.GetAlbum(178519722);
             panelMusic.Controls.Add(createAlbumItem(album));
@@ -39,6 +42,24 @@ namespace Naver_Music_Web {
             panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/a06a47a2b7c23bdba9099053302cb35c/250x250-000000-80-0-0.jpg", "MORE", "K/DA", VotesDB3, false, 3, "https://cdns-preview-4.dzcdn.net/stream/c-4c33ef6d1f98034b98cc9a5688d29bd0-2.mp3"));
         }
 
+
+        public List<AlbumModel> albumsInData (List<Data> data) {
+            List<AlbumModel> listaAlbums = new List<AlbumModel>();
+            foreach (Data song in data) {
+                bool add = true;
+                foreach (AlbumModel album in listaAlbums) {
+                    if (song.album.title == album.title) {
+                        add = false;
+                    }
+                }
+                if (add) {
+                    AlbumModel toAdd = song.album;
+                    toAdd.artist = song.artist;
+                    listaAlbums.Add(toAdd);
+                }
+            }
+            return listaAlbums;
+        }
 
         public Panel createMusicItem(Data song) {
             return createMusicItem(song.album.cover_medium, song.title_short, song.artist.name, int.Parse(song.rank), false, int.Parse(song.id), song.preview);

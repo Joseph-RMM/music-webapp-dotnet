@@ -13,7 +13,11 @@
         </div>
         <asp:Panel ID="divBuscar" runat="server" Visible="False">
             <h4>Resultados de búsqueda</h4>
+            <h5>Canciones</h5>
             <asp:Panel ID="panelResultados" runat="server" CssClass="wrappercanciones"></asp:Panel>
+            <h5>Álbumes</h5>
+            <asp:Panel ID="panelResultAlbums" runat="server" CssClass="wrappercanciones"></asp:Panel>
+            <h4></h4>
         </asp:Panel>
     </div>
 
