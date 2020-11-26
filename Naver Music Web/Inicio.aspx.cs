@@ -206,6 +206,7 @@ namespace Naver_Music_Web {
             APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
             List<Data> data = new List<Data>();
             data = aPIDeezer.GetDataFromSearchDeezer(txbBuscar.Text);
+            Session.Timeout
             Session["busqueda"] = data;
             divBuscar.Visible = true;
             Response.Redirect("Inicio.aspx");

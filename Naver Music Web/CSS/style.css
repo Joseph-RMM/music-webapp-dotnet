@@ -255,6 +255,19 @@ section {
     }
 }
 
+/* Small screens */
+@media only screen and (max-width: 480px) {
+    main {
+        padding: 1.5%;
+    }
+    section {
+        padding: 10px;
+    }
+    h1 {
+        text-align: center;
+    }
+}
+
 /* Large screens */
 @media only screen and (min-width: 600px) {
     .navbar {
@@ -302,7 +315,7 @@ section {
         justify-content: space-between;
     }
 
-    .navbar:hover +.wrapper-audioplayer {
+    .navbar:hover + .wrapper-audioplayer {
         left: 16rem;
         width: calc(100% - 16rem);
         transition: ease 600ms;
@@ -328,9 +341,8 @@ section {
         font-weight: bolder;
         font-size: large;
     }
-    
-    .miniNombreArtista {
 
+    .miniNombreArtista {
     }
 
     .audio-player {
@@ -338,9 +350,8 @@ section {
         max-width: 85%;
     }
 
-    .audio-player:focus {
-        outline: none;
-        border: none;
-    }
-
+        .audio-player:focus {
+            outline: none;
+            border: none;
+        }
 }
