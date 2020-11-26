@@ -28,6 +28,18 @@ namespace LogicaNaverMusic.Controllers
             return true;
         }
 
+        /*PROCEDURE PARA INSERTAR VOTO ARTISTA*/
+        public bool proc_VotarArtista(int idartista, int iduser, DateTime fecha)
+        {
+            modldb.proc_VotarArtista(idartista, iduser, fecha);
+            return true;
+        }
 
+        /*PROCEDURE PARA INSERTAR VOTO ALBUM*/
+        public bool proc_VotarALBUM(int idalbum, int iduser, DateTime fecha)
+        {
+            modldb.proc_VotarALBUM(idalbum, iduser, fecha);
+            return true;
+        }
     }
 }

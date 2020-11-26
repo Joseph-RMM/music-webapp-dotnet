@@ -36,7 +36,7 @@ namespace LogicaNaverMusic.Controllers
             return proc3;
         }
 
-        //----SP´s PARA RANKING DIARIO, SEMANAL Y MENSUAL DE TRACKS----
+        //----SP´s PARA RANKING SEMANAL Y MENSUAL DE TRACKS----
         /*PROCEDURE PARA RANKING SEMANAL TRACKS*/
         List<proc_RankingSemanalTracks_Result> proc4 = new List<proc_RankingSemanalTracks_Result>();
         public List<proc_RankingSemanalTracks_Result> RankingSemanalTracks()
@@ -53,5 +53,20 @@ namespace LogicaNaverMusic.Controllers
             return proc5;
         }
 
+        /*PROCEDURE PARA RANKING SEMANAL ARTISTAS*/
+        List<proc_RankingSemanalArtistas_Result> proc6 = new List<proc_RankingSemanalArtistas_Result>();
+        public List<proc_RankingSemanalArtistas_Result> RankingSemanalArtistas()
+        {
+            proc6 = mddb.proc_RankingSemanalArtistas().ToList();
+            return proc6;
+        }
+
+        /*PROCEDURE PARA RANKING MENSUAL ARTISTAS*/
+        List<proc_RankingMensualArtistas_Result> proc7 = new List<proc_RankingMensualArtistas_Result>();
+        public List<proc_RankingMensualArtistas_Result> RankingMensualArtistas()
+        {
+            proc7 = mddb.proc_RankingMensualArtistas().ToList();
+            return proc7;
+        }
     }
 }

@@ -391,11 +391,6 @@
             <Parameter Name="idUser" Mode="In" Type="Int32" />
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="proc_VotarArtista">
-            <Parameter Name="idArtista" Mode="In" Type="Int32" />
-            <Parameter Name="idUser" Mode="In" Type="Int32" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="proc_VotarCancion">
             <Parameter Name="idCancion" Mode="In" Type="Int32" />
             <Parameter Name="idUser" Mode="In" Type="Int32" />
@@ -418,6 +413,11 @@
           </AssociationSet>
           <FunctionImport Name="proc_GetVotesByUser" ReturnType="Collection(NaverMusicBDModel.proc_GetVotesByUser_Result)">
           <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_VotarArtista">
+            <Parameter Name="idArtista" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_RankingDiarioArtistas_Result">
@@ -680,7 +680,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_VotarALBUM" FunctionName="NaverMusicBDModel.Store.proc_VotarALBUM" />
-          <FunctionImportMapping FunctionImportName="proc_VotarArtista" FunctionName="NaverMusicBDModel.Store.proc_VotarArtista" />
           <FunctionImportMapping FunctionImportName="proc_VotarCancion" FunctionName="NaverMusicBDModel.Store.proc_VotarCancion" />
           <EntitySetMapping Name="FavAlbum">
             <EntityTypeMapping TypeName="NaverMusicBDModel.FavAlbum">
@@ -716,6 +715,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_VotarArtista" FunctionName="NaverMusicBDModel.Store.proc_VotarArtista" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
