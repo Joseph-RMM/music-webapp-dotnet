@@ -15,23 +15,46 @@ namespace LogicaNaverMusic.Controllers
         public bool CreateUser(string username, string password, string nombre, string apellido, string sexo,
             string foto, string status, string correo, string telefono)
         {
-            Usuarios user = new Usuarios();
+            bool creado = false;
 
-            user.username = username;
-            user.passsword = HashHelper.GetSHA256(password);
-            user.nombre = nombre;
-            user.apellido = apellido;
-            user.sexo = sexo;
-            user.foto = foto;
-            user.estatus = status;
-            user.correo = correo;
-            user.telefono = telefono;
+            if (!CompareUser(username))
+            {
+                Usuarios user = new Usuarios();
 
-            modelDb.Usuarios.Add(user);
-            modelDb.SaveChanges();
+                user.username = username;
+                user.passsword = HashHelper.GetSHA256(password);
+                user.nombre = nombre;
+                user.apellido = apellido;
+                user.sexo = sexo;
+                user.foto = foto;
+                user.estatus = status;
+                user.correo = correo;
+                user.telefono = telefono;
 
-            return true;
+                modelDb.Usuarios.Add(user);
+                modelDb.SaveChanges();
 
+                creado = true;
+            }
+            
+
+            return creado;
+        }
+
+        public bool CompareUser(string username)
+        {
+            bool exist = false;
+
+            var user = from d in modelDb.Usuarios
+                        where d.username == username
+                        select d;
+
+            if(username != null)
+            {
+                exist = true;
+            }
+
+            return exist;
         }
     }
 }
