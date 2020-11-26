@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using LogicaNaverMusic.BaseDatos;
+using LogicaNaverMusic.Helper;
 
 namespace LogicaNaverMusic.Controllers
 {
@@ -17,7 +18,7 @@ namespace LogicaNaverMusic.Controllers
             Usuarios user = new Usuarios();
 
             user.username = username;
-            user.passsword = password;
+            user.passsword = HashHelper.GetSHA256(password);
             user.nombre = nombre;
             user.apellido = apellido;
             user.sexo = sexo;

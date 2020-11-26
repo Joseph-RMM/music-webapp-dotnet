@@ -65,14 +65,14 @@
           </Key>
           <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="30" />
-          <Property Name="passsword" Type="varchar" MaxLength="30" />
+          <Property Name="passsword" Type="char" MaxLength="300" />
           <Property Name="nombre" Type="varchar" MaxLength="100" />
           <Property Name="apellido" Type="varchar" MaxLength="100" />
           <Property Name="sexo" Type="varchar" MaxLength="10" />
-          <Property Name="foto" Type="varchar" MaxLength="150" />
           <Property Name="estatus" Type="varchar" MaxLength="50" />
           <Property Name="correo" Type="varchar" MaxLength="50" />
           <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="foto" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VotoAlbum">
           <Key>
@@ -276,11 +276,11 @@
           </Key>
           <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="passsword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="passsword" Type="String" MaxLength="300" FixedLength="true" Unicode="false" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="foto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

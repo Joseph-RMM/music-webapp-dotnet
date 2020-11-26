@@ -135,6 +135,7 @@
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VotoController.cs" />
+    <Compile Include="Helper\HashHelper.cs" />
     <Compile Include="Models\AlbumModel.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Data.cs" />
