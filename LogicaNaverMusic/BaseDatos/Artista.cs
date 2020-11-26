@@ -12,12 +12,12 @@ namespace LogicaNaverMusic.BaseDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class FavAlbum
+    public partial class Artista
     {
-        public int idFavAlbum { get; set; }
-        public Nullable<int> idAlbum { get; set; }
-        public Nullable<int> idUser { get; set; }
-    
-        public virtual Usuarios Usuarios { get; set; }
+        public int idArtista { get; set; }
+        public Nullable<int> Voto_DiarioAr { get; set; }
+        public Nullable<int> Voto_SemanalAr { get; set; }
+        public Nullable<int> Voto_MensualAr { get; set; }
+        public Nullable<int> Votos_GeneralesAr { get; set; }
     }
 }

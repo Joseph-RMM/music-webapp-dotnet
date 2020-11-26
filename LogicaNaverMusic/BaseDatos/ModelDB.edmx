@@ -4,7 +4,37 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NaverMusicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NaverMusicBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="idAlbum" />
+          </Key>
+          <Property Name="idAlbum" Type="int" Nullable="false" />
+          <Property Name="Voto_DiarioAl" Type="int" />
+          <Property Name="Voto_SemanalAl" Type="int" />
+          <Property Name="Voto_MensualAl" Type="int" />
+          <Property Name="Votos_GeneralesAl" Type="int" />
+        </EntityType>
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="idArtista" />
+          </Key>
+          <Property Name="idArtista" Type="int" Nullable="false" />
+          <Property Name="Voto_DiarioAr" Type="int" />
+          <Property Name="Voto_SemanalAr" Type="int" />
+          <Property Name="Voto_MensualAr" Type="int" />
+          <Property Name="Votos_GeneralesAr" Type="int" />
+        </EntityType>
+        <EntityType Name="Cancion">
+          <Key>
+            <PropertyRef Name="idCancion" />
+          </Key>
+          <Property Name="idCancion" Type="int" Nullable="false" />
+          <Property Name="Voto_DiarioC" Type="int" />
+          <Property Name="Voto_SemanalC" Type="int" />
+          <Property Name="Voto_MensualC" Type="int" />
+          <Property Name="Votos_GeneralesC" Type="int" />
+        </EntityType>
         <EntityType Name="FavAlbum">
           <Key>
             <PropertyRef Name="idFavAlbum" />
@@ -49,7 +79,7 @@
             <PropertyRef Name="idVotoAlb" />
           </Key>
           <Property Name="idVotoAlb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idAlbum" Type="int" />
+          <Property Name="idAlbumm" Type="int" />
           <Property Name="idUser" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
@@ -58,7 +88,7 @@
             <PropertyRef Name="idVotoArt" />
           </Key>
           <Property Name="idVotoArt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idArtista" Type="int" />
+          <Property Name="idArtist" Type="int" />
           <Property Name="idUser" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
@@ -71,7 +101,7 @@
           <Property Name="idUser" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
-        <Association Name="FK__FavAlbum__idUser__1DE57479">
+        <Association Name="FK__FavAlbum__idUser__5DCAEF64">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavAlbum" Type="Self.FavAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -83,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavArtist__idUse__1B0907CE">
+        <Association Name="FK__FavArtist__idUse__5AEE82B9">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavArtista" Type="Self.FavArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavCancio__idUse__182C9B23">
+        <Association Name="FK__FavCancio__idUse__5812160E">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavCancion" Type="Self.FavCancion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -107,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoAlbum__idUse__15502E78">
+        <Association Name="FK__VotoAlbum__idUse__3E52440B">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoAlbum" Type="Self.VotoAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -119,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoArtis__idUse__1273C1CD">
+        <Association Name="FK__VotoArtis__idUse__3B75D760">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoArtista" Type="Self.VotoArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -131,7 +161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoCanci__idUse__267ABA7A">
+        <Association Name="FK__VotoCanci__idUse__38996AB5">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoCancion" Type="Self.VotoCancion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,17 +176,34 @@
         <Function Name="proc_GetVotesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idUser" Type="int" Mode="In" />
         </Function>
+        <Function Name="proc_RankingDiarioArtistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_RankingDiarioTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_RankingMensualArtistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingMensualTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_RankingSemanalArtistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingSemanalTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenArtists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_VotarALBUM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAlbum" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
+        <Function Name="proc_VotarArtista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idArtista" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
         <Function Name="proc_VotarCancion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCancion" Type="int" Mode="In" />
           <Parameter Name="idUser" Type="int" Mode="In" />
           <Parameter Name="fecha" Type="date" Mode="In" />
         </Function>
-        <EntityContainer Name="NaverMusicDBModelStoreContainer">
+        <EntityContainer Name="NaverMusicBDModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artista" EntityType="Self.Artista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cancion" EntityType="Self.Cancion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavAlbum" EntityType="Self.FavAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavArtista" EntityType="Self.FavArtista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FavCancion" EntityType="Self.FavCancion" Schema="dbo" store:Type="Tables" />
@@ -164,27 +211,27 @@
           <EntitySet Name="VotoAlbum" EntityType="Self.VotoAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoArtista" EntityType="Self.VotoArtista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoCancion" EntityType="Self.VotoCancion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__FavAlbum__idUser__1DE57479" Association="Self.FK__FavAlbum__idUser__1DE57479">
+          <AssociationSet Name="FK__FavAlbum__idUser__5DCAEF64" Association="Self.FK__FavAlbum__idUser__5DCAEF64">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavAlbum" EntitySet="FavAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavArtist__idUse__1B0907CE" Association="Self.FK__FavArtist__idUse__1B0907CE">
+          <AssociationSet Name="FK__FavArtist__idUse__5AEE82B9" Association="Self.FK__FavArtist__idUse__5AEE82B9">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavArtista" EntitySet="FavArtista" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavCancio__idUse__182C9B23" Association="Self.FK__FavCancio__idUse__182C9B23">
+          <AssociationSet Name="FK__FavCancio__idUse__5812160E" Association="Self.FK__FavCancio__idUse__5812160E">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavCancion" EntitySet="FavCancion" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoAlbum__idUse__15502E78" Association="Self.FK__VotoAlbum__idUse__15502E78">
+          <AssociationSet Name="FK__VotoAlbum__idUse__3E52440B" Association="Self.FK__VotoAlbum__idUse__3E52440B">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoAlbum" EntitySet="VotoAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoArtis__idUse__1273C1CD" Association="Self.FK__VotoArtis__idUse__1273C1CD">
+          <AssociationSet Name="FK__VotoArtis__idUse__3B75D760" Association="Self.FK__VotoArtis__idUse__3B75D760">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoArtista" EntitySet="VotoArtista" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoCanci__idUse__267ABA7A" Association="Self.FK__VotoCanci__idUse__267ABA7A">
+          <AssociationSet Name="FK__VotoCanci__idUse__38996AB5" Association="Self.FK__VotoCanci__idUse__38996AB5">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoCancion" EntitySet="VotoCancion" />
           </AssociationSet>
@@ -192,33 +239,36 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NaverMusicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="FavAlbum">
+      <Schema Namespace="NaverMusicBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Album">
           <Key>
-            <PropertyRef Name="idFavAlbum" />
+            <PropertyRef Name="idAlbum" />
           </Key>
-          <Property Name="idFavAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idUser" Type="Int32" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__FavAlbum__idUser__34C8D9D1" FromRole="FavAlbum" ToRole="Usuarios" />
-          <Property Name="idAlbum" Type="Int32" />
+          <Property Name="idAlbum" Type="Int32" Nullable="false" />
+          <Property Name="Voto_DiarioAl" Type="Int32" />
+          <Property Name="Voto_SemanalAl" Type="Int32" />
+          <Property Name="Voto_MensualAl" Type="Int32" />
+          <Property Name="Votos_GeneralesAl" Type="Int32" />
         </EntityType>
-        <EntityType Name="FavArtista">
+        <EntityType Name="Artista">
           <Key>
-            <PropertyRef Name="idFavArtista" />
+            <PropertyRef Name="idArtista" />
           </Key>
-          <Property Name="idFavArtista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idUser" Type="Int32" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__FavArtist__idUse__31EC6D26" FromRole="FavArtista" ToRole="Usuarios" />
-          <Property Name="idArtista" Type="Int32" />
+          <Property Name="idArtista" Type="Int32" Nullable="false" />
+          <Property Name="Voto_DiarioAr" Type="Int32" />
+          <Property Name="Voto_SemanalAr" Type="Int32" />
+          <Property Name="Voto_MensualAr" Type="Int32" />
+          <Property Name="Votos_GeneralesAr" Type="Int32" />
         </EntityType>
-        <EntityType Name="FavCancion">
+        <EntityType Name="Cancion">
           <Key>
-            <PropertyRef Name="idFavCancion" />
+            <PropertyRef Name="idCancion" />
           </Key>
-          <Property Name="idFavCancion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCancion" Type="Int32" />
-          <Property Name="idUser" Type="Int32" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__FavCancio__idUse__2F10007B" FromRole="FavCancion" ToRole="Usuarios" />
+          <Property Name="idCancion" Type="Int32" Nullable="false" />
+          <Property Name="Voto_DiarioC" Type="Int32" />
+          <Property Name="Voto_SemanalC" Type="Int32" />
+          <Property Name="Voto_MensualC" Type="Int32" />
+          <Property Name="Votos_GeneralesC" Type="Int32" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -234,32 +284,32 @@
           <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FavAlbum" Relationship="Self.FK__FavAlbum__idUser__34C8D9D1" FromRole="Usuarios" ToRole="FavAlbum" />
-          <NavigationProperty Name="FavArtista" Relationship="Self.FK__FavArtist__idUse__31EC6D26" FromRole="Usuarios" ToRole="FavArtista" />
-          <NavigationProperty Name="FavCancion" Relationship="Self.FK__FavCancio__idUse__2F10007B" FromRole="Usuarios" ToRole="FavCancion" />
-          <NavigationProperty Name="VotoAlbum" Relationship="Self.FK__VotoAlbum__idUse__2C3393D0" FromRole="Usuarios" ToRole="VotoAlbum" />
-          <NavigationProperty Name="VotoArtista" Relationship="Self.FK__VotoArtis__idUse__29572725" FromRole="Usuarios" ToRole="VotoArtista" />
-          <NavigationProperty Name="VotoCancion" Relationship="Self.FK__VotoCanci__idUse__267ABA7A" FromRole="Usuarios" ToRole="VotoCancion" />
+          <NavigationProperty Name="VotoAlbum" Relationship="Self.FK__VotoAlbum__idUse__3E52440B" FromRole="Usuarios" ToRole="VotoAlbum" />
+          <NavigationProperty Name="VotoArtista" Relationship="Self.FK__VotoArtis__idUse__3B75D760" FromRole="Usuarios" ToRole="VotoArtista" />
+          <NavigationProperty Name="VotoCancion" Relationship="Self.FK__VotoCanci__idUse__38996AB5" FromRole="Usuarios" ToRole="VotoCancion" />
+          <NavigationProperty Name="FavAlbum" Relationship="NaverMusicBDModel.FK__FavAlbum__idUser__5DCAEF64" FromRole="Usuarios" ToRole="FavAlbum" />
+          <NavigationProperty Name="FavArtista" Relationship="NaverMusicBDModel.FK__FavArtist__idUse__5AEE82B9" FromRole="Usuarios" ToRole="FavArtista" />
+          <NavigationProperty Name="FavCancion" Relationship="NaverMusicBDModel.FK__FavCancio__idUse__5812160E" FromRole="Usuarios" ToRole="FavCancion" />
         </EntityType>
         <EntityType Name="VotoAlbum">
           <Key>
             <PropertyRef Name="idVotoAlb" />
           </Key>
           <Property Name="idVotoAlb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idAlbum" Type="Int32" />
+          <Property Name="idAlbumm" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__VotoAlbum__idUse__2C3393D0" FromRole="VotoAlbum" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__VotoAlbum__idUse__3E52440B" FromRole="VotoAlbum" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="VotoArtista">
           <Key>
             <PropertyRef Name="idVotoArt" />
           </Key>
           <Property Name="idVotoArt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idArtista" Type="Int32" />
+          <Property Name="idArtist" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__VotoArtis__idUse__29572725" FromRole="VotoArtista" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__VotoArtis__idUse__3B75D760" FromRole="VotoArtista" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="VotoCancion">
           <Key>
@@ -269,45 +319,9 @@
           <Property Name="idTrack" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__VotoCanci__idUse__267ABA7A" FromRole="VotoCancion" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__VotoCanci__idUse__38996AB5" FromRole="VotoCancion" ToRole="Usuarios" />
         </EntityType>
-        <Association Name="FK__FavAlbum__idUser__34C8D9D1">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
-          <End Role="FavAlbum" Type="Self.FavAlbum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="FavAlbum">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FavArtist__idUse__31EC6D26">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
-          <End Role="FavArtista" Type="Self.FavArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="FavArtista">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FavCancio__idUse__2F10007B">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
-          <End Role="FavCancion" Type="Self.FavCancion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="FavCancion">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VotoAlbum__idUse__2C3393D0">
+        <Association Name="FK__VotoAlbum__idUse__3E52440B">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoAlbum" Type="Self.VotoAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -319,7 +333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoArtis__idUse__29572725">
+        <Association Name="FK__VotoArtis__idUse__3B75D760">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoArtista" Type="Self.VotoArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,7 +345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VotoCanci__idUse__267ABA7A">
+        <Association Name="FK__VotoCanci__idUse__38996AB5">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="VotoCancion" Type="Self.VotoCancion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -343,72 +357,168 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="NaverMusicDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FavAlbum" EntityType="Self.FavAlbum" />
-          <EntitySet Name="FavArtista" EntityType="Self.FavArtista" />
-          <EntitySet Name="FavCancion" EntityType="Self.FavCancion" />
+        <EntityContainer Name="NaverMusicBDEntitiesAWS1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Album" EntityType="Self.Album" />
+          <EntitySet Name="Artista" EntityType="Self.Artista" />
+          <EntitySet Name="Cancion" EntityType="Self.Cancion" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="VotoAlbum" EntityType="Self.VotoAlbum" />
           <EntitySet Name="VotoArtista" EntityType="Self.VotoArtista" />
           <EntitySet Name="VotoCancion" EntityType="Self.VotoCancion" />
-          <AssociationSet Name="FK__FavAlbum__idUser__34C8D9D1" Association="Self.FK__FavAlbum__idUser__34C8D9D1">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="FavAlbum" EntitySet="FavAlbum" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FavArtist__idUse__31EC6D26" Association="Self.FK__FavArtist__idUse__31EC6D26">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="FavArtista" EntitySet="FavArtista" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FavCancio__idUse__2F10007B" Association="Self.FK__FavCancio__idUse__2F10007B">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="FavCancion" EntitySet="FavCancion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VotoAlbum__idUse__2C3393D0" Association="Self.FK__VotoAlbum__idUse__2C3393D0">
+          <AssociationSet Name="FK__VotoAlbum__idUse__3E52440B" Association="Self.FK__VotoAlbum__idUse__3E52440B">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoAlbum" EntitySet="VotoAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoArtis__idUse__29572725" Association="Self.FK__VotoArtis__idUse__29572725">
+          <AssociationSet Name="FK__VotoArtis__idUse__3B75D760" Association="Self.FK__VotoArtis__idUse__3B75D760">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoArtista" EntitySet="VotoArtista" />
           </AssociationSet>
-          <AssociationSet Name="FK__VotoCanci__idUse__267ABA7A" Association="Self.FK__VotoCanci__idUse__267ABA7A">
+          <AssociationSet Name="FK__VotoCanci__idUse__38996AB5" Association="Self.FK__VotoCanci__idUse__38996AB5">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="VotoCancion" EntitySet="VotoCancion" />
           </AssociationSet>
-          <FunctionImport Name="proc_topTenTracks" ReturnType="Collection(NaverMusicDBModel.proc_topTenTracks_Result)" />
-          <FunctionImport Name="proc_topTenArtists" ReturnType="Collection(NaverMusicDBModel.proc_topTenArtists_Result)" />
-          <FunctionImport Name="proc_topTenAlbum" ReturnType="Collection(NaverMusicDBModel.proc_topTenAlbum_Result)" />
-          <FunctionImport Name="proc_RankingSemanalTracks" ReturnType="Collection(NaverMusicDBModel.proc_RankingSemanalTracks_Result)" />
-          <FunctionImport Name="proc_RankingMensualTracks" ReturnType="Collection(NaverMusicDBModel.proc_RankingMensualTracks_Result)" />
-          <FunctionImport Name="proc_GetVotesByUser" ReturnType="Collection(NaverMusicDBModel.proc_GetVotesByUser_Result)">
-          <Parameter Name="idUser" Mode="In" Type="Int32" />
+          <FunctionImport Name="proc_RankingDiarioArtistas" ReturnType="Collection(NaverMusicBDModel.proc_RankingDiarioArtistas_Result)" />
+          <FunctionImport Name="proc_RankingDiarioTracks" ReturnType="Collection(NaverMusicBDModel.proc_RankingDiarioTracks_Result)" />
+          <FunctionImport Name="proc_RankingMensualArtistas" ReturnType="Collection(NaverMusicBDModel.proc_RankingMensualArtistas_Result)" />
+          <FunctionImport Name="proc_RankingMensualTracks" ReturnType="Collection(NaverMusicBDModel.proc_RankingMensualTracks_Result)" />
+          <FunctionImport Name="proc_RankingSemanalArtistas" ReturnType="Collection(NaverMusicBDModel.proc_RankingSemanalArtistas_Result)" />
+          <FunctionImport Name="proc_RankingSemanalTracks" ReturnType="Collection(NaverMusicBDModel.proc_RankingSemanalTracks_Result)" />
+          <FunctionImport Name="proc_topTenAlbum" ReturnType="Collection(NaverMusicBDModel.proc_topTenAlbum_Result)" />
+          <FunctionImport Name="proc_topTenArtists" ReturnType="Collection(NaverMusicBDModel.proc_topTenArtists_Result)" />
+          <FunctionImport Name="proc_topTenTracks" ReturnType="Collection(NaverMusicBDModel.proc_topTenTracks_Result)" />
+          <FunctionImport Name="proc_VotarALBUM">
+            <Parameter Name="idAlbum" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="proc_VotarArtista">
+            <Parameter Name="idArtista" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="proc_VotarCancion">
             <Parameter Name="idCancion" Mode="In" Type="Int32" />
             <Parameter Name="idUser" Mode="In" Type="Int32" />
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="FavAlbum" EntityType="NaverMusicBDModel.FavAlbum" />
+          <EntitySet Name="FavArtista" EntityType="NaverMusicBDModel.FavArtista" />
+          <EntitySet Name="FavCancion" EntityType="NaverMusicBDModel.FavCancion" />
+          <AssociationSet Name="FK__FavAlbum__idUser__5DCAEF64" Association="NaverMusicBDModel.FK__FavAlbum__idUser__5DCAEF64">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="FavAlbum" EntitySet="FavAlbum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavArtist__idUse__5AEE82B9" Association="NaverMusicBDModel.FK__FavArtist__idUse__5AEE82B9">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="FavArtista" EntitySet="FavArtista" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FavCancio__idUse__5812160E" Association="NaverMusicBDModel.FK__FavCancio__idUse__5812160E">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="FavCancion" EntitySet="FavCancion" />
+          </AssociationSet>
+          <FunctionImport Name="proc_GetVotesByUser" ReturnType="Collection(NaverMusicBDModel.proc_GetVotesByUser_Result)">
+          <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="proc_topTenTracks_Result">
+        <ComplexType Name="proc_RankingDiarioArtistas_Result">
+          <Property Type="Int32" Name="idArtist" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_RankingDiarioTracks_Result">
           <Property Type="Int32" Name="idTrack" Nullable="true" />
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="proc_topTenArtists_Result">
-          <Property Type="Int32" Name="idArtist" Nullable="false" />
-          <Property Type="Int32" Name="total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="proc_topTenAlbum_Result">
-          <Property Type="Int32" Name="idAlbumm" Nullable="false" />
-          <Property Type="Int32" Name="total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="proc_RankingSemanalTracks_Result">
-          <Property Type="Int32" Name="idTrack" Nullable="true" />
+        <ComplexType Name="proc_RankingMensualArtistas_Result">
+          <Property Type="Int32" Name="idArtist" Nullable="true" />
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
         <ComplexType Name="proc_RankingMensualTracks_Result">
           <Property Type="Int32" Name="idTrack" Nullable="true" />
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="proc_RankingSemanalArtistas_Result">
+          <Property Type="Int32" Name="idArtist" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_RankingSemanalTracks_Result">
+          <Property Type="Int32" Name="idTrack" Nullable="true" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_topTenAlbum_Result">
+          <Property Type="Int32" Name="idAlbumm" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_topTenArtists_Result">
+          <Property Type="Int32" Name="idArtist" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_topTenTracks_Result">
+          <Property Type="Int32" Name="idTrack" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="FavAlbum">
+          <Key>
+            <PropertyRef Name="idFavAlbum" />
+          </Key>
+          <Property Name="idFavAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAlbum" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="NaverMusicBDModel.FK__FavAlbum__idUser__5DCAEF64" FromRole="FavAlbum" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="FavArtista">
+          <Key>
+            <PropertyRef Name="idFavArtista" />
+          </Key>
+          <Property Name="idFavArtista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idArtista" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="NaverMusicBDModel.FK__FavArtist__idUse__5AEE82B9" FromRole="FavArtista" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="FavCancion">
+          <Key>
+            <PropertyRef Name="idFavCancion" />
+          </Key>
+          <Property Name="idFavCancion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCancion" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="NaverMusicBDModel.FK__FavCancio__idUse__5812160E" FromRole="FavCancion" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK__FavAlbum__idUser__5DCAEF64">
+          <End Type="NaverMusicBDModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="NaverMusicBDModel.FavAlbum" Role="FavAlbum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="FavAlbum">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavArtist__idUse__5AEE82B9">
+          <End Type="NaverMusicBDModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="NaverMusicBDModel.FavArtista" Role="FavArtista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="FavArtista">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FavCancio__idUse__5812160E">
+          <End Type="NaverMusicBDModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="NaverMusicBDModel.FavCancion" Role="FavCancion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="FavCancion">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <ComplexType Name="proc_GetVotesByUser_Result">
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
@@ -417,36 +527,42 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NaverMusicDBModelStoreContainer" CdmEntityContainer="NaverMusicDBEntities">
-          <EntitySetMapping Name="FavAlbum">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.FavAlbum">
-              <MappingFragment StoreEntitySet="FavAlbum">
+        <EntityContainerMapping StorageEntityContainer="NaverMusicBDModelStoreContainer" CdmEntityContainer="NaverMusicBDEntitiesAWS1">
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.Album">
+              <MappingFragment StoreEntitySet="Album">
                 <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
-                <ScalarProperty Name="idFavAlbum" ColumnName="idFavAlbum" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Voto_DiarioAl" ColumnName="Voto_DiarioAl" />
+                <ScalarProperty Name="Voto_SemanalAl" ColumnName="Voto_SemanalAl" />
+                <ScalarProperty Name="Voto_MensualAl" ColumnName="Voto_MensualAl" />
+                <ScalarProperty Name="Votos_GeneralesAl" ColumnName="Votos_GeneralesAl" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FavArtista">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.FavArtista">
-              <MappingFragment StoreEntitySet="FavArtista">
+          <EntitySetMapping Name="Artista">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.Artista">
+              <MappingFragment StoreEntitySet="Artista">
                 <ScalarProperty Name="idArtista" ColumnName="idArtista" />
-                <ScalarProperty Name="idFavArtista" ColumnName="idFavArtista" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Voto_DiarioAr" ColumnName="Voto_DiarioAr" />
+                <ScalarProperty Name="Voto_SemanalAr" ColumnName="Voto_SemanalAr" />
+                <ScalarProperty Name="Voto_MensualAr" ColumnName="Voto_MensualAr" />
+                <ScalarProperty Name="Votos_GeneralesAr" ColumnName="Votos_GeneralesAr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FavCancion">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.FavCancion">
-              <MappingFragment StoreEntitySet="FavCancion">
-                <ScalarProperty Name="idFavCancion" ColumnName="idFavCancion" />
+          <EntitySetMapping Name="Cancion">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.Cancion">
+              <MappingFragment StoreEntitySet="Cancion">
                 <ScalarProperty Name="idCancion" ColumnName="idCancion" />
-                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Voto_DiarioC" ColumnName="Voto_DiarioC" />
+                <ScalarProperty Name="Voto_SemanalC" ColumnName="Voto_SemanalC" />
+                <ScalarProperty Name="Voto_MensualC" ColumnName="Voto_MensualC" />
+                <ScalarProperty Name="Votos_GeneralesC" ColumnName="Votos_GeneralesC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.Usuarios">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -462,27 +578,27 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VotoAlbum">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.VotoAlbum">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.VotoAlbum">
               <MappingFragment StoreEntitySet="VotoAlbum">
                 <ScalarProperty Name="idVotoAlb" ColumnName="idVotoAlb" />
-                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
+                <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VotoArtista">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.VotoArtista">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.VotoArtista">
               <MappingFragment StoreEntitySet="VotoArtista">
                 <ScalarProperty Name="idVotoArt" ColumnName="idVotoArt" />
-                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
+                <ScalarProperty Name="idArtist" ColumnName="idArtist" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VotoCancion">
-            <EntityTypeMapping TypeName="NaverMusicDBModel.VotoCancion">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.VotoCancion">
               <MappingFragment StoreEntitySet="VotoCancion">
                 <ScalarProperty Name="idVotoCan" ColumnName="idVotoCan" />
                 <ScalarProperty Name="idTrack" ColumnName="idTrack" />
@@ -491,54 +607,115 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="proc_topTenTracks" FunctionName="NaverMusicDBModel.Store.proc_topTenTracks">
+          <FunctionImportMapping FunctionImportName="proc_RankingDiarioArtistas" FunctionName="NaverMusicBDModel.Store.proc_RankingDiarioArtistas">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenTracks_Result">
-                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
-                <ScalarProperty Name="total" ColumnName="total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_topTenArtists" FunctionName="NaverMusicDBModel.Store.proc_topTenArtists">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenArtists_Result">
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingDiarioArtistas_Result">
                 <ScalarProperty Name="idArtist" ColumnName="idArtist" />
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_topTenAlbum" FunctionName="NaverMusicDBModel.Store.proc_topTenAlbum">
+          <FunctionImportMapping FunctionImportName="proc_RankingDiarioTracks" FunctionName="NaverMusicBDModel.Store.proc_RankingDiarioTracks">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_topTenAlbum_Result">
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingDiarioTracks_Result">
+                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingMensualArtistas" FunctionName="NaverMusicBDModel.Store.proc_RankingMensualArtistas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingMensualArtistas_Result">
+                <ScalarProperty Name="idArtist" ColumnName="idArtist" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingMensualTracks" FunctionName="NaverMusicBDModel.Store.proc_RankingMensualTracks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingMensualTracks_Result">
+                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingSemanalArtistas" FunctionName="NaverMusicBDModel.Store.proc_RankingSemanalArtistas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingSemanalArtistas_Result">
+                <ScalarProperty Name="idArtist" ColumnName="idArtist" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingSemanalTracks" FunctionName="NaverMusicBDModel.Store.proc_RankingSemanalTracks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingSemanalTracks_Result">
+                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_topTenAlbum" FunctionName="NaverMusicBDModel.Store.proc_topTenAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_topTenAlbum_Result">
                 <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_RankingSemanalTracks" FunctionName="NaverMusicDBModel.Store.proc_RankingSemanalTracks">
+          <FunctionImportMapping FunctionImportName="proc_topTenArtists" FunctionName="NaverMusicBDModel.Store.proc_topTenArtists">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_RankingSemanalTracks_Result">
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_topTenArtists_Result">
+                <ScalarProperty Name="idArtist" ColumnName="idArtist" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_topTenTracks" FunctionName="NaverMusicBDModel.Store.proc_topTenTracks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_topTenTracks_Result">
                 <ScalarProperty Name="idTrack" ColumnName="idTrack" />
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_RankingMensualTracks" FunctionName="NaverMusicDBModel.Store.proc_RankingMensualTracks">
+          <FunctionImportMapping FunctionImportName="proc_VotarALBUM" FunctionName="NaverMusicBDModel.Store.proc_VotarALBUM" />
+          <FunctionImportMapping FunctionImportName="proc_VotarArtista" FunctionName="NaverMusicBDModel.Store.proc_VotarArtista" />
+          <FunctionImportMapping FunctionImportName="proc_VotarCancion" FunctionName="NaverMusicBDModel.Store.proc_VotarCancion" />
+          <EntitySetMapping Name="FavAlbum">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.FavAlbum">
+              <MappingFragment StoreEntitySet="FavAlbum">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
+                <ScalarProperty Name="idFavAlbum" ColumnName="idFavAlbum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavArtista">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.FavArtista">
+              <MappingFragment StoreEntitySet="FavArtista">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
+                <ScalarProperty Name="idFavArtista" ColumnName="idFavArtista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavCancion">
+            <EntityTypeMapping TypeName="NaverMusicBDModel.FavCancion">
+              <MappingFragment StoreEntitySet="FavCancion">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="idCancion" ColumnName="idCancion" />
+                <ScalarProperty Name="idFavCancion" ColumnName="idFavCancion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_GetVotesByUser" FunctionName="NaverMusicBDModel.Store.proc_GetVotesByUser">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_RankingMensualTracks_Result">
-                <ScalarProperty Name="idTrack" ColumnName="idTrack" />
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_GetVotesByUser_Result">
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_GetVotesByUser" FunctionName="NaverMusicDBModel.Store.proc_GetVotesByUser">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="NaverMusicDBModel.proc_GetVotesByUser_Result">
-                <ScalarProperty Name="total" ColumnName="total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_VotarCancion" FunctionName="NaverMusicDBModel.Store.proc_VotarCancion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

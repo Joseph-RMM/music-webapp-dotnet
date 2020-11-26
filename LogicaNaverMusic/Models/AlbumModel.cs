@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicaNaverMusic.Models
 {
-    public class Album
+    public class AlbumModel
     {
         public string id { get; set; }
         public string title { get; set; }

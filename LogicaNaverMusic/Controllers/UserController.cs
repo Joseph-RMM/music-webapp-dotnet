@@ -10,7 +10,7 @@ namespace LogicaNaverMusic.Controllers
 {
     public class UserController
     {
-        private NaverMusicDBEntities modelDb = new NaverMusicDBEntities();
+        private NaverMusicBDEntitiesAWS1 modelDb = new NaverMusicBDEntitiesAWS1();
         public bool CreateUser(string username, string password, string nombre, string apellido, string sexo,
             string foto, string status, string correo, string telefono)
         {

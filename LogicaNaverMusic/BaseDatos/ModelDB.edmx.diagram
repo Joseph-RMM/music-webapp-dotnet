@@ -4,20 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="842e06fd0c884106a40019188790a2dd" Name="Diagram1">
-        <EntityTypeShape EntityType="NaverMusicDBModel.FavAlbum" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NaverMusicDBModel.FavArtista" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NaverMusicDBModel.FavCancion" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NaverMusicDBModel.Usuarios" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="NaverMusicDBModel.VotoAlbum" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NaverMusicDBModel.VotoArtista" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NaverMusicDBModel.VotoCancion" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
-        <AssociationConnector Association="NaverMusicDBModel.FK__FavAlbum__idUser__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="NaverMusicDBModel.FK__FavArtist__idUse__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="NaverMusicDBModel.FK__FavCancio__idUse__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="NaverMusicDBModel.FK__VotoAlbum__idUse__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="NaverMusicDBModel.FK__VotoArtis__idUse__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="NaverMusicDBModel.FK__VotoCanci__idUse__267ABA7A" ManuallyRouted="false" />
+      <Diagram DiagramId="654912c33eb7423882c5dbfc5132e37b" Name="Diagram1">
+        <EntityTypeShape EntityType="NaverMusicBDModel.Album" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.Artista" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.Cancion" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.Usuarios" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.VotoAlbum" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.VotoArtista" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.VotoCancion" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="NaverMusicBDModel.FK__VotoAlbum__idUse__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicBDModel.FK__VotoArtis__idUse__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="NaverMusicBDModel.FK__VotoCanci__idUse__38996AB5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.FavAlbum" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.FavArtista" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="NaverMusicBDModel.FavCancion" Width="1.5" PointX="3" PointY="14.875" />
+        <AssociationConnector Association="NaverMusicBDModel.FK__FavAlbum__idUser__5DCAEF64" />
+        <AssociationConnector Association="NaverMusicBDModel.FK__FavArtist__idUse__5AEE82B9" />
+        <AssociationConnector Association="NaverMusicBDModel.FK__FavCancio__idUse__5812160E" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,7 +15,7 @@ namespace LogicaNaverMusic.BaseDatos
     public partial class VotoArtista
     {
         public int idVotoArt { get; set; }
-        public Nullable<int> idArtista { get; set; }
+        public Nullable<int> idArtist { get; set; }
         public Nullable<int> idUser { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
     

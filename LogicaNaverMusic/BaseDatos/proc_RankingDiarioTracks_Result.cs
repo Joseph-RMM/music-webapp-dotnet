@@ -10,14 +10,10 @@
 namespace LogicaNaverMusic.BaseDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class FavAlbum
+    public partial class proc_RankingDiarioTracks_Result
     {
-        public int idFavAlbum { get; set; }
-        public Nullable<int> idAlbum { get; set; }
-        public Nullable<int> idUser { get; set; }
-    
-        public virtual Usuarios Usuarios { get; set; }
+        public Nullable<int> idTrack { get; set; }
+        public Nullable<int> total { get; set; }
     }
 }

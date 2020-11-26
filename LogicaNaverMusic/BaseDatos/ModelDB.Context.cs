@@ -16,10 +16,10 @@ namespace LogicaNaverMusic.BaseDatos
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class NaverMusicDBEntities : DbContext
+    public partial class NaverMusicBDEntitiesAWS1 : DbContext
     {
-        public NaverMusicDBEntities()
-            : base("name=NaverMusicDBEntities")
+        public NaverMusicBDEntitiesAWS1()
+            : base("name=NaverMusicBDEntitiesAWS1")
         {
         }
     
@@ -28,32 +28,30 @@ namespace LogicaNaverMusic.BaseDatos
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<FavAlbum> FavAlbum { get; set; }
-        public DbSet<FavArtista> FavArtista { get; set; }
-        public DbSet<FavCancion> FavCancion { get; set; }
+        public DbSet<Album> Album { get; set; }
+        public DbSet<Artista> Artista { get; set; }
+        public DbSet<Cancion> Cancion { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<VotoAlbum> VotoAlbum { get; set; }
         public DbSet<VotoArtista> VotoArtista { get; set; }
         public DbSet<VotoCancion> VotoCancion { get; set; }
+        public DbSet<FavAlbum> FavAlbum { get; set; }
+        public DbSet<FavArtista> FavArtista { get; set; }
+        public DbSet<FavCancion> FavCancion { get; set; }
     
-        public virtual ObjectResult<proc_topTenTracks_Result> proc_topTenTracks()
+        public virtual ObjectResult<proc_RankingDiarioArtistas_Result> proc_RankingDiarioArtistas()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenTracks_Result>("proc_topTenTracks");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingDiarioArtistas_Result>("proc_RankingDiarioArtistas");
         }
     
-        public virtual ObjectResult<proc_topTenArtists_Result> proc_topTenArtists()
+        public virtual ObjectResult<proc_RankingDiarioTracks_Result> proc_RankingDiarioTracks()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenArtists_Result>("proc_topTenArtists");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingDiarioTracks_Result>("proc_RankingDiarioTracks");
         }
     
-        public virtual ObjectResult<proc_topTenAlbum_Result> proc_topTenAlbum()
+        public virtual ObjectResult<proc_RankingMensualArtistas_Result> proc_RankingMensualArtistas()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenAlbum_Result>("proc_topTenAlbum");
-        }
-    
-        public virtual ObjectResult<proc_RankingSemanalTracks_Result> proc_RankingSemanalTracks()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalTracks_Result>("proc_RankingSemanalTracks");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingMensualArtistas_Result>("proc_RankingMensualArtistas");
         }
     
         public virtual ObjectResult<proc_RankingMensualTracks_Result> proc_RankingMensualTracks()
@@ -61,13 +59,63 @@ namespace LogicaNaverMusic.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingMensualTracks_Result>("proc_RankingMensualTracks");
         }
     
-        public virtual ObjectResult<proc_GetVotesByUser_Result> proc_GetVotesByUser(Nullable<int> idUser)
+        public virtual ObjectResult<proc_RankingSemanalArtistas_Result> proc_RankingSemanalArtistas()
         {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalArtistas_Result>("proc_RankingSemanalArtistas");
+        }
+    
+        public virtual ObjectResult<proc_RankingSemanalTracks_Result> proc_RankingSemanalTracks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalTracks_Result>("proc_RankingSemanalTracks");
+        }
+    
+        public virtual ObjectResult<proc_topTenAlbum_Result> proc_topTenAlbum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenAlbum_Result>("proc_topTenAlbum");
+        }
+    
+        public virtual ObjectResult<proc_topTenArtists_Result> proc_topTenArtists()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenArtists_Result>("proc_topTenArtists");
+        }
+    
+        public virtual ObjectResult<proc_topTenTracks_Result> proc_topTenTracks()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenTracks_Result>("proc_topTenTracks");
+        }
+    
+        public virtual int proc_VotarALBUM(Nullable<int> idAlbum, Nullable<int> idUser, Nullable<System.DateTime> fecha)
+        {
+            var idAlbumParameter = idAlbum.HasValue ?
+                new ObjectParameter("idAlbum", idAlbum) :
+                new ObjectParameter("idAlbum", typeof(int));
+    
             var idUserParameter = idUser.HasValue ?
                 new ObjectParameter("idUser", idUser) :
                 new ObjectParameter("idUser", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_GetVotesByUser_Result>("proc_GetVotesByUser", idUserParameter);
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarALBUM", idAlbumParameter, idUserParameter, fechaParameter);
+        }
+    
+        public virtual int proc_VotarArtista(Nullable<int> idArtista, Nullable<int> idUser, Nullable<System.DateTime> fecha)
+        {
+            var idArtistaParameter = idArtista.HasValue ?
+                new ObjectParameter("idArtista", idArtista) :
+                new ObjectParameter("idArtista", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarArtista", idArtistaParameter, idUserParameter, fechaParameter);
         }
     
         public virtual int proc_VotarCancion(Nullable<int> idCancion, Nullable<int> idUser, Nullable<System.DateTime> fecha)
@@ -85,6 +133,15 @@ namespace LogicaNaverMusic.BaseDatos
                 new ObjectParameter("fecha", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarCancion", idCancionParameter, idUserParameter, fechaParameter);
+        }
+    
+        public virtual ObjectResult<proc_GetVotesByUser_Result> proc_GetVotesByUser(Nullable<int> idUser)
+        {
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_GetVotesByUser_Result>("proc_GetVotesByUser", idUserParameter);
         }
     }
 }

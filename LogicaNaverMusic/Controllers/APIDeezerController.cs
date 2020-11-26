@@ -60,7 +60,7 @@ namespace LogicaNaverMusic.Controllers
             return reponseFromSearch;
         }
 
-        public Album GetAlbum(int idAlbum)
+        public AlbumModel GetAlbum(int idAlbum)
         {
             WebRequest request = WebRequest.Create(url + "album/" + idAlbum);
             request.Method = "GET";
@@ -76,8 +76,8 @@ namespace LogicaNaverMusic.Controllers
                 sr.Close();
             }
 
-            Album reponseFromSearch;
-            reponseFromSearch = JsonConvert.DeserializeObject<Album>(resultAPI);
+            AlbumModel reponseFromSearch;
+            reponseFromSearch = JsonConvert.DeserializeObject<AlbumModel>(resultAPI);
 
             return reponseFromSearch;
         }

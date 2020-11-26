@@ -10,7 +10,7 @@ namespace LogicaNaverMusic.Controllers
 {
     public class RankingController
     {
-        NaverMusicDBEntities mddb = new NaverMusicDBEntities();
+        NaverMusicBDEntitiesAWS1 mddb = new NaverMusicBDEntitiesAWS1();
 
         /*PROCEDURE PARA OBTENER EL TOP DE CANCIONES MAS VOTADAS*/
         List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();

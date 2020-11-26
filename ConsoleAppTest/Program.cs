@@ -149,7 +149,7 @@ namespace ConsoleAppTest
 
             APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
 
-            Album album = new Album();
+            AlbumModel album = new AlbumModel();
             album = aPIDeezer.GetAlbum(int.Parse(busqueda));
 
             Console.WriteLine(album.artist.name + " " + album.title + "\n CANCIONES: \n");

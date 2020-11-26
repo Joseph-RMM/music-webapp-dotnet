@@ -22,7 +22,7 @@ namespace LogicaNaverMusic.Models
         public string preview { get; set; }
         public string md5_image { get; set; }
         public Artist artist { get; set; }
-        public Album album { get; set; }
+        public AlbumModel album { get; set; }
         public string type { get; set; }
     }
 }
