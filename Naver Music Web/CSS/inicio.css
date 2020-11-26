@@ -88,7 +88,7 @@ h1 {
     justify-content: center;
 }
 
-.imgcovermusic, .imgplaymusic {
+.imgcovermusic, .imgplaymusic, .imgcoveralbum {
     width: 80%;
     margin-top: 20px;
     margin-bottom: 10px;
