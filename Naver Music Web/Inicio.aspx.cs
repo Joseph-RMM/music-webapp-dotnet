@@ -176,11 +176,20 @@ namespace Naver_Music_Web {
             Button btnRate = (Button)sender;
 
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int iduser = currentUser.idUsuario;
+            VotoController votoController = new VotoController();
+            DateTime fecha = DateTime.Now;
+            bool voto = false;
             if (type == 1) { //Cancion
-                VotoController votoController = new VotoController();
-                int iduser = currentUser.idUsuario;
-                DateTime fecha = DateTime.Now;
-                bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+                voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+            } else {
+                if (type == 2) { //Album
+                    voto = votoController.proc_VotarALBUM(SongID, iduser, fecha);
+                } else {
+                    if (type == 3) { //Artista
+                        voto = votoController.proc_VotarArtista(SongID, iduser, fecha);
+                    }
+                }
             }
            
             Response.Redirect("Inicio.aspx");
