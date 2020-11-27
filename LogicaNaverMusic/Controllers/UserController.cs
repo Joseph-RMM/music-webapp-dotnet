@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using LogicaNaverMusic.BaseDatos;
 using LogicaNaverMusic.Helper;
+using LogicaNaverMusic.Models;
 
 namespace LogicaNaverMusic.Controllers
 {
@@ -41,20 +42,48 @@ namespace LogicaNaverMusic.Controllers
             return creado;
         }
 
-        public bool CompareUser(string username)
+        private bool CompareUser(string username)
         {
             bool exist = false;
 
-            var user = from d in modelDb.Usuarios
+            var user = (from d in modelDb.Usuarios
                         where d.username == username
-                        select d;
+                        select d).FirstOrDefault<Usuarios>();
 
-            if(username != null)
+            if (user != null)
             {
                 exist = true;
             }
 
             return exist;
+        }
+
+        public UsuariosModels LoginUser(string correo, string password)
+        {
+            UsuariosModels currentUser = new UsuariosModels();
+
+            var user = (from u in modelDb.Usuarios
+                       where u.correo == correo
+                       select u).FirstOrDefault<Usuarios>();
+
+            if (user != null)
+            {
+                string passHash = HashHelper.GetSHA256(password).Trim();
+
+                if (passHash.Equals(user.passsword.Trim()))
+                {
+                    currentUser.idUsuario = user.idUsuario;
+                    currentUser.nombre = user.nombre;
+                    currentUser.apellido = user.apellido;
+                    currentUser.correo = user.correo;
+                    currentUser.estatus = user.estatus;
+                    currentUser.foto = user.foto;
+                    currentUser.sexo = user.sexo;
+                    currentUser.telefono = user.telefono;
+                    currentUser.username = user.username;
+                }
+            }
+            return currentUser;
         }
     }
 }

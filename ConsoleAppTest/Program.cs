@@ -17,6 +17,25 @@ namespace ConsoleAppTest
         static void Main(string[] args)
         {
             int eleccion = 0;
+            bool login = false;
+
+            while (!login)
+            {
+                Console.WriteLine("NAVER MUSIC\n1 Login\n2 Crear Usuario");
+                eleccion = int.Parse(Console.ReadLine());
+
+                switch (eleccion)
+                {
+                    case 1:
+                        login = LogearUser();
+                        break;
+                    case 2:
+                        CreateUser();
+                        break;
+                }
+            }
+            
+
             while (eleccion != 10)
             {
                 Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
@@ -31,7 +50,7 @@ namespace ConsoleAppTest
                         SearchInAPI();
                         break;
                     case 2:
-                        CreateUser();
+                        //CreateUser();
                         break;
                     case 3:
                         SearchTrack();
@@ -274,6 +293,32 @@ namespace ConsoleAppTest
             }
             else
                 Console.WriteLine("error, no se ha votado la cancion");
+        }
+
+        static bool LogearUser()
+        {
+            bool login = false;
+
+            UserController userController = new UserController();
+
+            Console.WriteLine("Introduzca correo electronico");
+            string correo = Console.ReadLine();
+            Console.WriteLine("Introduzca password");
+            string password = Console.ReadLine();
+
+            UsuariosModels currentUser = userController.LoginUser(correo, password);
+
+            if (currentUser.idUsuario != 0)
+            {
+                Console.WriteLine("BIENVENIDO " + currentUser.username);
+                login = true;
+            }
+            else
+            {
+                Console.WriteLine("Usuario o contrasenia incorrecta");
+            }
+
+            return login;
         }
     }
 }
