@@ -48,6 +48,7 @@ namespace Naver_Music_Web {
                 dataSet.Tables.Add(canciones);
                 gvCanciones.DataSource = dataSet;
                 gvCanciones.DataBind();
+                gvCanciones.Columns[0].Visible = false;
                 gvCanciones.Columns[1].Visible = false;
             }
         }
@@ -70,20 +71,41 @@ namespace Naver_Music_Web {
         }*/
 
         protected void gvCanciones_RowCommand(object sender, GridViewCommandEventArgs e) {
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "Play") {
                 gvCanciones.Columns[1].Visible = true;
                 gvCanciones.DataBind();
                 miniaturaCover.ImageUrl = albumCover.ImageUrl;
 
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                
                 //Reference the GridView Row.
                 GridViewRow row = gvCanciones.Rows[rowIndex];
                 miniNombreCancion.Text = row.Cells[2].Text;
                 miniNombreArtista.Text = row.Cells[3].Text;
                 Reproductor.Src = row.Cells[1].Text;
                 gvCanciones.Columns[1].Visible = false;
+            } else {
+                if (e.CommandName == "Vote") {
+                    gvCanciones.Columns[0].Visible = true;
+                    gvCanciones.DataBind();
+                    UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+                    int iduser = currentUser.idUsuario;
+                    VotoController votoController = new VotoController();
+                    DateTime fecha = DateTime.Now;
+                    GridViewRow row = gvCanciones.Rows[rowIndex];
+                    int SongID = int.Parse(row.Cells[0].Text);
+                    bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+                    gvCanciones.Columns[0].Visible = false;
+                }
             }
+        }
+
+        protected void btnVote_Click(object sender, EventArgs e) {
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int iduser = currentUser.idUsuario;
+            VotoController votoController = new VotoController();
+            DateTime fecha = DateTime.Now;
+            int albumID = (int)Session["albumViewID"];
+            bool voto = votoController.proc_VotarCancion(albumID, iduser, fecha);
         }
     }
 }

@@ -10,14 +10,14 @@
             <asp:Label runat="server" ID="lblTitulo" Text="Título del álbum" CssClass="lblTitulo"></asp:Label>
             <asp:Label runat="server" ID="lblArtistas" Text="Artista(s)" CssClass="lblArtistas"></asp:Label>
             <div class="wrapper-votefav">
-                <asp:Button runat="server" ID="btnVote" Text="♥ votos" CssClass="btnVote nobtn" />
+                <asp:Button runat="server" ID="btnVote" Text="♥ votos" CssClass="btnVote nobtn" OnClick="btnVote_Click" />
                 <asp:Button runat="server" ID="btnFav" Text="☆" CssClass="btnFav nobtn" />
             </div>
         </div>
     </div>
     <asp:GridView runat="server" ID="gvCanciones" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvCanciones_RowCommand">
         <Columns>
-            <asp:BoundField HeaderText="ID" Visible="False" DataField="id" />
+            <asp:BoundField HeaderText="ID" DataField="id" />
             <asp:BoundField DataField="preview" HeaderText="MP3" />
             <asp:BoundField HeaderText="Canción" DataField="tittle" >
             <ControlStyle CssClass="gvData" />
