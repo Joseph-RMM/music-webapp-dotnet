@@ -12,6 +12,12 @@
         <br />
         <span>Teléfono:</span>
         <asp:TextBox ID="txbTelefono" runat="server" CssClass="txb" TextMode="Phone"></asp:TextBox>
+        <span>Sexo:</span>
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+            <asp:ListItem Selected="True" Value="NE">No Especificar</asp:ListItem>
+            <asp:ListItem Value="M">Masculino</asp:ListItem>
+            <asp:ListItem Value="F">Femenino</asp:ListItem>
+        </asp:RadioButtonList>
         <asp:Label ID="lblInfo" runat="server" Text="" CssClass="lblInfo" ></asp:Label>
         <asp:Button ID="btnRegistrar" runat="server" Text="Registrarme" CssClass="btn foot" OnClick="btnRegistrar_Click"/>
     </div>

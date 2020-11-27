@@ -30,12 +30,13 @@ namespace Naver_Music_Web {
             string Data64 = "data:" + FileUpload1.PostedFile.ContentType + ";base64," + Convert.ToBase64String(profileImage);
 
             string telefono = txbTelefono.Text;
+            string sexo = RadioButtonList1.SelectedValue;
 
             //Enviar a la bd
 
             UserController userController = new UserController();
-            bool userCreated;
-            userCreated = userController.CreateUser(userName, pass, " ", " ", "M", "img simulation", "No Premium", email, telefono);
+            bool userCreated = true;
+            userCreated = userController.CreateUser(userName, pass, " ", " ", sexo, "img simulation", "No Premium", email, telefono);
 
             if (userCreated) {
                 Response.Redirect("Inicio.aspx");
