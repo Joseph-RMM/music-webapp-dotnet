@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-linea-m">
         <h1>Naver Music</h1>
-        <asp:ImageButton ID="mobileUserImage" runat="server" CssClass="mobileUserImg" ImageUrl="~/assets/nouser.png" OnClick="mobileUserImage_Click" />
+        <a href="Usuario.aspx"><asp:Image ID="mobileUserImg" runat="server"  CssClass="mobileUserImg" ImageUrl="~/assets/nouser.png" /></a>
     </div>
     <p>Work in progress!</p>
     <div class="buscar">

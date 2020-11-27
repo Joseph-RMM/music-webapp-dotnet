@@ -8,7 +8,8 @@ using System.Web.UI.WebControls;
 
 using LogicaNaverMusic;
 using LogicaNaverMusic.Controllers; //CONTROLADORES DE LOGICA NEGOCIOS
-using LogicaNaverMusic.Models;      //MODELOS DE LOGICA NEGOCIOS     
+using LogicaNaverMusic.Models;      //MODELOS DE LOGICA NEGOCIOS    
+using LogicaNaverMusic.BaseDatos;   //MODELOS DE BASE DE DATOS  
 
 
 namespace Naver_Music_Web {
@@ -20,6 +21,15 @@ namespace Naver_Music_Web {
         static int VotesDB3 = 210;
 
         protected void Page_Load(object sender, EventArgs e) {
+            if (Session["userData"] != null) {
+                //Display user info
+                UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+                try {
+                    mobileUserImg.ImageUrl = currentUser.foto;
+                } catch (Exception exception) {
+                   mobileUserImg.ImageUrl = "/assets/nouser.png";
+                }
+            }
             List<Data> data = (List<Data>)Session["busqueda"];
             panelResultados.Controls.Clear();
             if (data != null) {
@@ -164,23 +174,15 @@ namespace Naver_Music_Web {
 
         public void RateClick(object sender, EventArgs e, int SongID, int type) {
             Button btnRate = (Button)sender;
-            int Votes = 0;
-            //Buscar los votos de la cancion con el ID
-            //TODO: Implementar codigo real y quitar if de simulacion
-            if (SongID == 1) { //SELECT Votos FROM VotosCancion WHERE IDCancion = ##
-                VotesDB++;
-                Votes = VotesDB;
-            } else { 
-                if(SongID == 2) {
-                    VotesDB2++;
-                    Votes = VotesDB2;
-                } else {
-                    VotesDB3++;
-                    Votes = VotesDB3;
-                }
-                
+
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            if (type == 1) { //Cancion
+                VotoController votoController = new VotoController();
+                int iduser = currentUser.idUsuario;
+                DateTime fecha = DateTime.Now;
+                bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
             }
-            btnRate.Text = "♥ " + (Votes);
+           
             Response.Redirect("Inicio.aspx");
         }
 
@@ -211,8 +213,5 @@ namespace Naver_Music_Web {
             Response.Redirect("Inicio.aspx");
         }
 
-        protected void mobileUserImage_Click(object sender, ImageClickEventArgs e) {
-            Response.Redirect("Usuario.aspx");
-        }
     }
 }
