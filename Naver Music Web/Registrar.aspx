@@ -11,7 +11,7 @@
         <asp:TextBox ID="txbEmail" runat="server" CssClass="txb" TextMode="Email"></asp:TextBox>
         <span>Contraseña:</span>
         <asp:TextBox ID="txbContrasena" runat="server" CssClass="txb" TextMode="Password"></asp:TextBox>
-        <asp:Label ID="lblInfo" runat="server" Text="Error text" CssClass="lblInfo"></asp:Label>
+        <asp:Label ID="lblInfo" runat="server" Text="" CssClass="lblInfo"></asp:Label>
         <asp:Button ID="btnRegistrar" runat="server" Text="Siguiente" CssClass="btn foot" OnClick="btnRegistrar_Click" />
     </div>
 </asp:Content>
