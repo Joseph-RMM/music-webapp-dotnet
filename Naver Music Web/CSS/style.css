@@ -21,12 +21,12 @@
     --fav: whitesmoke;
 }
 
-.solar {
-    --bg-oscuro: #001391;
-    --bg-claro: #475bde;
-    --bg-extraclaro: #bac3ff;
+.aqua {
+    --bg-oscuro: #3498DB;
+    --bg-claro: #7AC2F3;
+    --bg-extraclaro: #E5F5FF;
     --bg-aunmasclaro: #FFFFFF;
-    --btn-hover: #001ee3;
+    --btn-hover: #579FCF;
     --txt-color: #000000;
     --rate: darkred;
     --fav: #b5b028;
@@ -36,14 +36,24 @@
 .naver #naverIcon {
     display: block;
 }
+.naver #darkIcon, #aquaIcon {
+    display: none;
+}
 
 .dark #darkIcon {
     display: block;
 }
-.dark #naverIcon {
+.dark #naverIcon,#aquaIcon {
     display: none;
 }
 
+
+.aqua #aquaIcon {
+    display: block;
+}
+.aqua #naverIcon,#darkIcon {
+    display: none;
+}
 
 /*Propiedades*/
 :root {

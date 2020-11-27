@@ -210,5 +210,9 @@ namespace Naver_Music_Web {
             divBuscar.Visible = true;
             Response.Redirect("Inicio.aspx");
         }
+
+        protected void mobileUserImage_Click(object sender, ImageClickEventArgs e) {
+            Response.Redirect("Usuario.aspx");
+        }
     }
 }

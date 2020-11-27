@@ -7,13 +7,18 @@
 */
 
 h1 {
+    margin: 0.5em 0px;
+}
+
+.site-name {
     margin: 0px 0px;
+    font-size: 1.6em;
 }
 
 .btn {
     outline: none;
     background: none;
-    cursor:  pointer;
+    cursor: pointer;
     border: none;
     font-size: 1.2em;
 }
@@ -32,9 +37,14 @@ h1 {
         background-color: var(--btn-hover);
     }
 
-.wrapper-linea {
+.wrapper-linea, .wrapper-linea-m {
     display: flex;
     flex-direction: row;
+}
+
+.mobileUserImg {
+    width: 4em;
+    display: none;
 }
 
 
@@ -152,6 +162,12 @@ h1 {
 @media only screen and (max-width: 600px) {
     .wrappermusicitem {
         min-width: 30%;
+    }
+    .mobileUserImg {
+        display: flex;
+    }
+    h1 {
+        width: calc(100% - 3em);
     }
 }
 

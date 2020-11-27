@@ -1,7 +1,7 @@
 ﻿const themeMap = {
   naver: "dark",
-  dark: "solar",
-  solar: "naver"
+  dark: "aqua",
+  aqua: "naver"
 };
 
 const theme = localStorage.getItem('theme')

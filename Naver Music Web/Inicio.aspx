@@ -3,7 +3,10 @@
     <link rel="stylesheet" href="CSS/inicio.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Naver Music</h1>
+    <div class="wrapper-linea-m">
+        <h1>Naver Music</h1>
+        <asp:ImageButton ID="mobileUserImage" runat="server" CssClass="mobileUserImg" ImageUrl="~/assets/nouser.png" OnClick="mobileUserImage_Click" />
+    </div>
     <p>Work in progress!</p>
     <div class="buscar">
         <h3>Buscar</h3>
