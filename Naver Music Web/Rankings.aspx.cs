@@ -32,37 +32,76 @@ namespace Naver_Music_Web {
             }
 
 
-            //Top 10 Tracks
             RankingController rankingController = new RankingController();
+            //Top 10 Tracks
 
             List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();
             proc = rankingController.TopTenTrack();
             for (int i = 0; i < proc.Count; i++) {
-                proc_topTenTracks_Result topOne = proc[i];
-                int songID = topOne.idTrack;
+                proc_topTenTracks_Result topSong = proc[i];
+                int songID = topSong.idTrack;
                 Data song = ObtenerCancion(songID);
+                int Votos = topSong.total ?? 0;
                 if (song.artist != null) {
-                    CancionController cancionController = new CancionController();
-                    int Votos = cancionController.GetVotesOfTrack(int.Parse(song.id));
                     if (i == 0) {//Top One
                         playSong1.ImageUrl = song.album.cover_medium;
                         lblSName1.Text = song.title_short;
                         lblSArtist1.Text = song.artist.name;
                         btnRateSong1.Text = "♥ " + Votos;
-                    }
-                    if (i == 1) {//Top Two
-                        playSong2.ImageUrl = song.album.cover_medium;
-                        lblSName2.Text = song.title_short;
-                        lblSArtist2.Text = song.artist.name;
-                        btnRateSong2.Text = "♥ " + Votos;
-                    }
-                    if (i == 2) {//Top Tres xd
-                        playSong3.ImageUrl = song.album.cover_medium;
-                        lblSName3.Text = song.title_short;
-                        lblSArtist3.Text = song.artist.name;
-                        btnRateSong3.Text = "♥ " + Votos;
+                    } else {
+                        if (i == 1) {//Top Two
+                            playSong2.ImageUrl = song.album.cover_medium;
+                            lblSName2.Text = song.title_short;
+                            lblSArtist2.Text = song.artist.name;
+                            btnRateSong2.Text = "♥ " + Votos;
+                        } else {
+                            if (i == 2) {//Top Tres xd
+                                playSong3.ImageUrl = song.album.cover_medium;
+                                lblSName3.Text = song.title_short;
+                                lblSArtist3.Text = song.artist.name;
+                                btnRateSong3.Text = "♥ " + Votos;
+                            }
+                        }
                     }
                 }
+            }
+
+            //Top 10 Albums
+            List<proc_topTenAlbum_Result> procAlbum = new List<proc_topTenAlbum_Result>();
+            procAlbum = rankingController.TopTenAlbum();
+            for (int i = 0; i < procAlbum.Count; i++) {
+                proc_topTenAlbum_Result topAlbum = procAlbum[i];
+                int AlbumID = topAlbum.idAlbumm;
+                int Votos = topAlbum.total ?? 0;
+                AlbumModel album = ObtenerAlbum(AlbumID);
+                if (album.artist != null) {
+                    if(i == 0) {//Top One
+                        albumCover1.ImageUrl = album.cover_medium;
+                        lblAlbumName1.Text = album.title;
+                        lblAlbumArtist1.Text = album.artist.name;
+                        btnRateAlbum1.Text = "♥ " + Votos;
+                    } else {
+                        if (i == 1) {//Numero d o s xd
+                            albumCover2.ImageUrl = album.cover_medium;
+                            lblAlbumName2.Text = album.title;
+                            lblAlbumArtist2.Text = album.artist.name;
+                            btnRateAlbum2.Text = "♥ " + Votos;
+                        } else {
+                            if (i == 2) {//tres
+                                albumCover3.ImageUrl = album.cover_medium;
+                                lblAlbumName3.Text = album.title;
+                                lblAlbumArtist3.Text = album.artist.name;
+                                btnRateAlbum3.Text = "♥ " + Votos;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+            foreach (proc_topTenAlbum_Result current in procAlbum) {
+                Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
             }
         }
 
@@ -71,6 +110,13 @@ namespace Naver_Music_Web {
             Data track = new Data();
             track = aPIDeezer.GetTrack(ID);
             return track;
+        }
+
+        protected AlbumModel ObtenerAlbum(int ID) {
+            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+            AlbumModel album = new AlbumModel();
+            album = aPIDeezer.GetAlbum(ID);
+            return album;
         }
 
         protected void btnDiario_Click(object sender, EventArgs e) {

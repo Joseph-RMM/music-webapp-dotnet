@@ -12,8 +12,8 @@
     </div>
     <h2>Canciones</h2>
     <div class="wrapper-top3">
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-one">
+        <div class="wrapper-top top-one">
+            <div class="wrapper-topimages top-one-bg">
                 <img src="assets/Rank1.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblSName1" runat="server" Text="Canción" CssClass="lblName"></asp:Label>
@@ -23,8 +23,8 @@
             </div>
             <asp:Button ID="btnRateSong1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-two">
+        <div class="wrapper-top top-two">
+            <div class="wrapper-topimages top-two-bg">
                 <img src="assets/Rank2.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblSName2" runat="server" Text="Canción" CssClass="lblName"></asp:Label>
@@ -34,8 +34,8 @@
             </div>
             <asp:Button ID="btnRateSong2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-three">
+        <div class="wrapper-top top-three">
+            <div class="wrapper-topimages top-three-bg">
                 <img src="assets/Rank3.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblSName3" runat="server" Text="Canción" CssClass="lblName"></asp:Label>
@@ -52,8 +52,8 @@
     </div>
     <h2>Álbumes</h2>
     <div class="wrapper-top3">
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-one">
+        <div class="wrapper-top top-one">
+            <div class="wrapper-topimages top-one-bg">
                 <img src="assets/Rank1.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblAlbumName1" runat="server" Text="Álbum" CssClass="lblName"></asp:Label>
@@ -63,8 +63,8 @@
             </div>
             <asp:Button ID="btnRateAlbum1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-two">
+        <div class="wrapper-top top-two">
+            <div class="wrapper-topimages top-two-bg">
                 <img src="assets/Rank2.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblAlbumName2" runat="server" Text="Álbum" CssClass="lblName"></asp:Label>
@@ -74,8 +74,8 @@
             </div>
             <asp:Button ID="btnRateAlbum2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-three">
+        <div class="wrapper-top top-three">
+            <div class="wrapper-topimages top-three-bg">
                 <img src="assets/Rank3.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblAlbumName3" runat="server" Text="Canción" CssClass="lblName"></asp:Label>
@@ -92,8 +92,8 @@
     </div>
     <h2>Artistas</h2>
      <div class="wrapper-top3">
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-one">
+        <div class="wrapper-top top-one">
+            <div class="wrapper-topimages top-one-bg">
                 <img src="assets/Rank1.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName1" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
@@ -102,8 +102,8 @@
             </div>
             <asp:Button ID="btnRateArtist1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-two">
+        <div class="wrapper-top top-two">
+            <div class="wrapper-topimages top-two-bg">
                 <img src="assets/Rank2.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName2" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
@@ -112,8 +112,8 @@
             </div>
             <asp:Button ID="btnRateArtist2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
-        <div class="wrapper-top">
-            <div class="wrapper-topimages top-three">
+        <div class="wrapper-top top-three">
+            <div class="wrapper-topimages top-three-bg">
                 <img src="assets/Rank3.png" class="img-top" />
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName3" runat="server" Text="Artista" CssClass="lblName"></asp:Label>

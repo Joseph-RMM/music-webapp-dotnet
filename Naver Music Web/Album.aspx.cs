@@ -109,7 +109,7 @@ namespace Naver_Music_Web {
             VotoController votoController = new VotoController();
             DateTime fecha = DateTime.Now;
             int albumID = (int)Session["albumViewID"];
-            bool voto = votoController.proc_VotarCancion(albumID, iduser, fecha);
+            bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
         }
     }
 }
