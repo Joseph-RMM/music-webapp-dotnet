@@ -36,9 +36,9 @@ namespace LogicaNaverMusic.Controllers
         }
 
         /*PROCEDURE PARA INSERTAR VOTO ALBUM*/
-        public bool proc_VotarALBUM(int idalbum, int iduser, DateTime fecha)
+        public bool proc_VotarAlbum(int idalbum, int iduser, DateTime fecha)
         {
-            modldb.proc_VotarALBUM(idalbum, iduser, fecha);
+            modldb.proc_VotarAlbum(idalbum, iduser, fecha);
             return true;
         }
     }

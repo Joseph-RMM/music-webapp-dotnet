@@ -84,23 +84,6 @@ namespace LogicaNaverMusic.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_topTenTracks_Result>("proc_topTenTracks");
         }
     
-        public virtual int proc_VotarALBUM(Nullable<int> idAlbum, Nullable<int> idUser, Nullable<System.DateTime> fecha)
-        {
-            var idAlbumParameter = idAlbum.HasValue ?
-                new ObjectParameter("idAlbum", idAlbum) :
-                new ObjectParameter("idAlbum", typeof(int));
-    
-            var idUserParameter = idUser.HasValue ?
-                new ObjectParameter("idUser", idUser) :
-                new ObjectParameter("idUser", typeof(int));
-    
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("fecha", fecha) :
-                new ObjectParameter("fecha", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarALBUM", idAlbumParameter, idUserParameter, fechaParameter);
-        }
-    
         public virtual int proc_VotarCancion(Nullable<int> idCancion, Nullable<int> idUser, Nullable<System.DateTime> fecha)
         {
             var idCancionParameter = idCancion.HasValue ?
@@ -142,6 +125,23 @@ namespace LogicaNaverMusic.BaseDatos
                 new ObjectParameter("fecha", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarArtista", idArtistaParameter, idUserParameter, fechaParameter);
+        }
+    
+        public virtual int proc_VotarAlbum(Nullable<int> idAlbum, Nullable<int> idUser, Nullable<System.DateTime> fecha)
+        {
+            var idAlbumParameter = idAlbum.HasValue ?
+                new ObjectParameter("idAlbum", idAlbum) :
+                new ObjectParameter("idAlbum", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarAlbum", idAlbumParameter, idUserParameter, fechaParameter);
         }
     }
 }

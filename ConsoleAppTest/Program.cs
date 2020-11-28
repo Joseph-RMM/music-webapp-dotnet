@@ -41,7 +41,7 @@ namespace ConsoleAppTest
                 Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
                     "4 para buscar album\n 5 para buscar artista\n 6 para ver top ten tracks\n " +
                     "7 para ver top ten artistas\n 8 para ver top ten album\n 9 ver rank semanal tracks\n " +
-                    "17 ver rank mensual tracks\n 11 consulta votos de user por dia\n " +
+                    "17 ver rank mensual tracks\n 11 consulta votos de user por dia\n 12 votar por cancion\n" +
                     "13 votar por artista\n 14 votar por album \n 15 ranking semanal artista \n 16 ranking mensual artista \n 100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
 
@@ -366,7 +366,7 @@ namespace ConsoleAppTest
             Console.WriteLine("Ingresa la fecha");
             DateTime fecha = DateTime.Parse(Console.ReadLine());
 
-            bool voto = votoController.proc_VotarALBUM(idalbum, iduser, fecha);
+            bool voto = votoController.proc_VotarAlbum(idalbum, iduser, fecha);
 
             if (voto)
             {
