@@ -8,7 +8,7 @@ using LogicaNaverMusic.BaseDatos;
 
 namespace LogicaNaverMusic.Controllers
 {
-    class CancionController
+    public class CancionController
     {
         private NaverMusicBDEntitiesAWS1 modelDb = new NaverMusicBDEntitiesAWS1();
         public void VoteTrack(int idTrack, int idUser, DateTime date)
@@ -25,6 +25,7 @@ namespace LogicaNaverMusic.Controllers
 
         public void AddTrackToFav(int idTrack, int idUser)
         {
+
             FavCancion favCancion = new FavCancion();
 
             favCancion.idCancion = idTrack;
