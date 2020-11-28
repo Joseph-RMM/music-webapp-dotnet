@@ -71,12 +71,12 @@ namespace Naver_Music_Web {
         }
 
         public System.Drawing.Image RedimencionarImg(System.Drawing.Image image, int Alto) {
-            double Ratio = (double)Alto / image.Height;
+            /*double Ratio = (double)Alto / image.Height;
             int newAncho = (int)(image.Width * Ratio);
-            int newAlto = (int)(image.Height * Ratio);
-            var resized = new Bitmap(newAncho, newAlto);
+            int newAlto = (int)(image.Height * Ratio);*/
+            var resized = new Bitmap(Alto,Alto);
             var drawer = Graphics.FromImage(resized);
-            drawer.DrawImage(image, 0, 0, newAncho, newAlto);
+            drawer.DrawImage(image, 0, 0, Alto,Alto);
             return resized;
         }
     }

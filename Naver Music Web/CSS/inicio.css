@@ -45,6 +45,7 @@ h1 {
 .mobileUserImg {
     width: 4em;
     display: none;
+    border-radius: 50%;
 }
 
 
