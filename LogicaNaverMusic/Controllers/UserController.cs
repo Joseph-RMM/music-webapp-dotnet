@@ -117,5 +117,21 @@ namespace LogicaNaverMusic.Controllers
 
             return favoritesAlbums;
         }
+
+        public List<int> GetFavoritesArtist(int idUser)
+        {
+            List<int> favoritesArtist = new List<int>();
+
+            IEnumerable<int> lst = from u in modelDb.FavArtista
+                                   where u.idUser == idUser
+                                   select u.idArtista;
+
+            if (lst != null)
+            {
+                favoritesArtist = lst.ToList();
+            }
+
+            return favoritesArtist;
+        }
     }
 }
