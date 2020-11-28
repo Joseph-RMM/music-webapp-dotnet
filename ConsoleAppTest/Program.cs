@@ -64,7 +64,8 @@ namespace ConsoleAppTest
                                     "17 agregar cancion a favoritos\n   " +
                                     "18 para agregar artista a favoritos\n   " +
                                     "19 para agregar album a favoritos\n   " +
-                                    "23 para obtener canciones favoritar de usuario\n" +
+                                    "23 para obtener canciones favoritar de usuario\n   " +
+                                    "24 para obtener albumes favoritos de usuario\n" +
                                     "SALIR\n   " +
                                     "100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
@@ -139,6 +140,9 @@ namespace ConsoleAppTest
                         break;
                     case 23:
                         GetFavoritesTracks();
+                        break;
+                    case 24:
+                        GetFavoritesAlbums();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -540,6 +544,24 @@ namespace ConsoleAppTest
             Console.WriteLine("FAVORITES TRACKS");
 
             foreach (int current in favoritesTracks)
+            {
+                Console.WriteLine(current + "\n");
+            }
+        }
+
+        static void GetFavoritesAlbums()
+        {
+            UserController userController = new UserController();
+
+            Console.WriteLine("Insertar ID Usuario");
+
+            int idUsuario = int.Parse(Console.ReadLine());
+
+            List<int> favoritesAlbums = userController.GetFavoritesAlbums(idUsuario);
+
+            Console.WriteLine("FAVORITES ALBUMS");
+
+            foreach (int current in favoritesAlbums)
             {
                 Console.WriteLine(current + "\n");
             }
