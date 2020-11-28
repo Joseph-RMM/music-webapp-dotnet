@@ -18,6 +18,7 @@
             <asp:ListItem Value="M">Masculino</asp:ListItem>
             <asp:ListItem Value="F">Femenino</asp:ListItem>
         </asp:RadioButtonList>
+        <asp:CheckBox ID="chbAuto" runat="server" Text="Recordarme" CssClass="CheckBox" />
         <asp:Label ID="lblInfo" runat="server" Text="" CssClass="lblInfo" ></asp:Label>
         <asp:Button ID="btnRegistrar" runat="server" Text="Registrarme" CssClass="btn foot" OnClick="btnRegistrar_Click"/>
     </div>

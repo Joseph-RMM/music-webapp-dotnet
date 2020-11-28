@@ -63,6 +63,6 @@
         
     </div>
         <br /> <br />
-        <asp:Button ID="btnCerrarSesión" runat="server" Text="Cerrar Sesión" CssClass="btn"></asp:Button>
+        <asp:Button ID="btnCerrarSesión" runat="server" Text="Cerrar Sesión" CssClass="btn" OnClick="btnCerrarSesión_Click"></asp:Button>
 
 </asp:Content>
