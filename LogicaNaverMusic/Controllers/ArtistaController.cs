@@ -38,5 +38,21 @@ namespace LogicaNaverMusic.Controllers
         {
 
         }
+
+        public int GetVotesOfArtist(int idArtist)
+        {
+            int votos = 0;
+
+            var artist = (from d in modelDb.Artista
+                         where d.idArtista == idArtist
+                         select d).FirstOrDefault<Artista>();
+
+            if (artist != null)
+            {
+                votos = artist.Votos_GeneralesAr;
+            }
+
+            return votos;
+        }
     }
 }
