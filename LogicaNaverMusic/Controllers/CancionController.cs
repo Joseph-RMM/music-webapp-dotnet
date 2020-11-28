@@ -38,5 +38,21 @@ namespace LogicaNaverMusic.Controllers
         {
 
         }
+
+        public int GetVotesOfTrack(int idTrack)
+        {
+            int votos = 0;
+
+            var track = (from d in modelDb.Cancion
+                        where d.idCancion == idTrack
+                         select d).FirstOrDefault<Cancion>();
+
+            if (track != null)
+            {
+                votos = track.Votos_GeneralesC;
+            }
+
+            return votos;
+        }
     }
 }

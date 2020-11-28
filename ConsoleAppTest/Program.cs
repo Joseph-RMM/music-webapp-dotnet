@@ -44,7 +44,8 @@ namespace ConsoleAppTest
                     "10 ver rank mensual tracks\n 11 consulta votos de user por dia\n 12 votar por cancion\n" +
                     "13 votar por artista\n 14 votar por album \n 15 ranking semanal artista \n " +
                     "16 ranking mensual artista \n 100 para salir \n 17 agregar cancion a favoritos \n" +
-                    "18 para agregar artista a favoritos \n 19 para agregar album a favoritos");
+                    "18 para agregar artista a favoritos \n 19 para agregar album a favoritos \n" +
+                    "20 obtener votos por cancion");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -105,6 +106,9 @@ namespace ConsoleAppTest
                         break;
                     case 19:
                         AddAlbumToFavorites();
+                        break;
+                    case 20:
+                        GetVotesByTrack();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -458,6 +462,17 @@ namespace ConsoleAppTest
             albumController.AddAlbumToFav(idUser, isAlbum);
 
             Console.WriteLine("Album " + isAlbum + " agregada a favoritos");
+        }
+
+        static void GetVotesByTrack()
+        {
+            CancionController cancionController = new CancionController();
+
+            Console.WriteLine("Inserte ID Cancion");
+            int idTrack = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("La cancion " + idTrack + " tiene " + cancionController.GetVotesOfTrack(idTrack) + 
+                " votos");
         }
     }
 }
