@@ -184,7 +184,7 @@ namespace Naver_Music_Web {
                 voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
             } else {
                 if (type == 2) { //Album
-                    voto = votoController.proc_VotarALBUM(SongID, iduser, fecha);
+                    voto = votoController.proc_VotarAlbum(SongID, iduser, fecha);
                 } else {
                     if (type == 3) { //Artista
                         voto = votoController.proc_VotarArtista(SongID, iduser, fecha);

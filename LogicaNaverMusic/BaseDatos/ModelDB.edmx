@@ -185,6 +185,11 @@
         <Function Name="proc_topTenAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenArtists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_VotarAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAlbum" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+        </Function>
         <Function Name="proc_VotarArtista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idArtista" Type="int" Mode="In" />
           <Parameter Name="idUser" Type="int" Mode="In" />
@@ -381,11 +386,6 @@
           <FunctionImport Name="proc_topTenAlbum" ReturnType="Collection(NaverMusicBDModel.proc_topTenAlbum_Result)" />
           <FunctionImport Name="proc_topTenArtists" ReturnType="Collection(NaverMusicBDModel.proc_topTenArtists_Result)" />
           <FunctionImport Name="proc_topTenTracks" ReturnType="Collection(NaverMusicBDModel.proc_topTenTracks_Result)" />
-          <FunctionImport Name="proc_VotarALBUM">
-            <Parameter Name="idAlbum" Mode="In" Type="Int32" />
-            <Parameter Name="idUser" Mode="In" Type="Int32" />
-            <Parameter Name="fecha" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="proc_VotarCancion">
             <Parameter Name="idCancion" Mode="In" Type="Int32" />
             <Parameter Name="idUser" Mode="In" Type="Int32" />
@@ -411,6 +411,11 @@
           </FunctionImport>
           <FunctionImport Name="proc_VotarArtista">
             <Parameter Name="idArtista" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="proc_VotarAlbum">
+            <Parameter Name="idAlbum" Mode="In" Type="Int32" />
             <Parameter Name="idUser" Mode="In" Type="Int32" />
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -710,6 +715,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_VotarArtista" FunctionName="NaverMusicBDModel.Store.proc_VotarArtista" />
+          <FunctionImportMapping FunctionImportName="proc_VotarAlbum" FunctionName="NaverMusicBDModel.Store.proc_VotarAlbum" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
