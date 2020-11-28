@@ -83,6 +83,10 @@
     background-color: var(--btn-hover);
 }
 
+tr:hover {
+    background-color: var(--btn-hover);
+}
+
 .hidden {
     display:none;
 }

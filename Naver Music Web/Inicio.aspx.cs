@@ -47,9 +47,9 @@ namespace Naver_Music_Web {
             AlbumModel album = new AlbumModel();
             album = aPIDeezer.GetAlbum(178519722);
             panelMusic.Controls.Add(createAlbumItem(album));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/0019510a69161d7af10e25493dc6d544/250x250-000000-80-0-0.jpg", "POP/STARS", "K/DA", VotesDB, true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA", VotesDB2, false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/a06a47a2b7c23bdba9099053302cb35c/250x250-000000-80-0-0.jpg", "MORE", "K/DA", VotesDB3, false, 3, "https://cdns-preview-4.dzcdn.net/stream/c-4c33ef6d1f98034b98cc9a5688d29bd0-2.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/0019510a69161d7af10e25493dc6d544/250x250-000000-80-0-0.jpg", "POP/STARS", "K/DA",  true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA",  false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
+            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/a06a47a2b7c23bdba9099053302cb35c/250x250-000000-80-0-0.jpg", "MORE", "K/DA",  false, 3, "https://cdns-preview-4.dzcdn.net/stream/c-4c33ef6d1f98034b98cc9a5688d29bd0-2.mp3"));
         }
 
 
@@ -72,10 +72,10 @@ namespace Naver_Music_Web {
         }
 
         public Panel createMusicItem(Data song) {
-            return createMusicItem(song.album.cover_medium, song.title_short, song.artist.name, int.Parse(song.rank), false, int.Parse(song.id), song.preview);
+            return createMusicItem(song.album.cover_medium, song.title_short, song.artist.name, false, int.Parse(song.id), song.preview);
         }
 
-        public Panel createMusicItem(string URLCover, string SongName, string ArtistName, int Votos, bool isFav, int SongID, string MP3) {
+        public Panel createMusicItem(string URLCover, string SongName, string ArtistName, bool isFav, int SongID, string MP3) {
 
             Panel wrapper = new Panel {
                 CssClass = "wrappermusicitem"
@@ -104,6 +104,9 @@ namespace Naver_Music_Web {
             };
             //Crear el wrapper-ratefav
             Panel ratefav = new Panel { CssClass = "wrapper-ratefav" };
+            //Obtener votos
+            CancionController cancionController = new CancionController();
+            int Votos = cancionController.GetVotesOfTrack(SongID);
             Button btnRate = new Button {
                 CssClass = "btn rate",
                 Text = "♥ " + Votos

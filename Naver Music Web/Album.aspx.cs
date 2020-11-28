@@ -42,7 +42,10 @@ namespace Naver_Music_Web {
 
                 //Llenar el gridView
                 foreach (Data current in album.tracks.data) {
-                    canciones.Rows.Add(current.id,current.preview,current.title,current.artist.name, "♥ 121", "☆");
+                    //Obtener votos
+                    CancionController cancionController = new CancionController();
+                    int Votos = cancionController.GetVotesOfTrack(int.Parse(current.id));
+                    canciones.Rows.Add(current.id,current.preview,current.title,current.artist.name, "♥ "+Votos, "☆");
                 }
 
                 dataSet.Tables.Add(canciones);
@@ -95,6 +98,7 @@ namespace Naver_Music_Web {
                     int SongID = int.Parse(row.Cells[0].Text);
                     bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
                     gvCanciones.Columns[0].Visible = false;
+                    Response.Redirect("Album.aspx");
                 }
             }
         }
