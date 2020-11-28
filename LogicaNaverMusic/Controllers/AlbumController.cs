@@ -8,7 +8,7 @@ using LogicaNaverMusic.BaseDatos;
 
 namespace LogicaNaverMusic.Controllers
 {
-    class AlbumController
+    public class AlbumController
     {
         NaverMusicBDEntitiesAWS1 modelDb = new NaverMusicBDEntitiesAWS1();
 
@@ -26,12 +26,12 @@ namespace LogicaNaverMusic.Controllers
 
         public void AddAlbumToFav(int idUser, int idAlbum)
         {
-            VotoAlbum votoAlbum = new VotoAlbum();
+            FavAlbum favAlbum = new FavAlbum();
 
-            votoAlbum.idAlbumm = idAlbum;
-            votoAlbum.idUser = idUser;
+            favAlbum.idAlbum = idAlbum;
+            favAlbum.idUser = idUser;
 
-            modelDb.VotoAlbum.Add(votoAlbum);
+            modelDb.FavAlbum.Add(favAlbum);
             modelDb.SaveChanges();
         }
     }

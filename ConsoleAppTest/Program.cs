@@ -41,8 +41,10 @@ namespace ConsoleAppTest
                 Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
                     "4 para buscar album\n 5 para buscar artista\n 6 para ver top ten tracks\n " +
                     "7 para ver top ten artistas\n 8 para ver top ten album\n 9 ver rank semanal tracks\n " +
-                    "17 ver rank mensual tracks\n 11 consulta votos de user por dia\n 12 votar por cancion\n" +
-                    "13 votar por artista\n 14 votar por album \n 15 ranking semanal artista \n 16 ranking mensual artista \n 100 para salir");
+                    "10 ver rank mensual tracks\n 11 consulta votos de user por dia\n 12 votar por cancion\n" +
+                    "13 votar por artista\n 14 votar por album \n 15 ranking semanal artista \n " +
+                    "16 ranking mensual artista \n 100 para salir \n 17 agregar cancion a favoritos \n" +
+                    "18 para agregar artista a favoritos \n 19 para agregar album a favoritos");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -74,7 +76,7 @@ namespace ConsoleAppTest
                     case 9:
                         RankingSemanalTracks();
                         break;
-                    case 17:
+                    case 10:
                         RankingMensualTracks();
                         break;
                     case 11:
@@ -94,6 +96,15 @@ namespace ConsoleAppTest
                         break;
                     case 16:
                         RankingMensualArtistas();
+                        break;
+                    case 17:
+                        AddTrackToFavorites();
+                        break;
+                    case 18:
+                        AddArtistToFavorites();
+                        break;
+                    case 19:
+                        AddAlbumToFavorites();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -400,6 +411,53 @@ namespace ConsoleAppTest
             {
                 Console.WriteLine(current.idArtist + " " + current.total + "\n");
             }
+        }
+
+        static void AddTrackToFavorites()
+        {
+            CancionController cancionController = new CancionController();
+
+            Console.WriteLine("Insertar ID Cancion");
+            int idTrack = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Insertar ID Ususario");
+            int idUser = int.Parse(Console.ReadLine());
+
+            cancionController.AddTrackToFav(idTrack, idUser);
+
+            Console.WriteLine("Cancion " + idTrack + " agregada a favoritos");
+
+        }
+
+        static void AddArtistToFavorites()
+        {
+            ArtistaController artistaController = new ArtistaController();
+
+            Console.WriteLine("Insertar ID Artista");
+            int idArtist = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Insertar ID Ususario");
+            int idUser = int.Parse(Console.ReadLine());
+
+            artistaController.AddArtistToFav(idUser, idArtist);
+
+            Console.WriteLine("Artista " + idArtist + " agregada a favoritos");
+
+        }
+
+        static void AddAlbumToFavorites()
+        {
+            AlbumController albumController = new AlbumController();
+
+            Console.WriteLine("Insertar ID Album");
+            int isAlbum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Insertar ID Ususario");
+            int idUser = int.Parse(Console.ReadLine());
+
+            albumController.AddAlbumToFav(idUser, isAlbum);
+
+            Console.WriteLine("Album " + isAlbum + " agregada a favoritos");
         }
     }
 }

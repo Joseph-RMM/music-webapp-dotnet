@@ -8,7 +8,7 @@ using LogicaNaverMusic.BaseDatos;
 
 namespace LogicaNaverMusic.Controllers
 {
-    class ArtistaController
+    public class ArtistaController
     {
         NaverMusicBDEntitiesAWS1 modelDb = new NaverMusicBDEntitiesAWS1();
         public void VoteArtist(int idUser, int idArtist, DateTime date)
