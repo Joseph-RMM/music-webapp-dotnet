@@ -5,11 +5,30 @@
     --btn-hover
     --txt-color
 */
+.wrapper-volver {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}
+
+.backTxt {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 0px 1em;
+    cursor: pointer;
+    color: var(--txt-color);
+}
+
+.backTxt:hover {
+    font-size: 1.4em;
+}
+
 .wrapper-albumTittle{
     width: 90%;
     padding: 10px 5%;
     display: flex;
     flex-direction: row;
+    margin-bottom: 1em;
 }
 
 .albumCover {
