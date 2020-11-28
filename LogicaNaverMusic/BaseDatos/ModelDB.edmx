@@ -69,10 +69,10 @@
           <Property Name="nombre" Type="varchar" MaxLength="100" />
           <Property Name="apellido" Type="varchar" MaxLength="100" />
           <Property Name="sexo" Type="varchar" MaxLength="10" />
+          <Property Name="foto" Type="varchar(max)" />
           <Property Name="estatus" Type="varchar" MaxLength="50" />
           <Property Name="correo" Type="varchar" MaxLength="50" />
           <Property Name="telefono" Type="varchar" MaxLength="50" />
-          <Property Name="foto" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VotoAlbum">
           <Key>
@@ -101,7 +101,7 @@
           <Property Name="idUser" Type="int" />
           <Property Name="fecha" Type="date" />
         </EntityType>
-        <Association Name="FK__FavAlbum__idUser__5DCAEF64">
+        <Association Name="FK__FavAlbum__idUser__46E78A0C">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavAlbum" Type="Self.FavAlbum" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavArtist__idUse__5AEE82B9">
+        <Association Name="FK__FavArtist__idUse__440B1D61">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavArtista" Type="Self.FavArtista" Multiplicity="*" />
           <ReferentialConstraint>
@@ -125,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FavCancio__idUse__5812160E">
+        <Association Name="FK__FavCancio__idUse__412EB0B6">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
           <End Role="FavCancion" Type="Self.FavCancion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,11 +185,6 @@
         <Function Name="proc_topTenAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenArtists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_VotarALBUM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idAlbum" Type="int" Mode="In" />
-          <Parameter Name="idUser" Type="int" Mode="In" />
-          <Parameter Name="fecha" Type="date" Mode="In" />
-        </Function>
         <Function Name="proc_VotarArtista" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idArtista" Type="int" Mode="In" />
           <Parameter Name="idUser" Type="int" Mode="In" />
@@ -211,15 +206,15 @@
           <EntitySet Name="VotoAlbum" EntityType="Self.VotoAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoArtista" EntityType="Self.VotoArtista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotoCancion" EntityType="Self.VotoCancion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__FavAlbum__idUser__5DCAEF64" Association="Self.FK__FavAlbum__idUser__5DCAEF64">
+          <AssociationSet Name="FK__FavAlbum__idUser__46E78A0C" Association="Self.FK__FavAlbum__idUser__46E78A0C">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavAlbum" EntitySet="FavAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavArtist__idUse__5AEE82B9" Association="Self.FK__FavArtist__idUse__5AEE82B9">
+          <AssociationSet Name="FK__FavArtist__idUse__440B1D61" Association="Self.FK__FavArtist__idUse__440B1D61">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavArtista" EntitySet="FavArtista" />
           </AssociationSet>
-          <AssociationSet Name="FK__FavCancio__idUse__5812160E" Association="Self.FK__FavCancio__idUse__5812160E">
+          <AssociationSet Name="FK__FavCancio__idUse__412EB0B6" Association="Self.FK__FavCancio__idUse__412EB0B6">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="FavCancion" EntitySet="FavCancion" />
           </AssociationSet>
@@ -280,7 +275,7 @@
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -679,7 +674,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_VotarALBUM" FunctionName="NaverMusicBDModel.Store.proc_VotarALBUM" />
           <FunctionImportMapping FunctionImportName="proc_VotarCancion" FunctionName="NaverMusicBDModel.Store.proc_VotarCancion" />
           <EntitySetMapping Name="FavAlbum">
             <EntityTypeMapping TypeName="NaverMusicBDModel.FavAlbum">
