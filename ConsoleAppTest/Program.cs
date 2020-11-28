@@ -45,7 +45,8 @@ namespace ConsoleAppTest
                     "13 votar por artista\n 14 votar por album \n 15 ranking semanal artista \n " +
                     "16 ranking mensual artista \n 100 para salir \n 17 agregar cancion a favoritos \n" +
                     "18 para agregar artista a favoritos \n 19 para agregar album a favoritos \n" +
-                    "20 obtener votos por cancion \n 21 obtener votos por artista");
+                    "20 obtener votos por cancion \n 21 obtener votos por artista \n " +
+                    "22 obtener votos por album");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
@@ -112,6 +113,9 @@ namespace ConsoleAppTest
                         break;
                     case 21:
                         GetVotesByArtist();
+                        break;
+                    case 22:
+                        GetVotesByAlbum();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -486,6 +490,17 @@ namespace ConsoleAppTest
             int idArtist = int.Parse(Console.ReadLine());
 
             Console.WriteLine("El artista " + idArtist + " tiene " + artistaController.GetVotesOfArtist(idArtist) +
+                " votos");
+        }
+
+        static void GetVotesByAlbum()
+        {
+            AlbumController albumController = new AlbumController();
+
+            Console.WriteLine("Inserte ID Album");
+            int idAlbum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("El album " + idAlbum + " tiene " + albumController.GetVotesOfAlbum(idAlbum) +
                 " votos");
         }
     }

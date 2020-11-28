@@ -34,5 +34,21 @@ namespace LogicaNaverMusic.Controllers
             modelDb.FavAlbum.Add(favAlbum);
             modelDb.SaveChanges();
         }
+
+        public int GetVotesOfAlbum(int idAlbum)
+        {
+            int votos = 0;
+
+            var album = (from d in modelDb.Album
+                          where d.idAlbum == idAlbum
+                          select d).FirstOrDefault<Album>();
+
+            if (album != null)
+            {
+                votos = album.Votos_GeneralesAl;
+            }
+
+            return votos;
+        }
     }
 }
