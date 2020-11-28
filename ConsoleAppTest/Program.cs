@@ -38,15 +38,34 @@ namespace ConsoleAppTest
 
             while (eleccion != 10)
             {
-                Console.WriteLine("1 para busqueda\n 2 para crear usuario\n 3 para buscar cancion\n " +
-                    "4 para buscar album\n 5 para buscar artista\n 6 para ver top ten tracks\n " +
-                    "7 para ver top ten artistas\n 8 para ver top ten album\n 9 ver rank semanal tracks\n " +
-                    "10 ver rank mensual tracks\n 11 consulta votos de user por dia\n 12 votar por cancion\n" +
-                    "13 votar por artista\n 14 votar por album \n 15 ranking semanal artista \n " +
-                    "16 ranking mensual artista \n 100 para salir \n 17 agregar cancion a favoritos \n" +
-                    "18 para agregar artista a favoritos \n 19 para agregar album a favoritos \n" +
-                    "20 obtener votos por cancion \n 21 obtener votos por artista \n " +
-                    "22 obtener votos por album");
+                Console.WriteLine("BUSQUEDAS\n   " +
+                                    "1 para busqueda general\n   " +
+                                    "3 para buscar cancion\n   " +
+                                    "4 para buscar album\n   " +
+                                    "5 para buscar artista\n\n" +
+                                  "TOP TEN\n   " +
+                                    "6 para ver top ten tracks\n   " +
+                                    "7 para ver top ten artistas\n   " +
+                                    "8 para ver top ten album\n\n" +
+                                  "RANKINS\n   " +
+                                    "9 ver rank semanal tracks\n   " +
+                                    "10 ver rank mensual tracks\n   " +
+                                    "15 ranking semanal artista \n   " +
+                                    "16 ranking mensual artista \n\n" +
+                                  "VOTOS\n   " +
+                                    "11 consulta votos de user por dia\n   " +
+                                    "12 votar por cancion\n   " +
+                                    "13 votar por artista\n   " +
+                                    "14 votar por album \n   " +
+                                    "20 obtener votos por cancion\n   " +
+                                    "21 obtener votos por artista\n   " +
+                                    "22 obtener votos por album\n\n" +
+                                  "FAVORITOS\n   " +
+                                    "17 agregar cancion a favoritos\n   " +
+                                    "18 para agregar artista a favoritos\n   " +
+                                    "19 para agregar album a favoritos\n\n" +
+                                    "SALIR\n   " +
+                                    "100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
 
                 switch (eleccion)
