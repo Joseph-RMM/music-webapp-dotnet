@@ -48,18 +48,21 @@ namespace Naver_Music_Web {
                         lblSName1.Text = song.title_short;
                         lblSArtist1.Text = song.artist.name;
                         btnRateSong1.Text = "♥ " + Votos;
+                        btnRateSong1.Click += delegate (object bs1, EventArgs es1) { RateClick(bs1, es1, songID, 1); };
                     } else {
                         if (i == 1) {//Top Two
                             playSong2.ImageUrl = song.album.cover_medium;
                             lblSName2.Text = song.title_short;
                             lblSArtist2.Text = song.artist.name;
                             btnRateSong2.Text = "♥ " + Votos;
+                            btnRateSong2.Click += delegate (object bs2, EventArgs es2) { RateClick(bs2, es2, songID, 1); };
                         } else {
                             if (i == 2) {//Top Tres xd
                                 playSong3.ImageUrl = song.album.cover_medium;
                                 lblSName3.Text = song.title_short;
                                 lblSArtist3.Text = song.artist.name;
                                 btnRateSong3.Text = "♥ " + Votos;
+                                btnRateSong3.Click += delegate (object bs3, EventArgs es3) { RateClick(bs3, es3, songID, 1); };
                             }
                         }
                     }
@@ -80,18 +83,21 @@ namespace Naver_Music_Web {
                         lblAlbumName1.Text = album.title;
                         lblAlbumArtist1.Text = album.artist.name;
                         btnRateAlbum1.Text = "♥ " + Votos;
+                        btnRateAlbum1.Click += delegate (object ba1, EventArgs ea1) { RateClick(ba1, ea1, AlbumID, 2); };
                     } else {
                         if (i == 1) {//Numero d o s xd
                             albumCover2.ImageUrl = album.cover_medium;
                             lblAlbumName2.Text = album.title;
                             lblAlbumArtist2.Text = album.artist.name;
                             btnRateAlbum2.Text = "♥ " + Votos;
+                            btnRateAlbum2.Click += delegate (object ba2, EventArgs ea2) { RateClick(ba2, ea2, AlbumID, 2); };
                         } else {
                             if (i == 2) {//tres
                                 albumCover3.ImageUrl = album.cover_medium;
                                 lblAlbumName3.Text = album.title;
                                 lblAlbumArtist3.Text = album.artist.name;
                                 btnRateAlbum3.Text = "♥ " + Votos;
+                                btnRateAlbum3.Click += delegate (object ba3, EventArgs ea3) { RateClick(ba3, ea3, AlbumID, 2); };
                             }
                         }
                     }
@@ -149,6 +155,29 @@ namespace Naver_Music_Web {
             btnSemanal.CssClass = "btn-menu";
             btnMensual.CssClass = "btn-menu";
             btnGeneral.CssClass = "btn-selected";
+        }
+
+
+        protected void RateClick(object sender, EventArgs e, int SongID, int type) {
+            Button btnRate = (Button)sender;
+
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int iduser = currentUser.idUsuario;
+            VotoController votoController = new VotoController();
+            DateTime fecha = DateTime.Now;
+            bool voto = false;
+            if (type == 1) { //Cancion
+                voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+            } else {
+                if (type == 2) { //Album
+                    voto = votoController.proc_VotarAlbum(SongID, iduser, fecha);
+                } else {
+                    if (type == 3) { //Artista
+                        voto = votoController.proc_VotarArtista(SongID, iduser, fecha);
+                    }
+                }
+            }
+            Response.Redirect("Rankings.aspx");
         }
     }
 }

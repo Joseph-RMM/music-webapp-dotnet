@@ -130,10 +130,10 @@ namespace Naver_Music_Web {
 
 
         public Panel createAlbumItem(AlbumModel album) {
-            return createAlbumItem(album.cover_medium, album.title, album.artist.name, 123, false, int.Parse(album.id));
+            return createAlbumItem(album.cover_medium, album.title, album.artist.name, false, int.Parse(album.id));
         }
 
-        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, int Votes, bool isFav, int AlbumID) {
+        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, bool isFav, int AlbumID) {
             Panel wrapper = new Panel {
                 CssClass = "wrappermusicitem"
             }; 
@@ -152,9 +152,10 @@ namespace Naver_Music_Web {
             };
             //Crear el wrapper-ratefav
             Panel ratefav = new Panel { CssClass = "wrapper-ratefav" };
+            AlbumController albumController = new AlbumController();
             Button btnRate = new Button {
                 CssClass = "btn rate",
-                Text = "♥ " + Votes
+                Text = "♥ " + albumController.GetVotesOfAlbum(AlbumID)
             };
             btnRate.Click += delegate (object sender, EventArgs e) { RateClick(sender, e, AlbumID, 2); };
             Button btnFav = new Button {

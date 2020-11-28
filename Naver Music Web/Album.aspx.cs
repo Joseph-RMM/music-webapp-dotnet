@@ -24,11 +24,13 @@ namespace Naver_Music_Web {
                 AlbumModel album = new AlbumModel();
                 album = aPIDeezer.GetAlbum(albumID);
 
+                AlbumController albumController = new AlbumController();
 
                 //Lenar la información
                 lblTitulo.Text = album.title;
                 lblArtistas.Text = album.artist.name;
                 albumCover.ImageUrl = album.cover_big;
+                btnVote.Text = "♥ "+albumController.GetVotesOfAlbum(albumID);
 
                 //Crear un gridView para las canciones
                 DataSet dataSet = new DataSet();
@@ -110,6 +112,7 @@ namespace Naver_Music_Web {
             DateTime fecha = DateTime.Now;
             int albumID = (int)Session["albumViewID"];
             bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
+            Response.Redirect("Album.aspx");
         }
     }
 }
