@@ -157,22 +157,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Button btnRateSong3;
         
         /// <summary>
-        /// btnvermascanciones control.
+        /// gvCanciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnvermascanciones;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView gvCanciones;
         
         /// <summary>
         /// lblAlbumName1 control.

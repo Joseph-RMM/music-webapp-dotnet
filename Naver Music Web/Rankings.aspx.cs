@@ -8,6 +8,7 @@ using LogicaNaverMusic;
 using LogicaNaverMusic.Controllers; //CONTROLADORES DE LOGICA NEGOCIOS
 using LogicaNaverMusic.Models;      //MODELOS DE LOGICA NEGOCIOS     
 using LogicaNaverMusic.BaseDatos;   //MODELOS DE BASE DE DATOS   
+using System.Data;
 
 namespace Naver_Music_Web {
     public partial class Rankings : System.Web.UI.Page {
@@ -37,6 +38,16 @@ namespace Naver_Music_Web {
 
             List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();
             proc = rankingController.TopTenTrack();
+            //Crear un gridView para las canciones que no son top 3
+            DataSet dataSetSongs = new DataSet();
+            DataTable canciones = new DataTable("Songs");
+            canciones.Columns.Add("id");
+            canciones.Columns.Add("preview");
+            canciones.Columns.Add("cover");
+            canciones.Columns.Add("puesto");
+            canciones.Columns.Add("tittle");
+            canciones.Columns.Add("artist");
+            canciones.Columns.Add("votes");
             for (int i = 0; i < proc.Count; i++) {
                 proc_topTenTracks_Result topSong = proc[i];
                 int songID = topSong.idTrack;
@@ -66,12 +77,23 @@ namespace Naver_Music_Web {
                                 lblSArtist3.Text = song.artist.name;
                                 btnRateSong3.Text = "♥ " + Votos;
                                 btnRateSong3.Click += delegate (object bs3, EventArgs es3) { RateClick(bs3, es3, songID, 1); };
+                            } else { //El resto
+                                //Llenar el gridView
+                                if (i < 10) {
+                                    int Puesto = i + 1;
+                                    canciones.Rows.Add(song.id, song.preview, song.album.cover_small, Puesto, song.title, song.artist.name, "♥ " + Votos);
+                                }
                             }
                         }
                     }
                 }
             }
-
+            dataSetSongs.Tables.Add(canciones);
+            gvCanciones.DataSource = dataSetSongs;
+            gvCanciones.DataBind();
+            gvCanciones.Columns[0].Visible = false;
+            gvCanciones.Columns[1].Visible = false;
+            gvCanciones.Columns[2].Visible = false;
             //Top 10 Albums
             List<proc_topTenAlbum_Result> procAlbum = new List<proc_topTenAlbum_Result>();
             procAlbum = rankingController.TopTenAlbum();
@@ -237,6 +259,39 @@ namespace Naver_Music_Web {
             miniaturaCover.ImageUrl = URLCover;
             miniNombreCancion.Text = SongName;
             miniNombreArtista.Text = ArtistName;
+        }
+
+
+        protected void gvCanciones_RowCommand(object sender, GridViewCommandEventArgs e) {
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "Play") {
+                gvCanciones.Columns[1].Visible = true;
+                gvCanciones.Columns[2].Visible = true;
+                gvCanciones.DataBind();
+
+                //Reference the GridView Row.
+                GridViewRow row = gvCanciones.Rows[rowIndex];
+                miniaturaCover.ImageUrl = row.Cells[2].Text;
+                miniNombreCancion.Text = row.Cells[4].Text;
+                miniNombreArtista.Text = row.Cells[5].Text;
+                Reproductor.Src = row.Cells[1].Text;
+                gvCanciones.Columns[1].Visible = false;
+                gvCanciones.Columns[2].Visible = false;
+            } else {
+                if (e.CommandName == "Vote") {
+                    gvCanciones.Columns[0].Visible = true;
+                    gvCanciones.DataBind();
+                    UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+                    int iduser = currentUser.idUsuario;
+                    VotoController votoController = new VotoController();
+                    DateTime fecha = DateTime.Now;
+                    GridViewRow row = gvCanciones.Rows[rowIndex];
+                    int SongID = int.Parse(row.Cells[0].Text);
+                    bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+                    gvCanciones.Columns[0].Visible = false;
+                    Response.Redirect("Rankings.aspx");
+                }
+            }
         }
     }
 }

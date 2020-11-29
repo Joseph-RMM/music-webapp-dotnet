@@ -128,6 +128,57 @@
 .btn-vermas:hover {
     background-color: var(--btn-hover);
 }
+
+.nobtn {
+    outline: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.4em;
+    border: none;
+}
+
+.btnVote {
+    color: var(--rate);
+}
+
+.btnFav {
+    color: var(--fav);
+}
+
+.gvHead {
+    background-color: var(--bg-oscuro);
+    color: white;
+}
+
+.gvbtn {
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.gv {
+    width: 100%;
+}
+
+.btnPlay {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin: 0px;
+    background-color: var(--bg-oscuro);
+    color: white;
+}
+
+    .btnPlay:hover {
+        background-color: var(--btn-hover);
+    }
+
+tr:hover {
+    background-color: var(--btn-hover);
+}
+
+.hidden {
+    display: none;
+}
 /*small*/
 @media only screen and (max-width: 600px) {
     .wrapper-top3 {
