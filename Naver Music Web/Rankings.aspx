@@ -47,9 +47,35 @@
         </div>
     </div>
     <div class="ver-mas">
-        <asp:Button ID="btnvermascanciones" runat="server" Text="Ver más" CssClass="btn-vermas" />
-        <asp:GridView ID="GridView1" runat="server" CssClass="gridView" ></asp:GridView>
+        <asp:GridView runat="server" ID="gvCanciones" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvCanciones_RowCommand">
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="id" />
+                <asp:BoundField DataField="preview" HeaderText="MP3" />
+                <asp:BoundField DataField="cover" HeaderText="Cover" />
+                <asp:BoundField DataField="puesto" HeaderText="#">
+                <ControlStyle CssClass="gvData" />
+                <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Canción" DataField="tittle">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Artista(s)" DataField="artist">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:ButtonField ButtonType="Button" HeaderText="♥" DataTextField="votes" CommandName="Vote">
+                    <ControlStyle CssClass="btnVote nobtn gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+                <asp:ButtonField ButtonType="Button" HeaderText="►" Text="►" CommandName="Play">
+                    <ControlStyle CssClass="btnPlay gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
     </div>
+    <br />
     <h2>Álbumes</h2>
     <div class="wrapper-top3">
         <div class="wrapper-top top-one">
@@ -59,7 +85,7 @@
                     <asp:Label ID="lblAlbumName1" runat="server" Text="Álbum" CssClass="lblName"></asp:Label>
                     <asp:Label ID="lblAlbumArtist1" runat="server" Text="Artista" CssClass="lblArtist" ></asp:Label>
                 </div>
-                <asp:Image ID="albumCover1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="albumCoverT1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateAlbum1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
@@ -70,7 +96,7 @@
                     <asp:Label ID="lblAlbumName2" runat="server" Text="Álbum" CssClass="lblName"></asp:Label>
                     <asp:Label ID="lblAlbumArtist2" runat="server" Text="Artista" CssClass="lblArtist" ></asp:Label>
                 </div>
-                <asp:Image ID="albumCover2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="albumCoverT2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateAlbum2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
@@ -81,15 +107,39 @@
                     <asp:Label ID="lblAlbumName3" runat="server" Text="Canción" CssClass="lblName"></asp:Label>
                     <asp:Label ID="lblAlbumArtist3" runat="server" Text="Artista" CssClass="lblArtist" ></asp:Label>
                 </div>
-                <asp:Image ID="albumCover3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="albumCoverT3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateAlbum3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>
     </div>
     <div class="ver-mas">
-        <asp:Button ID="btnVerMasAlbums" runat="server" Text="Ver más" CssClass="btn-vermas" />
-        <asp:GridView ID="GridView2" runat="server" CssClass="gridView" ></asp:GridView>
+        <asp:GridView runat="server" ID="gvAlbums" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvAlbums_RowCommand">
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="id" />
+                <asp:BoundField DataField="puesto" HeaderText="#">
+                <ControlStyle CssClass="gvData" />
+                <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Álbum" DataField="tittle">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Artista(s)" DataField="artist">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:ButtonField ButtonType="Button" HeaderText="♥" DataTextField="votes" CommandName="Vote">
+                    <ControlStyle CssClass="btnVote nobtn gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+                <asp:ButtonField ButtonType="Button" HeaderText="Ver" Text="Ver" CommandName="View">
+                    <ControlStyle CssClass="btnPlay gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
     </div>
+    <br />
     <h2>Artistas</h2>
      <div class="wrapper-top3">
         <div class="wrapper-top top-one">
@@ -98,7 +148,7 @@
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName1" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
                 </div>
-                <asp:Image ID="artistPhoto1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="artistFoto1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateArtist1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
@@ -108,7 +158,7 @@
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName2" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
                 </div>
-                <asp:Image ID="artistPhoto2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="artistFoto2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateArtist2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
@@ -118,13 +168,44 @@
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName3" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
                 </div>
-                <asp:Image ID="artistPhoto3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="artistFoto3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateArtist3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>
     </div>
     <div class="ver-mas">
-        <asp:Button ID="btnVerMasArtistas" runat="server" Text="Ver más" CssClass="btn-vermas" />
-        <asp:GridView ID="GridView3" runat="server" CssClass="gridView" ></asp:GridView>
+        <asp:GridView runat="server" ID="gvArtistas" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvArtistas_RowCommand">
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="id" />
+                <asp:BoundField DataField="puesto" HeaderText="#">
+                <ControlStyle CssClass="gvData" />
+                <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Artista" DataField="artist">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:ButtonField ButtonType="Button" HeaderText="♥" DataTextField="votes" CommandName="Vote">
+                    <ControlStyle CssClass="btnVote nobtn gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+                <asp:ButtonField ButtonType="Button" HeaderText="Ver" Text="Ver" CommandName="View">
+                    <ControlStyle CssClass="btnPlay gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
     </div>
+    <br />
+    <br />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="AudioPlayerCPH" runat="server">
+    <div class="wrapper-musicinfo">
+        <asp:Image ID="miniaturaCover" runat="server" CssClass="miniaturaCover" ImageUrl="~/assets/music.png" />
+        <div class="miniwrapper-musicinfo">
+            <asp:Label ID="miniNombreCancion" runat="server" Text="Puedes escuchar" CssClass="miniNombreCancion"></asp:Label>
+            <asp:Label ID="miniNombreArtista" runat="server" Text="hasta 30 segundos" CssClass="miniNombreArtista"></asp:Label>
+        </div>
+    </div>
+    <audio id="Reproductor" src="" controls class="audio-player" autoplay runat="server"></audio>
 </asp:Content>

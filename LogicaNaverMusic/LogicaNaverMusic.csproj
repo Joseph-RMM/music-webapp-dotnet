@@ -84,7 +84,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BaseDatos\proc_AddAlbumToFavorite_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_AddArtistToFavorite_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_AddTracksToFavorite_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\proc_GetVotesByUser_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_RankingDiarioAlbum_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseDatos\proc_RankingDiarioArtistas_Result.cs">
@@ -93,10 +105,16 @@
     <Compile Include="BaseDatos\proc_RankingDiarioTracks_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaseDatos\proc_RankingMensualAlbum_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\proc_RankingMensualArtistas_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseDatos\proc_RankingMensualTracks_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_RankingSemanalAlbum_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseDatos\proc_RankingSemanalArtistas_Result.cs">

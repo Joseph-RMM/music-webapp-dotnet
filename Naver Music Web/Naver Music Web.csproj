@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Album.aspx" />
+    <Content Include="ArtistPage.aspx" />
     <Content Include="assets\background.jpg" />
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
@@ -74,6 +75,7 @@
     <Content Include="assets\Rank2.png" />
     <Content Include="assets\Rank3.png" />
     <Content Include="CSS\Album.css" />
+    <Content Include="CSS\Artist.css" />
     <Content Include="CSS\landing.css" />
     <Content Include="CSS\Rankings.css" />
     <Content Include="CSS\sublanding.css" />
@@ -100,6 +102,13 @@
     </Compile>
     <Compile Include="Album.aspx.designer.cs">
       <DependentUpon>Album.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistPage.aspx.cs">
+      <DependentUpon>ArtistPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArtistPage.aspx.designer.cs">
+      <DependentUpon>ArtistPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

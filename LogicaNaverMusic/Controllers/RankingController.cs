@@ -36,7 +36,30 @@ namespace LogicaNaverMusic.Controllers
             return proc3;
         }
 
-        //----SP´s PARA RANKING SEMANAL Y MENSUAL DE TRACKS----
+        //----SP´s PARA RANKING DIARIO--- 
+        /*PROCEDURE PARA RANKING DIARIO TRACKS */ 
+        List<proc_RankingDiarioTracks_Result> proc8 = new List<proc_RankingDiarioTracks_Result>();
+        public List<proc_RankingDiarioTracks_Result> RankingDiarioTracks()
+        {
+            proc8 = mddb.proc_RankingDiarioTracks().ToList();
+            return proc8;
+        }
+        /*PROCEDURE PARA RANKING DIARIO ARTISTA */
+        List<proc_RankingDiarioArtistas_Result> proc9 = new List<proc_RankingDiarioArtistas_Result>();
+        public List<proc_RankingDiarioArtistas_Result> RankingDiarioArtistas()
+        {
+            proc9 = mddb.proc_RankingDiarioArtistas().ToList();
+            return proc9;
+        }
+        /*PROCEDURE PARA RANKING DIARIO ALBUM */
+        List<proc_RankingDiarioAlbum_Result> proc10 = new List<proc_RankingDiarioAlbum_Result>();
+        public List<proc_RankingDiarioAlbum_Result> RankingDiarioAlbum()
+        {
+            proc10 = mddb.proc_RankingDiarioAlbum().ToList();
+            return proc10;
+        }
+
+        //----SP´s PARA RANKING SEMANAL Y MENSUAL----
 
         /*PROCEDURE PARA RANKING SEMANAL TRACKS*/
         List<proc_RankingSemanalTracks_Result> proc4 = new List<proc_RankingSemanalTracks_Result>();
@@ -68,6 +91,22 @@ namespace LogicaNaverMusic.Controllers
         {
             proc7 = mddb.proc_RankingMensualArtistas().ToList();
             return proc7;
+        }
+
+        /*PROCEDURE PARA RANKING SEMANAL ALBUM */
+        List<proc_RankingSemanalAlbum_Result> proc11 = new List<proc_RankingSemanalAlbum_Result>();
+        public List<proc_RankingSemanalAlbum_Result> RankingSemanalAlbum()
+        {
+            proc11 = mddb.proc_RankingSemanalAlbum().ToList();
+            return proc11;
+        }
+
+        /*PROCEDURE PARA RANKING MENSUAL ALBUM */
+        List<proc_RankingMensualAlbum_Result> proc12 = new List<proc_RankingMensualAlbum_Result>();
+        public List<proc_RankingMensualAlbum_Result> RankingMensualAlbum()
+        {
+            proc12 = mddb.proc_RankingMensualAlbum().ToList(); 
+            return proc12;
         }
     }
 }

@@ -10,14 +10,9 @@
 namespace LogicaNaverMusic.BaseDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class FavAlbum
+    public partial class proc_AddAlbumToFavorite_Result
     {
-        public int idFavAlbum { get; set; }
-        public int idAlbum { get; set; }
-        public int idUser { get; set; }
-    
-        public virtual Usuarios Usuarios { get; set; }
+        public Nullable<int> total { get; set; }
     }
 }
