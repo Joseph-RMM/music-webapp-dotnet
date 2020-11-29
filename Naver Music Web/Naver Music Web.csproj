@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Album.aspx" />
-    <Content Include="Artist.aspx" />
+    <Content Include="ArtistPage.aspx" />
     <Content Include="assets\background.jpg" />
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
@@ -103,12 +103,12 @@
     <Compile Include="Album.aspx.designer.cs">
       <DependentUpon>Album.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Artist.aspx.cs">
-      <DependentUpon>Artist.aspx</DependentUpon>
+    <Compile Include="ArtistPage.aspx.cs">
+      <DependentUpon>ArtistPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Artist.aspx.designer.cs">
-      <DependentUpon>Artist.aspx</DependentUpon>
+    <Compile Include="ArtistPage.aspx.designer.cs">
+      <DependentUpon>ArtistPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

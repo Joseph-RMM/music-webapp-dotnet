@@ -10,7 +10,7 @@
 namespace Naver_Music_Web {
     
     
-    public partial class Artist {
+    public partial class ArtistPage {
         
         /// <summary>
         /// artistImg control.
