@@ -174,8 +174,27 @@
         </div>
     </div>
     <div class="ver-mas">
-        <asp:Button ID="btnVerMasArtistas" runat="server" Text="Ver más" CssClass="btn-vermas" />
-        <asp:GridView ID="GridView3" runat="server" CssClass="gridView" ></asp:GridView>
+        <asp:GridView runat="server" ID="gvArtistas" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvArtistas_RowCommand">
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="id" />
+                <asp:BoundField DataField="puesto" HeaderText="#">
+                <ControlStyle CssClass="gvData" />
+                <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Artista" DataField="artist">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:ButtonField ButtonType="Button" HeaderText="♥" DataTextField="votes" CommandName="Vote">
+                    <ControlStyle CssClass="btnVote nobtn gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+                <asp:ButtonField ButtonType="Button" HeaderText="Ver" Text="Ver" CommandName="View">
+                    <ControlStyle CssClass="btnPlay gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
     </div>
     <br />
     <br />

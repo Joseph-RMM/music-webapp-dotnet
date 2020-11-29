@@ -364,22 +364,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Button btnRateArtist3;
         
         /// <summary>
-        /// btnVerMasArtistas control.
+        /// gvArtistas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerMasArtistas;
-        
-        /// <summary>
-        /// GridView3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView3;
+        protected global::System.Web.UI.WebControls.GridView gvArtistas;
         
         /// <summary>
         /// miniaturaCover control.

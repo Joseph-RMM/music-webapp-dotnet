@@ -156,6 +156,13 @@ namespace Naver_Music_Web {
             //Top 10 Artists
             List<proc_topTenArtists_Result> procArtists = new List<proc_topTenArtists_Result>();
             procArtists = rankingController.TopTenArtists();
+            //Crear un gridView para las canciones que no son top 3
+            DataSet dataSetArtistas = new DataSet();
+            DataTable artistTable = new DataTable("Songs");
+            artistTable.Columns.Add("id");
+            artistTable.Columns.Add("puesto");
+            artistTable.Columns.Add("artist");
+            artistTable.Columns.Add("votes");
             for (int i = 0; i < procArtists.Count; i++) {
                 proc_topTenArtists_Result topArtist = procArtists[i];
                 int ArtistID = topArtist.idArtist;
@@ -182,11 +189,21 @@ namespace Naver_Music_Web {
                                 lblArtistName3.Text = artist.name;
                                 btnRateArtist3.Text = "♥ " + Votes;
                                 btnRateArtist3.Click += delegate (object btn, EventArgs eventArgs) { RateClick(btn, eventArgs, ArtistID, 3); };
+                            } else { //El resto
+                                //Llenar el gridView
+                                if (i < 10) {
+                                    int Puesto = i + 1;
+                                    artistTable.Rows.Add(artist.id, Puesto,artist.name, "♥ " + Votes);
+                                }
                             }
                         }
                     }
                 }
             }
+            dataSetArtistas.Tables.Add(artistTable);
+            gvArtistas.DataSource = dataSetArtistas;
+            gvArtistas.DataBind();
+            gvArtistas.Columns[0].Visible = false;
         }
 
         protected Data ObtenerCancion(int ID) {
@@ -339,6 +356,35 @@ namespace Naver_Music_Web {
                     int AlbumID = int.Parse(row.Cells[0].Text);
                     bool voto = votoController.proc_VotarAlbum(AlbumID, iduser, fecha);
                     gvAlbums.Columns[0].Visible = false;
+                    Response.Redirect("Rankings.aspx");
+                }
+            }
+        }
+
+        protected void gvArtistas_RowCommand(object sender, GridViewCommandEventArgs e) {
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "View") {
+                gvArtistas.Columns[0].Visible = true;
+                gvArtistas.DataBind();
+
+                //Reference the GridView Row.
+                GridViewRow row = gvArtistas.Rows[rowIndex];
+                int ArtistID = int.Parse(row.Cells[0].Text);
+                Session["artistViewID"] = ArtistID;
+                gvArtistas.Columns[0].Visible = false;
+                Response.Redirect("ArtistPage.aspx");
+            } else {
+                if (e.CommandName == "Vote") {
+                    gvArtistas.Columns[0].Visible = true;
+                    gvArtistas.DataBind();
+                    UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+                    int iduser = currentUser.idUsuario;
+                    VotoController votoController = new VotoController();
+                    DateTime fecha = DateTime.Now;
+                    GridViewRow row = gvArtistas.Rows[rowIndex];
+                    int ArtistID = int.Parse(row.Cells[0].Text);
+                    bool voto = votoController.proc_VotarArtista(ArtistID, iduser, fecha);
+                    gvArtistas.Columns[0].Visible = false;
                     Response.Redirect("Rankings.aspx");
                 }
             }
