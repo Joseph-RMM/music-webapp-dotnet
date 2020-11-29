@@ -113,8 +113,31 @@
         </div>
     </div>
     <div class="ver-mas">
-        <asp:Button ID="btnVerMasAlbums" runat="server" Text="Ver más" CssClass="btn-vermas" />
-        <asp:GridView ID="GridView2" runat="server" CssClass="gridView" ></asp:GridView>
+        <asp:GridView runat="server" ID="gvAlbums" CssClass="gv" AutoGenerateColumns="False" OnRowCommand="gvAlbums_RowCommand">
+            <Columns>
+                <asp:BoundField HeaderText="ID" DataField="id" />
+                <asp:BoundField DataField="puesto" HeaderText="#">
+                <ControlStyle CssClass="gvData" />
+                <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Álbum" DataField="tittle">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:BoundField HeaderText="Artista(s)" DataField="artist">
+                    <ControlStyle CssClass="gvData" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:BoundField>
+                <asp:ButtonField ButtonType="Button" HeaderText="♥" DataTextField="votes" CommandName="Vote">
+                    <ControlStyle CssClass="btnVote nobtn gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+                <asp:ButtonField ButtonType="Button" HeaderText="Ver" Text="Ver" CommandName="View">
+                    <ControlStyle CssClass="btnPlay gvbtn" />
+                    <HeaderStyle CssClass="gvHead" />
+                </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
     </div>
     <br />
     <h2>Artistas</h2>
