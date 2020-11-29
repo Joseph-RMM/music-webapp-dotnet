@@ -45,6 +45,7 @@ namespace Naver_Music_Web {
                 if (song.artist != null) {
                     if (i == 0) {//Top One
                         playSong1.ImageUrl = song.album.cover_medium;
+                        playSong1.Click += delegate (object play, ImageClickEventArgs playArgs) { PlayMusic(play, playArgs, song.preview, song.album.cover_small, song.title_short, song.artist.name); };
                         lblSName1.Text = song.title_short;
                         lblSArtist1.Text = song.artist.name;
                         btnRateSong1.Text = "♥ " + Votos;
@@ -52,6 +53,7 @@ namespace Naver_Music_Web {
                     } else {
                         if (i == 1) {//Top Two
                             playSong2.ImageUrl = song.album.cover_medium;
+                            playSong2.Click += delegate (object play, ImageClickEventArgs playArgs) { PlayMusic(play, playArgs, song.preview, song.album.cover_small, song.title_short, song.artist.name); };
                             lblSName2.Text = song.title_short;
                             lblSArtist2.Text = song.artist.name;
                             btnRateSong2.Text = "♥ " + Votos;
@@ -59,6 +61,7 @@ namespace Naver_Music_Web {
                         } else {
                             if (i == 2) {//Top Tres xd
                                 playSong3.ImageUrl = song.album.cover_medium;
+                                playSong3.Click += delegate (object play, ImageClickEventArgs playArgs) { PlayMusic(play, playArgs, song.preview, song.album.cover_small, song.title_short, song.artist.name); };
                                 lblSName3.Text = song.title_short;
                                 lblSArtist3.Text = song.artist.name;
                                 btnRateSong3.Text = "♥ " + Votos;
@@ -227,6 +230,13 @@ namespace Naver_Music_Web {
         protected void ViewArtist(object sender, EventArgs e, int ArtistID) {
             Session["artistViewID"] = ArtistID;
             Response.Redirect("ArtistPage.aspx");
+        }
+
+        protected void PlayMusic(object sender, ImageClickEventArgs e, string MP3URL, string URLCover, string SongName, string ArtistName) {
+            Reproductor.Src = MP3URL;
+            miniaturaCover.ImageUrl = URLCover;
+            miniNombreCancion.Text = SongName;
+            miniNombreArtista.Text = ArtistName;
         }
     }
 }

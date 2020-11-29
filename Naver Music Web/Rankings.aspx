@@ -50,6 +50,7 @@
         <asp:Button ID="btnvermascanciones" runat="server" Text="Ver más" CssClass="btn-vermas" />
         <asp:GridView ID="GridView1" runat="server" CssClass="gridView" ></asp:GridView>
     </div>
+    <br />
     <h2>Álbumes</h2>
     <div class="wrapper-top3">
         <div class="wrapper-top top-one">
@@ -90,6 +91,7 @@
         <asp:Button ID="btnVerMasAlbums" runat="server" Text="Ver más" CssClass="btn-vermas" />
         <asp:GridView ID="GridView2" runat="server" CssClass="gridView" ></asp:GridView>
     </div>
+    <br />
     <h2>Artistas</h2>
      <div class="wrapper-top3">
         <div class="wrapper-top top-one">
@@ -127,4 +129,16 @@
         <asp:Button ID="btnVerMasArtistas" runat="server" Text="Ver más" CssClass="btn-vermas" />
         <asp:GridView ID="GridView3" runat="server" CssClass="gridView" ></asp:GridView>
     </div>
+    <br />
+    <br />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="AudioPlayerCPH" runat="server">
+    <div class="wrapper-musicinfo">
+        <asp:Image ID="miniaturaCover" runat="server" CssClass="miniaturaCover" ImageUrl="~/assets/music.png" />
+        <div class="miniwrapper-musicinfo">
+            <asp:Label ID="miniNombreCancion" runat="server" Text="Puedes escuchar" CssClass="miniNombreCancion"></asp:Label>
+            <asp:Label ID="miniNombreArtista" runat="server" Text="hasta 30 segundos" CssClass="miniNombreArtista"></asp:Label>
+        </div>
+    </div>
+    <audio id="Reproductor" src="" controls class="audio-player" autoplay runat="server"></audio>
 </asp:Content>
