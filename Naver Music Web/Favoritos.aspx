@@ -10,6 +10,8 @@
     <asp:Panel ID="panelAlbumes" runat="server" CssClass="wrappercanciones"></asp:Panel>
     <h2>Artistas</h2>
     <asp:Panel ID="panelArtistas" runat="server" CssClass="wrappercanciones"></asp:Panel>
+    <br />
+    <br />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="AudioPlayerCPH" runat="server">
     <div class="wrapper-musicinfo">

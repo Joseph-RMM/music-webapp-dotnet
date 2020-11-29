@@ -48,7 +48,7 @@ namespace Naver_Music_Web {
                 favAlbums.Clear();
 
                 //Artistas favoritos
-                List<Artist> favArtists = GetFavArtists(UserID);
+                List<LogicaNaverMusic.Models.Artist> favArtists = GetFavArtists(UserID);
                 if (favArtists.Count > 0) {
                     //Añadir items 
 
@@ -91,10 +91,10 @@ namespace Naver_Music_Web {
             return favList;
         }
 
-        public List<Artist> GetFavArtists(int IDUsuario) {
+        public List<LogicaNaverMusic.Models.Artist> GetFavArtists(int IDUsuario) {
             UserController userController = new UserController();
             List<int> favoritesArtist = userController.GetFavoritesArtist(IDUsuario);
-            List<Artist> favList = new List<Artist>();
+            List<LogicaNaverMusic.Models.Artist> favList = new List<LogicaNaverMusic.Models.Artist>();
             foreach (int currentID in favoritesArtist) {
                 //Buscar artista
                 APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS

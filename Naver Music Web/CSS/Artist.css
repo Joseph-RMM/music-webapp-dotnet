@@ -1,0 +1,150 @@
+﻿.wrapper-volver {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}
+
+.backTxt {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 0px 1em;
+    cursor: pointer;
+    color: var(--txt-color);
+}
+
+    .backTxt:hover {
+        font-size: 1.4em;
+    }
+
+.wrapper-albumTittle {
+    width: 90%;
+    padding: 10px 5%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+}
+
+.artistImg {
+    width: 30%;
+    max-width: 250px;
+}
+
+.wrapper-albumInfo {
+    display: flex;
+    flex-direction: column;
+    margin: auto 1em;
+}
+
+.lblTitulo {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+
+.wrapper-votefav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 0.5em;
+}
+
+.nobtn {
+    outline: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.4em;
+    border: none;
+}
+
+.btnVote {
+    color: var(--rate);
+}
+
+.btnFav {
+    color: var(--fav);
+}
+
+
+.wrappercanciones {
+    background-color: var(--bg-aunmasclaro);
+    display: inline-flex;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+    .wrappercanciones::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+.wrappercancionesbody::-webkit-scrollbar-track {
+    background-color: var(--bg-claro);
+}
+
+.wrappercanciones::-webkit-scrollbar-thumb {
+    background-color: var(--bg-oscuro);
+    border-radius: 1rem;
+}
+
+.wrappermusicitem {
+    width: 200px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper-playmusic {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgcovermusic, .imgplaymusic, .imgcoveralbum {
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+
+.songname {
+    width: 80%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.artistname {
+    width: 80%;
+    text-align: center;
+}
+
+.wrapper-ratefav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rate {
+    color: var(--rate);
+}
+
+.fav {
+    color: var(--fav);
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+    .rate:hover, .fav:hover {
+        font-size: 1.3em;
+    }
+
+.lblPanelInfo {
+    margin: 2em 1em;
+    width: 100%;
+    text-align: center;
+    font-size: 1.3em;
+}
