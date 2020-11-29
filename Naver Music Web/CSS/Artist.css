@@ -40,6 +40,13 @@
     font-weight: bolder;
 }
 
+.btn {
+    outline: none;
+    background: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2em;
+}
 
 .wrapper-votefav {
     display: flex;
