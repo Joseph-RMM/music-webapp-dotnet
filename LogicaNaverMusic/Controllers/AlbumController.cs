@@ -24,15 +24,17 @@ namespace LogicaNaverMusic.Controllers
             modelDb.SaveChanges();
         }
 
-        public void AddAlbumToFav(int idUser, int idAlbum)
+        public proc_AddAlbumToFavorite_Result AddAlbumToFav(int idUser, int idAlbum)
         {
             FavAlbum favAlbum = new FavAlbum();
 
             favAlbum.idAlbum = idAlbum;
             favAlbum.idUser = idUser;
 
-            modelDb.FavAlbum.Add(favAlbum);
+            proc_AddAlbumToFavorite_Result add = new proc_AddAlbumToFavorite_Result();
+            add = modelDb.proc_AddAlbumToFavorite(idAlbum, idUser).FirstOrDefault();
             modelDb.SaveChanges();
+            return add;
         }
 
         public int GetVotesOfAlbum(int idAlbum)

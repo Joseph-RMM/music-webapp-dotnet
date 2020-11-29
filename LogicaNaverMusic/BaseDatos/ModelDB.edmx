@@ -173,13 +173,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="proc_AddAlbumToFavorite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAlbum" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+        </Function>
+        <Function Name="proc_AddArtistToFavorite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idArtist" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+        </Function>
+        <Function Name="proc_AddTracksToFavorite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTrack" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+        </Function>
         <Function Name="proc_GetVotesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idUser" Type="int" Mode="In" />
         </Function>
+        <Function Name="proc_RankingDiarioAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingDiarioArtistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingDiarioTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_RankingMensualAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingMensualArtistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingMensualTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_RankingSemanalAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingSemanalArtistas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_RankingSemanalTracks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_topTenAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -419,6 +434,21 @@
             <Parameter Name="idUser" Mode="In" Type="Int32" />
             <Parameter Name="fecha" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="proc_AddAlbumToFavorite" ReturnType="Collection(NaverMusicBDModel.proc_AddAlbumToFavorite_Result)">
+            <Parameter Name="idAlbum" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_AddArtistToFavorite" ReturnType="Collection(NaverMusicBDModel.proc_AddArtistToFavorite_Result)">
+            <Parameter Name="idArtist" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_AddTracksToFavorite" ReturnType="Collection(NaverMusicBDModel.proc_AddTracksToFavorite_Result)">
+            <Parameter Name="idTrack" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_RankingDiarioAlbum" ReturnType="Collection(NaverMusicBDModel.proc_RankingDiarioAlbum_Result)" />
+          <FunctionImport Name="proc_RankingMensualAlbum" ReturnType="Collection(NaverMusicBDModel.proc_RankingMensualAlbum_Result)" />
+          <FunctionImport Name="proc_RankingSemanalAlbum" ReturnType="Collection(NaverMusicBDModel.proc_RankingSemanalAlbum_Result)" />
         </EntityContainer>
         <ComplexType Name="proc_RankingDiarioArtistas_Result">
           <Property Type="Int32" Name="idArtist" Nullable="true" />
@@ -520,6 +550,27 @@
           </ReferentialConstraint>
         </Association>
         <ComplexType Name="proc_GetVotesByUser_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_RankingDiarioAlbum_Result">
+          <Property Type="Int32" Name="idAlbumm" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_RankingMensualAlbum_Result">
+          <Property Type="Int32" Name="idAlbumm" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_RankingSemanalAlbum_Result">
+          <Property Type="Int32" Name="idAlbumm" Nullable="false" />
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_AddAlbumToFavorite_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_AddArtistToFavorite_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_AddTracksToFavorite_Result">
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
       </Schema>
@@ -716,6 +767,51 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_VotarArtista" FunctionName="NaverMusicBDModel.Store.proc_VotarArtista" />
           <FunctionImportMapping FunctionImportName="proc_VotarAlbum" FunctionName="NaverMusicBDModel.Store.proc_VotarAlbum" />
+          <FunctionImportMapping FunctionImportName="proc_AddAlbumToFavorite" FunctionName="NaverMusicBDModel.Store.proc_AddAlbumToFavorite" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_AddAlbumToFavorite_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_AddArtistToFavorite" FunctionName="NaverMusicBDModel.Store.proc_AddArtistToFavorite" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_AddArtistToFavorite_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_AddTracksToFavorite" FunctionName="NaverMusicBDModel.Store.proc_AddTracksToFavorite" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_AddTracksToFavorite_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingDiarioAlbum" FunctionName="NaverMusicBDModel.Store.proc_RankingDiarioAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingDiarioAlbum_Result">
+                <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingMensualAlbum" FunctionName="NaverMusicBDModel.Store.proc_RankingMensualAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingMensualAlbum_Result">
+                <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_RankingSemanalAlbum" FunctionName="NaverMusicBDModel.Store.proc_RankingSemanalAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingSemanalAlbum_Result">
+                <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

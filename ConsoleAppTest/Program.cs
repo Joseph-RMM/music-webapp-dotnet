@@ -48,10 +48,15 @@ namespace ConsoleAppTest
                                     "7 para ver top ten artistas\n   " +
                                     "8 para ver top ten album\n\n" +
                                   "RANKINS\n   " +
+                                    "31 ver rank diario tracks\n   " +
+                                    "32 ver rank diario artista\n   " +
+                                    "33 ver rank diario album\n   " +
                                     "9 ver rank semanal tracks\n   " +
                                     "10 ver rank mensual tracks\n   " +
                                     "15 ranking semanal artista \n   " +
-                                    "16 ranking mensual artista \n\n" +
+                                    "16 ranking mensual artista \n   " +
+                                    "34 ranking semanal album \n   " +
+                                    "35 ranking mensual album \n\n   " +
                                   "VOTOS\n   " +
                                     "11 consulta votos de user por dia\n   " +
                                     "12 votar por cancion\n   " +
@@ -159,6 +164,21 @@ namespace ConsoleAppTest
                         break;
                     case 28:
                         VerifyFavoriteArtist();
+                        break;
+                    case 31:
+                        RankingDiarioTracks();
+                        break;
+                    case 32:
+                        RankingDiarioArtistas();
+                        break;
+                    case 33:
+                        RankingDiarioAlbum();
+                        break;
+                    case 34:
+                        RankingSemanalAlbum();
+                        break;
+                    case 35:
+                        RankingMensualAlbum();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -658,6 +678,71 @@ namespace ConsoleAppTest
             else
             {
                 Console.WriteLine("Artista " + idArtist + " no ha sido agregado a favoritos");
+            }
+        }
+
+        static void RankingDiarioTracks()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_RankingDiarioTracks_Result> proc = new List<proc_RankingDiarioTracks_Result>();
+            proc = rankingController.RankingDiarioTracks();
+
+            foreach (proc_RankingDiarioTracks_Result current in proc)
+            {
+                Console.WriteLine(current.idTrack + " " + current.total + "\n");
+            }
+        }
+
+        static void RankingDiarioArtistas()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_RankingDiarioArtistas_Result> proc = new List<proc_RankingDiarioArtistas_Result>();
+            proc = rankingController.RankingDiarioArtistas();
+
+            foreach (proc_RankingDiarioArtistas_Result current in proc)
+            {
+                Console.WriteLine(current.idArtist + " " + current.total + "\n");
+            }
+        }
+
+        static void RankingDiarioAlbum()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_RankingDiarioAlbum_Result> proc = new List<proc_RankingDiarioAlbum_Result>();
+            proc = rankingController.RankingDiarioAlbum();
+
+            foreach (proc_RankingDiarioAlbum_Result current in proc)
+            {
+                Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
+            }
+        }
+
+        static void RankingSemanalAlbum()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_RankingSemanalAlbum_Result> proc = new List<proc_RankingSemanalAlbum_Result>();
+            proc = rankingController.RankingSemanalAlbum();
+
+            foreach (proc_RankingSemanalAlbum_Result current in proc)
+            {
+                Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
+            }
+        }
+
+        static void RankingMensualAlbum()
+        {
+            RankingController rankingController = new RankingController();
+
+            List<proc_RankingMensualAlbum_Result> proc = new List<proc_RankingMensualAlbum_Result>();
+            proc = rankingController.RankingMensualAlbum();
+
+            foreach (proc_RankingMensualAlbum_Result current in proc)
+            {
+                Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
             }
         }
     }

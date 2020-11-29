@@ -143,5 +143,59 @@ namespace LogicaNaverMusic.BaseDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VotarAlbum", idAlbumParameter, idUserParameter, fechaParameter);
         }
+    
+        public virtual ObjectResult<proc_AddAlbumToFavorite_Result> proc_AddAlbumToFavorite(Nullable<int> idAlbum, Nullable<int> idUser)
+        {
+            var idAlbumParameter = idAlbum.HasValue ?
+                new ObjectParameter("idAlbum", idAlbum) :
+                new ObjectParameter("idAlbum", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_AddAlbumToFavorite_Result>("proc_AddAlbumToFavorite", idAlbumParameter, idUserParameter);
+        }
+    
+        public virtual ObjectResult<proc_AddArtistToFavorite_Result> proc_AddArtistToFavorite(Nullable<int> idArtist, Nullable<int> idUser)
+        {
+            var idArtistParameter = idArtist.HasValue ?
+                new ObjectParameter("idArtist", idArtist) :
+                new ObjectParameter("idArtist", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_AddArtistToFavorite_Result>("proc_AddArtistToFavorite", idArtistParameter, idUserParameter);
+        }
+    
+        public virtual ObjectResult<proc_AddTracksToFavorite_Result> proc_AddTracksToFavorite(Nullable<int> idTrack, Nullable<int> idUser)
+        {
+            var idTrackParameter = idTrack.HasValue ?
+                new ObjectParameter("idTrack", idTrack) :
+                new ObjectParameter("idTrack", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_AddTracksToFavorite_Result>("proc_AddTracksToFavorite", idTrackParameter, idUserParameter);
+        }
+    
+        public virtual ObjectResult<proc_RankingDiarioAlbum_Result> proc_RankingDiarioAlbum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingDiarioAlbum_Result>("proc_RankingDiarioAlbum");
+        }
+    
+        public virtual ObjectResult<proc_RankingMensualAlbum_Result> proc_RankingMensualAlbum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingMensualAlbum_Result>("proc_RankingMensualAlbum");
+        }
+    
+        public virtual ObjectResult<proc_RankingSemanalAlbum_Result> proc_RankingSemanalAlbum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalAlbum_Result>("proc_RankingSemanalAlbum");
+        }
     }
 }
