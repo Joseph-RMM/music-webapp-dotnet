@@ -27,29 +27,29 @@ namespace Naver_Music_Web {
                 try {
                     mobileUserImg.ImageUrl = currentUser.foto;
                 } catch (Exception exception) {
-                   mobileUserImg.ImageUrl = "/assets/nouser.png";
+                    mobileUserImg.ImageUrl = "/assets/nouser.png";
                 }
-            }
-            List<Data> data = (List<Data>)Session["busqueda"];
-            panelResultados.Controls.Clear();
-            if (data != null) {
-                List<AlbumModel> listaAlbums = albumsInData(data);
-                foreach (AlbumModel albumModel  in listaAlbums) {
-                    panelResultAlbums.Controls.Add(createAlbumItem(albumModel));
+                List<Data> data = (List<Data>)Session["busqueda"];
+                panelResultados.Controls.Clear();
+                if (data != null) {
+                    List<AlbumModel> listaAlbums = albumsInData(data);
+                    foreach (AlbumModel albumModel in listaAlbums) {
+                        panelResultAlbums.Controls.Add(createAlbumItem(albumModel));
+                    }
+                    foreach (Data song in data) {
+                        panelResultados.Controls.Add(createMusicItem(song));
+                    }
+                    divBuscar.Visible = true;
                 }
-                foreach (Data song in data) {
-                    panelResultados.Controls.Add(createMusicItem(song));
-                }
-                divBuscar.Visible = true;
-            }
-            //Simulacion de consulta a la API y llenado del panel
-            APIDeezerController aPIDeezer = new APIDeezerController();
-            AlbumModel album = new AlbumModel();
-            album = aPIDeezer.GetAlbum(178519722);
-            panelMusic.Controls.Add(createAlbumItem(album));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/0019510a69161d7af10e25493dc6d544/250x250-000000-80-0-0.jpg", "POP/STARS", "K/DA",  true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA",  false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
-            panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/a06a47a2b7c23bdba9099053302cb35c/250x250-000000-80-0-0.jpg", "MORE", "K/DA",  false, 3, "https://cdns-preview-4.dzcdn.net/stream/c-4c33ef6d1f98034b98cc9a5688d29bd0-2.mp3"));
+                //Simulacion de consulta a la API y llenado del panel
+                APIDeezerController aPIDeezer = new APIDeezerController();
+                AlbumModel album = new AlbumModel();
+                album = aPIDeezer.GetAlbum(178519722);
+                panelMusic.Controls.Add(createAlbumItem(album));
+                panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/0019510a69161d7af10e25493dc6d544/250x250-000000-80-0-0.jpg", "POP/STARS", "K/DA", true, 1, "https://cdns-preview-d.dzcdn.net/stream/c-d7aac13016a945052b62f48d33edfc55-5.mp3"));
+                panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/3eddd7a427f3b4debe681e88e0811298/250x250-000000-80-0-0.jpg", "THE BADDEST", "K/DA", false, 2, "https://cdns-preview-7.dzcdn.net/stream/c-7e6dd799aaedf824a6594afb7d6d0b51-3.mp3"));
+                panelMusic.Controls.Add(createMusicItem("https://cdns-images.dzcdn.net/images/cover/a06a47a2b7c23bdba9099053302cb35c/250x250-000000-80-0-0.jpg", "MORE", "K/DA", false, 3, "https://cdns-preview-4.dzcdn.net/stream/c-4c33ef6d1f98034b98cc9a5688d29bd0-2.mp3"));
+            } 
         }
 
 
@@ -111,10 +111,14 @@ namespace Naver_Music_Web {
                 CssClass = "btn rate",
                 Text = "♥ " + Votos
             };
-            btnRate.Click += delegate (object sender, EventArgs e) { RateClick(sender, e, SongID,1); };
+            btnRate.Click += delegate (object sender, EventArgs e) { RateClick(sender, e, SongID, 1); };
+            //Verificar Favorito
+            UserController userController = new UserController();
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int idUser = currentUser.idUsuario;
             Button btnFav = new Button {
                 CssClass = "btn fav",
-                Text = isFav ? "★" : "✩"
+                Text = userController.VerifyFavoriteTrack(idUser, SongID) ? "★" : "✩"
             };
             btnFav.Click += delegate (object sender, EventArgs e) { FavClick(sender, e, SongID,1); };
             //Añadirlos al mini div
@@ -130,10 +134,10 @@ namespace Naver_Music_Web {
 
 
         public Panel createAlbumItem(AlbumModel album) {
-            return createAlbumItem(album.cover_medium, album.title, album.artist.name, false, int.Parse(album.id));
+            return createAlbumItem(album.cover_medium, album.title, album.artist.name, int.Parse(album.id));
         }
 
-        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, bool isFav, int AlbumID) {
+        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, int AlbumID) {
             Panel wrapper = new Panel {
                 CssClass = "wrappermusicitem"
             }; 
@@ -158,9 +162,13 @@ namespace Naver_Music_Web {
                 Text = "♥ " + albumController.GetVotesOfAlbum(AlbumID)
             };
             btnRate.Click += delegate (object sender, EventArgs e) { RateClick(sender, e, AlbumID, 2); };
+            //Verificar Favoritos
+            UserController userController = new UserController();
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int idUser = currentUser.idUsuario;
             Button btnFav = new Button {
                 CssClass = "btn fav",
-                Text = isFav ? "★" : "✩"
+                Text = (userController.VerifyFavoriteAlbum(idUser, AlbumID)) ? "★" : "✩"
             };
             btnFav.Click += delegate (object sender, EventArgs e) { FavClick(sender, e, AlbumID, 2); };
             //Añadirlos al mini div
@@ -200,8 +208,27 @@ namespace Naver_Music_Web {
         }
 
         public void FavClick(object sender, EventArgs e, int SongID, int type) {
-            Button btnFav = (Button)sender;
-            btnFav.Text = (btnFav.Text == "✩") ? "★" : "✩";
+            //Verificar Favorito
+            UserController userController = new UserController();
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int idUser = currentUser.idUsuario;
+            bool isFav = userController.VerifyFavoriteTrack(idUser, SongID);
+            if (type == 1) {
+                CancionController cancionController = new CancionController();
+                if (!isFav) { //Add
+                    cancionController.AddTrackToFav(SongID, idUser);
+                } else { //Remove
+
+                }
+            } 
+            if (type == 2) {
+                AlbumController albumController = new AlbumController();
+                if (!isFav) { //Add
+                    albumController.AddAlbumToFav(idUser, SongID);
+                } else { //Remove
+
+                }
+            }
             Response.Redirect("Inicio.aspx");
         }
 
