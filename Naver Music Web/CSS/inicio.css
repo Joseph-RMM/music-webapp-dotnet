@@ -129,6 +129,7 @@ h1 {
 .artistname {
     width: 80%;
     text-align: center;
+    color: var(--txt-color);
 }
 
 .wrapper-ratefav {

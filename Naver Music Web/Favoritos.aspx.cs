@@ -51,7 +51,9 @@ namespace Naver_Music_Web {
                 List<Artist> favArtists = GetFavArtists(UserID);
                 if (favArtists.Count > 0) {
                     //Añadir items 
-
+                    foreach (Artist artist in favArtists) {
+                        panelArtistas.Controls.Add(createArtistItem(artist));
+                    }
                 } else {
                     Label info = new Label {
                         Text = "Añade tus artistas favoritos dando clic en ✩ para encontrarlos aquí",
@@ -105,10 +107,10 @@ namespace Naver_Music_Web {
 
         //METODOS DE DIBUJO
         public Panel createMusicItem(Data song) {
-            return createMusicItem(song.album.cover_medium, song.title_short, song.artist.name, false, int.Parse(song.id), song.preview);
+            return createMusicItem(song.album.cover_medium, song.title_short, song.artist.name,int.Parse(song.artist.id), int.Parse(song.id), song.preview);
         }
 
-        public Panel createMusicItem(string URLCover, string SongName, string ArtistName, bool isFav, int SongID, string MP3) {
+        public Panel createMusicItem(string URLCover, string SongName, string ArtistName, int artistID, int SongID, string MP3) {
 
             Panel wrapper = new Panel {
                 CssClass = "wrappermusicitem"
@@ -131,10 +133,11 @@ namespace Naver_Music_Web {
                 Text = SongName,
                 CssClass = "songname"
             };
-            Label artist = new Label {
+            Button artist = new Button {
                 Text = ArtistName,
-                CssClass = "artistname"
+                CssClass = "btn artistname"
             };
+            artist.Click += delegate (object sender, EventArgs e) { ViewArtist(sender, e, artistID); };
             //Crear el wrapper-ratefav
             Panel ratefav = new Panel { CssClass = "wrapper-ratefav" };
             //Obtener votos
@@ -166,10 +169,10 @@ namespace Naver_Music_Web {
         }
 
         public Panel createAlbumItem(AlbumModel album) {
-            return createAlbumItem(album.cover_medium, album.title, album.artist.name, int.Parse(album.id));
+            return createAlbumItem(album.cover_medium, album.title, album.artist.name, int.Parse(album.artist.id), int.Parse(album.id));
         }
 
-        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, int AlbumID) {
+        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, int ArtistID, int AlbumID) {
             Panel wrapper = new Panel {
                 CssClass = "wrappermusicitem"
             };
@@ -182,10 +185,11 @@ namespace Naver_Music_Web {
                 Text = Title,
                 CssClass = "songname"
             };
-            Label artist = new Label {
+            Button artist = new Button {
                 Text = ArtistName,
-                CssClass = "artistname"
+                CssClass = "btn artistname"
             };
+            artist.Click += delegate (object sender, EventArgs e) { ViewArtist(sender, e, ArtistID ); };
             //Crear el wrapper-ratefav
             Panel ratefav = new Panel { CssClass = "wrapper-ratefav" };
             AlbumController albumController = new AlbumController();
@@ -210,6 +214,50 @@ namespace Naver_Music_Web {
             wrapper.Controls.Add(cover);
             wrapper.Controls.Add(nombre);
             wrapper.Controls.Add(artist);
+            wrapper.Controls.Add(ratefav);
+            return wrapper;
+        }
+
+        public Panel createArtistItem(Artist artist) {
+            return createArtistItem(artist.picture_medium, artist.name, int.Parse(artist.id) );
+        }
+
+        public Panel createArtistItem(string URLCover, string ArtistName, int ArtistID) {
+            Panel wrapper = new Panel {
+                CssClass = "wrappermusicitem"
+            };
+            ImageButton cover = new ImageButton {
+                ImageUrl = URLCover,
+                CssClass = "imgcovermusic"
+            };
+            cover.Click += delegate (object sender, ImageClickEventArgs e) { ViewArtist(sender, e, ArtistID); };
+            Label nombre = new Label {
+                Text = ArtistName,
+                CssClass = "songname"
+            };
+            //Crear el wrapper-ratefav
+            Panel ratefav = new Panel { CssClass = "wrapper-ratefav" };
+            ArtistaController artistaController = new ArtistaController();
+            Button btnRate = new Button {
+                CssClass = "btn rate",
+                Text = "♥ " + artistaController.GetVotesOfArtist(ArtistID)
+            };
+            btnRate.Click += delegate (object sender, EventArgs e) { RateClick(sender, e, ArtistID, 3); };
+            //Verificar Favoritos
+            UserController userController = new UserController();
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int idUser = currentUser.idUsuario;
+            Button btnFav = new Button {
+                CssClass = "btn fav",
+                Text = (userController.VerifyFavoriteArtist(idUser,ArtistID)) ? "★" : "✩"
+            };
+            btnFav.Click += delegate (object sender, EventArgs e) { FavClick(sender, e, ArtistID, 3); };
+            //Añadirlos al mini div
+            ratefav.Controls.Add(btnRate);
+            ratefav.Controls.Add(btnFav);
+            //Añadir todo al wrapper (panel) principal para devolverlo
+            wrapper.Controls.Add(cover);
+            wrapper.Controls.Add(nombre);
             wrapper.Controls.Add(ratefav);
             return wrapper;
         }
@@ -259,6 +307,15 @@ namespace Naver_Music_Web {
 
                 }
             }
+            if (type == 3) {
+                ArtistaController artistaController = new ArtistaController();
+                bool isFav = userController.VerifyFavoriteArtist(idUser, SongID);
+                if (!isFav) { //Add
+                    artistaController.AddArtistToFav(idUser,SongID);
+                } else { //Remove
+
+                }
+            }
             Response.Redirect("Favoritos.aspx");
         }
 
@@ -269,9 +326,14 @@ namespace Naver_Music_Web {
             miniNombreArtista.Text = ArtistName;
         }
 
-        public void ViewAlbum(object sender, ImageClickEventArgs e, int AlbumID) {
+        protected void ViewAlbum(object sender, ImageClickEventArgs e, int AlbumID) {
             Session["albumViewID"] = AlbumID;
             Response.Redirect("Album.aspx");
+        }
+
+        protected void ViewArtist(object sender, EventArgs e, int ArtistID) {
+            Session["artistViewID"] = ArtistID;
+            Response.Redirect("ArtistPage.aspx");
         }
     }
 }
