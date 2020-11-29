@@ -68,7 +68,8 @@ namespace ConsoleAppTest
                                     "24 para obtener albumes favoritos de usuario\n   " +
                                     "25 para obtener artistas favoritos de usuario\n   " +
                                     "26 para buscar cancion en lista de favoritos de usuario\n   " +
-                                    "27 para buscar album en lista de favoritos de usuario\n" +
+                                    "27 para buscar album en lista de favoritos de usuario\n   " +
+                                    "28 para buscar artista en lista de favoritos de usuario\n\n" +
                                     "SALIR\n   " +
                                     "100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
@@ -155,6 +156,9 @@ namespace ConsoleAppTest
                         break;
                     case 27:
                         VerifyFavoriteAlbum();
+                        break;
+                    case 28:
+                        VerifyFavoriteArtist();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -634,6 +638,26 @@ namespace ConsoleAppTest
             else
             {
                 Console.WriteLine("Album " + idAlbum + " no ha sido agregada a favoritos");
+            }
+        }
+
+        static void VerifyFavoriteArtist()
+        {
+            UserController userController = new UserController();
+
+            Console.WriteLine("Insertar ID Usuario");
+            int idUser = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Insertar ID Artist");
+            int idArtist = int.Parse(Console.ReadLine());
+
+            if (userController.VerifyFavoriteArtist(idUser, idArtist))
+            {
+                Console.WriteLine("Artista " + idArtist + " ya ha sido agregado a favoritos");
+            }
+            else
+            {
+                Console.WriteLine("Artista " + idArtist + " no ha sido agregado a favoritos");
             }
         }
     }

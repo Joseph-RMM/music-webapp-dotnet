@@ -165,5 +165,21 @@ namespace LogicaNaverMusic.Controllers
 
             return exist;
         }
+
+        public bool VerifyFavoriteArtist(int idUser, int idArtist)
+        {
+            bool exist = false;
+
+            var lst = (from u in modelDb.FavArtista
+                       where u.idUser == idUser && u.idArtista == idArtist
+                       select u).FirstOrDefault<FavArtista>();
+
+            if (lst != null)
+            {
+                exist = true;
+            }
+
+            return exist;
+        }
     }
 }
