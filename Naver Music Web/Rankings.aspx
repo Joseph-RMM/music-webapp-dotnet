@@ -59,7 +59,7 @@
                     <asp:Label ID="lblAlbumName1" runat="server" Text="Álbum" CssClass="lblName"></asp:Label>
                     <asp:Label ID="lblAlbumArtist1" runat="server" Text="Artista" CssClass="lblArtist" ></asp:Label>
                 </div>
-                <asp:Image ID="albumCover1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="albumCoverT1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateAlbum1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
@@ -70,7 +70,7 @@
                     <asp:Label ID="lblAlbumName2" runat="server" Text="Álbum" CssClass="lblName"></asp:Label>
                     <asp:Label ID="lblAlbumArtist2" runat="server" Text="Artista" CssClass="lblArtist" ></asp:Label>
                 </div>
-                <asp:Image ID="albumCover2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="albumCoverT2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateAlbum2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
@@ -81,7 +81,7 @@
                     <asp:Label ID="lblAlbumName3" runat="server" Text="Canción" CssClass="lblName"></asp:Label>
                     <asp:Label ID="lblAlbumArtist3" runat="server" Text="Artista" CssClass="lblArtist" ></asp:Label>
                 </div>
-                <asp:Image ID="albumCover3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="albumCoverT3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateAlbum3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>
@@ -98,7 +98,7 @@
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName1" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
                 </div>
-                <asp:Image ID="artistPhoto1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="artistFoto1" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateArtist1" runat="server" Text="♥ 122,500" CssClass="btn-rate" />
         </div>
@@ -108,7 +108,7 @@
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName2" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
                 </div>
-                <asp:Image ID="artistPhoto2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="artistFoto2" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateArtist2" runat="server" Text="♥ 120,500" CssClass="btn-rate" />
         </div>
@@ -118,7 +118,7 @@
                 <div class="wrapper-topinfo">
                     <asp:Label ID="lblArtistName3" runat="server" Text="Artista" CssClass="lblName"></asp:Label>
                 </div>
-                <asp:Image ID="artistPhoto3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
+                <asp:ImageButton ID="artistFoto3" runat="server" CssClass="cover-top" ImageUrl="~/assets/music.png" />
             </div>
             <asp:Button ID="btnRateArtist3" runat="server" Text="♥ 22,500" CssClass="btn-rate" />
         </div>

@@ -79,21 +79,24 @@ namespace Naver_Music_Web {
                 AlbumModel album = ObtenerAlbum(AlbumID);
                 if (album.artist != null) {
                     if(i == 0) {//Top One
-                        albumCover1.ImageUrl = album.cover_medium;
+                        albumCoverT1.ImageUrl = album.cover_medium;
+                        albumCoverT1.Click += delegate (object obj, ImageClickEventArgs args) { ViewAlbum(obj,args,AlbumID); };
                         lblAlbumName1.Text = album.title;
                         lblAlbumArtist1.Text = album.artist.name;
                         btnRateAlbum1.Text = "♥ " + Votos;
                         btnRateAlbum1.Click += delegate (object ba1, EventArgs ea1) { RateClick(ba1, ea1, AlbumID, 2); };
                     } else {
                         if (i == 1) {//Numero d o s xd
-                            albumCover2.ImageUrl = album.cover_medium;
+                            albumCoverT2.ImageUrl = album.cover_medium;
+                            albumCoverT2.Click += delegate (object obj, ImageClickEventArgs args) { ViewAlbum(obj, args, AlbumID); };
                             lblAlbumName2.Text = album.title;
                             lblAlbumArtist2.Text = album.artist.name;
                             btnRateAlbum2.Text = "♥ " + Votos;
                             btnRateAlbum2.Click += delegate (object ba2, EventArgs ea2) { RateClick(ba2, ea2, AlbumID, 2); };
                         } else {
                             if (i == 2) {//tres
-                                albumCover3.ImageUrl = album.cover_medium;
+                                albumCoverT3.ImageUrl = album.cover_medium;
+                                albumCoverT3.Click += delegate (object obj, ImageClickEventArgs args) { ViewAlbum(obj, args, AlbumID); };
                                 lblAlbumName3.Text = album.title;
                                 lblAlbumArtist3.Text = album.artist.name;
                                 btnRateAlbum3.Text = "♥ " + Votos;
@@ -102,12 +105,41 @@ namespace Naver_Music_Web {
                         }
                     }
                 }
-
-
             }
 
-            foreach (proc_topTenAlbum_Result current in procAlbum) {
-                Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
+            //Top 10 Artists
+            List<proc_topTenArtists_Result> procArtists = new List<proc_topTenArtists_Result>();
+            procArtists = rankingController.TopTenArtists();
+            for (int i = 0; i < procArtists.Count; i++) {
+                proc_topTenArtists_Result topArtist = procArtists[i];
+                int ArtistID = topArtist.idArtist;
+                int Votes = topArtist.total ?? 0;
+                Artist artist = ObtenerArtista(ArtistID);
+                if(artist.picture_medium != "" && artist.picture_medium!= "") {
+                    if(i == 0) {
+                        artistFoto1.ImageUrl = artist.picture_medium;
+                        artistFoto1.Click += delegate (object obj, ImageClickEventArgs args) { ViewArtist(obj, args, ArtistID); };
+                        lblArtistName1.Text = artist.name;
+                        btnRateArtist1.Text = "♥ " + Votes;
+                        btnRateArtist1.Click += delegate (object btn, EventArgs eventArgs) { RateClick(btn, eventArgs, ArtistID, 3); };
+                    } else {
+                        if (i == 1) {
+                            artistFoto2.ImageUrl = artist.picture_medium;
+                            artistFoto2.Click += delegate (object obj, ImageClickEventArgs args) { ViewArtist(obj, args, ArtistID); };
+                            lblArtistName2.Text = artist.name;
+                            btnRateArtist2.Text = "♥ " + Votes;
+                            btnRateArtist2.Click += delegate (object btn, EventArgs eventArgs) { RateClick(btn, eventArgs, ArtistID, 3); };
+                        } else {
+                            if (i == 2) {
+                                artistFoto3.ImageUrl = artist.picture_medium;
+                                artistFoto3.Click += delegate (object obj, ImageClickEventArgs args) { ViewArtist(obj, args, ArtistID); };
+                                lblArtistName3.Text = artist.name;
+                                btnRateArtist3.Text = "♥ " + Votes;
+                                btnRateArtist3.Click += delegate (object btn, EventArgs eventArgs) { RateClick(btn, eventArgs, ArtistID, 3); };
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -123,6 +155,13 @@ namespace Naver_Music_Web {
             AlbumModel album = new AlbumModel();
             album = aPIDeezer.GetAlbum(ID);
             return album;
+        }
+
+        protected Artist ObtenerArtista(int ID) {
+            APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+            Artist artist = new Artist();
+            artist = aPIDeezer.GetArtist(ID);
+            return artist;
         }
 
         protected void btnDiario_Click(object sender, EventArgs e) {
@@ -178,6 +217,16 @@ namespace Naver_Music_Web {
                 }
             }
             Response.Redirect("Rankings.aspx");
+        }
+
+        protected void ViewAlbum(object sender, ImageClickEventArgs e, int AlbumID) {
+            Session["albumViewID"] = AlbumID;
+            Response.Redirect("Album.aspx");
+        }
+
+        protected void ViewArtist(object sender, EventArgs e, int ArtistID) {
+            Session["artistViewID"] = ArtistID;
+            Response.Redirect("ArtistPage.aspx");
         }
     }
 }

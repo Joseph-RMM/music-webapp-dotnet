@@ -155,3 +155,18 @@
     text-align: center;
     font-size: 1.3em;
 }
+
+
+/*small screens*/
+@media only screen and (max-width: 600px) {
+    .wrappermusicitem {
+        min-width: 30%;
+    }
+}
+
+/* Extra small screens */
+@media only screen and (max-width: 480px) {
+    .wrappermusicitem {
+        min-width: 44%;
+    }
+}

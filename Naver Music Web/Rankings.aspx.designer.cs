@@ -193,13 +193,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Label lblAlbumArtist1;
         
         /// <summary>
-        /// albumCover1 control.
+        /// albumCoverT1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image albumCover1;
+        protected global::System.Web.UI.WebControls.ImageButton albumCoverT1;
         
         /// <summary>
         /// btnRateAlbum1 control.
@@ -229,13 +229,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Label lblAlbumArtist2;
         
         /// <summary>
-        /// albumCover2 control.
+        /// albumCoverT2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image albumCover2;
+        protected global::System.Web.UI.WebControls.ImageButton albumCoverT2;
         
         /// <summary>
         /// btnRateAlbum2 control.
@@ -265,13 +265,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Label lblAlbumArtist3;
         
         /// <summary>
-        /// albumCover3 control.
+        /// albumCoverT3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image albumCover3;
+        protected global::System.Web.UI.WebControls.ImageButton albumCoverT3;
         
         /// <summary>
         /// btnRateAlbum3 control.
@@ -310,13 +310,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Label lblArtistName1;
         
         /// <summary>
-        /// artistPhoto1 control.
+        /// artistFoto1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image artistPhoto1;
+        protected global::System.Web.UI.WebControls.ImageButton artistFoto1;
         
         /// <summary>
         /// btnRateArtist1 control.
@@ -337,13 +337,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Label lblArtistName2;
         
         /// <summary>
-        /// artistPhoto2 control.
+        /// artistFoto2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image artistPhoto2;
+        protected global::System.Web.UI.WebControls.ImageButton artistFoto2;
         
         /// <summary>
         /// btnRateArtist2 control.
@@ -364,13 +364,13 @@ namespace Naver_Music_Web {
         protected global::System.Web.UI.WebControls.Label lblArtistName3;
         
         /// <summary>
-        /// artistPhoto3 control.
+        /// artistFoto3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image artistPhoto3;
+        protected global::System.Web.UI.WebControls.ImageButton artistFoto3;
         
         /// <summary>
         /// btnRateArtist3 control.
