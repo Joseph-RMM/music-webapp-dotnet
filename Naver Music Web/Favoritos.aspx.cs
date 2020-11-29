@@ -29,9 +29,15 @@ namespace Naver_Music_Web {
                     };
                     panelCanciones.Controls.Add(info);
                 }
-                if (checkforInfo("Albumes") != null) {
-                    //Añadir items 
+                favCanciones.Clear();
 
+                //Albumes favoritos
+                List<AlbumModel> favAlbums = GetFavAlbums(UserID);
+                if (favAlbums.Count > 0) {
+                    //Añadir items 
+                    foreach (AlbumModel album in favAlbums) {
+                        panelAlbumes.Controls.Add(createAlbumItem(album));
+                    }
                 } else {
                     Label info = new Label {
                         Text = "Añade tus álbumes favoritos dando clic en ✩ para encontrarlos aquí",
@@ -39,7 +45,11 @@ namespace Naver_Music_Web {
                     };
                     panelAlbumes.Controls.Add(info);
                 }
-                if (checkforInfo("Artistas") != null) {
+                favAlbums.Clear();
+
+                //Artistas favoritos
+                List<Artist> favArtists = GetFavArtists(UserID);
+                if (favArtists.Count > 0) {
                     //Añadir items 
 
                 } else {
@@ -69,7 +79,29 @@ namespace Naver_Music_Web {
             return favList;
         }
 
+        public List<AlbumModel> GetFavAlbums(int IDUsuario) {
+            UserController userController = new UserController();
+            List<int> favoritesAlbums = userController.GetFavoritesAlbums(IDUsuario);
+            List<AlbumModel> favList = new List<AlbumModel>();
+            foreach (int currentID in favoritesAlbums) {
+                //Buscar info del album
+                APIDeezerController aPIDeezer = new APIDeezerController(); 
+                favList.Add(aPIDeezer.GetAlbum(currentID));
+            }
+            return favList;
+        }
 
+        public List<Artist> GetFavArtists(int IDUsuario) {
+            UserController userController = new UserController();
+            List<int> favoritesArtist = userController.GetFavoritesArtist(IDUsuario);
+            List<Artist> favList = new List<Artist>();
+            foreach (int currentID in favoritesArtist) {
+                //Buscar artista
+                APIDeezerController aPIDeezer = new APIDeezerController();  //CLASE DE LOGICA NEGOCIOS
+                favList.Add(aPIDeezer.GetArtist(currentID));
+            }
+            return favList;
+        }
 
         //METODOS DE DIBUJO
         public Panel createMusicItem(Data song) {
@@ -133,6 +165,55 @@ namespace Naver_Music_Web {
             return wrapper;
         }
 
+        public Panel createAlbumItem(AlbumModel album) {
+            return createAlbumItem(album.cover_medium, album.title, album.artist.name, int.Parse(album.id));
+        }
+
+        public Panel createAlbumItem(string URLCover, string Title, string ArtistName, int AlbumID) {
+            Panel wrapper = new Panel {
+                CssClass = "wrappermusicitem"
+            };
+            ImageButton cover = new ImageButton {
+                ImageUrl = URLCover,
+                CssClass = "imgcovermusic"
+            };
+            cover.Click += delegate (object sender, ImageClickEventArgs e) { ViewAlbum(sender, e, AlbumID); };
+            Label nombre = new Label {
+                Text = Title,
+                CssClass = "songname"
+            };
+            Label artist = new Label {
+                Text = ArtistName,
+                CssClass = "artistname"
+            };
+            //Crear el wrapper-ratefav
+            Panel ratefav = new Panel { CssClass = "wrapper-ratefav" };
+            AlbumController albumController = new AlbumController();
+            Button btnRate = new Button {
+                CssClass = "btn rate",
+                Text = "♥ " + albumController.GetVotesOfAlbum(AlbumID)
+            };
+            btnRate.Click += delegate (object sender, EventArgs e) { RateClick(sender, e, AlbumID, 2); };
+            //Verificar Favoritos
+            UserController userController = new UserController();
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int idUser = currentUser.idUsuario;
+            Button btnFav = new Button {
+                CssClass = "btn fav",
+                Text = (userController.VerifyFavoriteAlbum(idUser, AlbumID)) ? "★" : "✩"
+            };
+            btnFav.Click += delegate (object sender, EventArgs e) { FavClick(sender, e, AlbumID, 2); };
+            //Añadirlos al mini div
+            ratefav.Controls.Add(btnRate);
+            ratefav.Controls.Add(btnFav);
+            //Añadir todo al wrapper (panel) principal para devolverlo
+            wrapper.Controls.Add(cover);
+            wrapper.Controls.Add(nombre);
+            wrapper.Controls.Add(artist);
+            wrapper.Controls.Add(ratefav);
+            return wrapper;
+        }
+
 
         public void RateClick(object sender, EventArgs e, int SongID, int type) {
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
@@ -186,6 +267,11 @@ namespace Naver_Music_Web {
             miniaturaCover.ImageUrl = URLCover;
             miniNombreCancion.Text = SongName;
             miniNombreArtista.Text = ArtistName;
+        }
+
+        public void ViewAlbum(object sender, ImageClickEventArgs e, int AlbumID) {
+            Session["albumViewID"] = AlbumID;
+            Response.Redirect("Album.aspx");
         }
     }
 }
