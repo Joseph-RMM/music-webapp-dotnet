@@ -25,12 +25,16 @@ namespace Naver_Music_Web {
                 album = aPIDeezer.GetAlbum(albumID);
 
                 AlbumController albumController = new AlbumController();
+                UserController userController = new UserController();
+                UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+                int idUser = currentUser.idUsuario;
 
                 //Lenar la información
                 lblTitulo.Text = album.title;
                 lblArtistas.Text = album.artist.name;
                 albumCover.ImageUrl = album.cover_big;
                 btnVote.Text = "♥ "+albumController.GetVotesOfAlbum(albumID);
+                btnFav.Text = (userController.VerifyFavoriteAlbum(idUser, albumID)) ? "★" : "✩";
 
                 //Crear un gridView para las canciones
                 DataSet dataSet = new DataSet();
@@ -47,7 +51,8 @@ namespace Naver_Music_Web {
                     //Obtener votos
                     CancionController cancionController = new CancionController();
                     int Votos = cancionController.GetVotesOfTrack(int.Parse(current.id));
-                    canciones.Rows.Add(current.id,current.preview,current.title,current.artist.name, "♥ "+Votos, "☆");
+                    string Fav = userController.VerifyFavoriteTrack(idUser, int.Parse(current.id)) ? "★" : "✩";
+                    canciones.Rows.Add(current.id,current.preview,current.title,current.artist.name, "♥ "+Votos, Fav);
                 }
 
                 dataSet.Tables.Add(canciones);
@@ -101,6 +106,25 @@ namespace Naver_Music_Web {
                     bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
                     gvCanciones.Columns[0].Visible = false;
                     Response.Redirect("Album.aspx");
+                } else {
+                    if (e.CommandName == "Fav") {
+                        gvCanciones.Columns[0].Visible = true;
+                        gvCanciones.DataBind();
+                        UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+                        int iduser = currentUser.idUsuario;
+                        GridViewRow row = gvCanciones.Rows[rowIndex];
+                        int SongID = int.Parse(row.Cells[0].Text);
+                        UserController userController = new UserController();
+                        CancionController cancionController = new CancionController();
+                        bool isFav = userController.VerifyFavoriteTrack(iduser, SongID);
+                        if (!isFav) { //Add
+                            cancionController.AddTrackToFav(SongID, iduser);
+                        } else { //Remove
+
+                        }
+                        gvCanciones.Columns[0].Visible = false;
+                        Response.Redirect("Album.aspx");
+                    }
                 }
             }
         }
@@ -112,6 +136,21 @@ namespace Naver_Music_Web {
             DateTime fecha = DateTime.Now;
             int albumID = (int)Session["albumViewID"];
             bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
+            Response.Redirect("Album.aspx");
+        }
+
+        protected void btnFav_Click(object sender, EventArgs e) {
+            UserController userController = new UserController();
+            UsuariosModels currentUser = (UsuariosModels)Session["userData"];
+            int iduser = currentUser.idUsuario;
+            int albumID = (int)Session["albumViewID"];
+            bool isFav = userController.VerifyFavoriteAlbum(iduser, albumID);
+            AlbumController albumController = new AlbumController();
+            if (!isFav) { //Add
+                albumController.AddAlbumToFav(iduser, albumID);
+            } else { //Remove
+
+            }
             Response.Redirect("Album.aspx");
         }
     }

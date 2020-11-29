@@ -14,7 +14,7 @@
             <asp:Label runat="server" ID="lblArtistas" Text="Artista(s)" CssClass="lblArtistas"></asp:Label>
             <div class="wrapper-votefav">
                 <asp:Button runat="server" ID="btnVote" Text="♥ votos" CssClass="btnVote nobtn" OnClick="btnVote_Click" />
-                <asp:Button runat="server" ID="btnFav" Text="☆" CssClass="btnFav nobtn" />
+                <asp:Button runat="server" ID="btnFav" Text="☆" CssClass="btnFav nobtn" OnClick="btnFav_Click" />
             </div>
         </div>
     </div>

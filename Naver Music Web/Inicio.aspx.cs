@@ -212,9 +212,9 @@ namespace Naver_Music_Web {
             UserController userController = new UserController();
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
             int idUser = currentUser.idUsuario;
-            bool isFav = userController.VerifyFavoriteTrack(idUser, SongID);
             if (type == 1) {
                 CancionController cancionController = new CancionController();
+                bool isFav = userController.VerifyFavoriteTrack(idUser, SongID);
                 if (!isFav) { //Add
                     cancionController.AddTrackToFav(SongID, idUser);
                 } else { //Remove
@@ -223,6 +223,7 @@ namespace Naver_Music_Web {
             } 
             if (type == 2) {
                 AlbumController albumController = new AlbumController();
+                bool isFav = userController.VerifyFavoriteAlbum(idUser, SongID);
                 if (!isFav) { //Add
                     albumController.AddAlbumToFav(idUser, SongID);
                 } else { //Remove
