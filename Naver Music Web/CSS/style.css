@@ -225,7 +225,7 @@ section {
     .navbar {
         bottom: 0;
         width: 100vw;
-        height: 5rem;
+        height: 4rem;
     }
 
     .logo {
@@ -252,7 +252,7 @@ section {
     .wrapper-audioplayer {
         position: fixed;
         background-color: var(--bg-claro);
-        bottom: 5rem;
+        bottom: 4rem;
         width: 100%;
     }
 
@@ -364,4 +364,13 @@ section {
             outline: none;
             border: none;
         }
+}
+
+
+/*Medium screens*/
+@media only screen and (max-height: 900px) {
+    .navbar:hover #userimg {
+        display: flex;
+        width: 45%;
+    }
 }

@@ -7,7 +7,7 @@
         <h1>Naver Music</h1>
         <a href="Usuario.aspx"><asp:Image ID="mobileUserImg" runat="server"  CssClass="mobileUserImg" ImageUrl="~/assets/nouser.png" /></a>
     </div>
-    <p>Work in progress!</p>
+    <p>¡A votar!</p>
     <div class="buscar">
         <h3>Buscar</h3>
         <div class="wrapper-linea">
@@ -24,7 +24,7 @@
         </asp:Panel>
     </div>
 
-    <h3>Recomendados para tí</h3>
+    <h3>Destacados</h3>
     <asp:Panel ID="panelMusic" runat="server" CssClass="wrappercanciones">
 
     </asp:Panel>

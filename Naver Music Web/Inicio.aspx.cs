@@ -41,6 +41,20 @@ namespace Naver_Music_Web {
                     }
                     divBuscar.Visible = true;
                 }
+                //Recomendar las más votadas
+                RankingController rankingController = new RankingController();
+                APIDeezerController aPIDeezer = new APIDeezerController();
+                List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();
+                proc = rankingController.TopTenTrack();
+                for (int i = 0; i < proc.Count; i++) {
+                    proc_topTenTracks_Result topSong = proc[i];
+                    int songID = topSong.idTrack;
+                    Data song = aPIDeezer.GetTrack(songID);
+                    if (song.artist != null)
+                        panelMusic.Controls.Add(createMusicItem(song));
+                }
+
+                /*
                 //Simulacion de consulta a la API y llenado del panel
                 APIDeezerController aPIDeezer = new APIDeezerController();
                 AlbumModel album = new AlbumModel();
@@ -261,6 +275,8 @@ namespace Naver_Music_Web {
             divBuscar.Visible = true;
             Response.Redirect("Inicio.aspx");
         }
+
+
 
     }
 }
