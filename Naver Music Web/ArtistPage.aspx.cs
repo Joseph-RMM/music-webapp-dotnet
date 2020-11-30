@@ -154,11 +154,17 @@ namespace Naver_Music_Web {
         }
 
         protected void btnFav_Click(object sender, EventArgs e) {
+            UserController userController = new UserController();
             ArtistaController artistaController = new ArtistaController();
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
             int idUser = currentUser.idUsuario;
             int artistID = (int)Session["artistViewID"];
-            artistaController.AddArtistToFav(idUser, artistID);
+            bool isFav = userController.VerifyFavoriteArtist(idUser, artistID);
+            if (isFav) {
+                artistaController.AddArtistToFav(idUser, artistID);
+            } else {
+                artistaController.DeleteArtistToFavorites(idUser, artistID);
+            }
             Response.Redirect("ArtistPage.aspx");
         }
 

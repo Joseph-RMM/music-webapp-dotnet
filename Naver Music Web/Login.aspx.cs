@@ -43,7 +43,7 @@ namespace Naver_Music_Web {
                     }
                     Response.Redirect("Inicio.aspx");
                 } else {
-                    lblInfo.Text = "Usuario no registrado";
+                    lblInfo.Text = "Usuario o contraseña incorrectos";
                 }
             }
         }

@@ -149,7 +149,7 @@ namespace Naver_Music_Web {
             if (!isFav) { //Add
                 albumController.AddAlbumToFav(iduser, albumID);
             } else { //Remove
-
+                albumController.DeleteAlbumToFavorites(iduser, albumID);
             }
             Response.Redirect("Album.aspx");
         }

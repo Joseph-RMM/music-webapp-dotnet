@@ -235,7 +235,7 @@ namespace Naver_Music_Web {
                 if (!isFav) { //Add
                     cancionController.AddTrackToFav(SongID, idUser);
                 } else { //Remove
-
+                    cancionController.DeleteTrackToFavorites(SongID, idUser);
                 }
             } 
             if (type == 2) {
@@ -244,7 +244,7 @@ namespace Naver_Music_Web {
                 if (!isFav) { //Add
                     albumController.AddAlbumToFav(idUser, SongID);
                 } else { //Remove
-
+                    albumController.DeleteAlbumToFavorites(idUser, SongID);
                 }
             }
             Response.Redirect("Inicio.aspx");

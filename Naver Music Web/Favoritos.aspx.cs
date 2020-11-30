@@ -295,7 +295,7 @@ namespace Naver_Music_Web {
                 if (!isFav) { //Add
                     cancionController.AddTrackToFav(SongID, idUser);
                 } else { //Remove
-
+                    cancionController.DeleteTrackToFavorites(SongID, idUser);
                 }
             }
             if (type == 2) {
@@ -304,7 +304,7 @@ namespace Naver_Music_Web {
                 if (!isFav) { //Add
                     albumController.AddAlbumToFav(idUser, SongID);
                 } else { //Remove
-
+                    albumController.DeleteAlbumToFavorites(idUser, SongID);
                 }
             }
             if (type == 3) {
@@ -313,7 +313,7 @@ namespace Naver_Music_Web {
                 if (!isFav) { //Add
                     artistaController.AddArtistToFav(idUser,SongID);
                 } else { //Remove
-
+                    artistaController.DeleteArtistToFavorites(idUser, SongID);
                 }
             }
             Response.Redirect("Favoritos.aspx");
