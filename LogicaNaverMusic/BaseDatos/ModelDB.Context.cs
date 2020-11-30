@@ -197,5 +197,44 @@ namespace LogicaNaverMusic.BaseDatos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_RankingSemanalAlbum_Result>("proc_RankingSemanalAlbum");
         }
+    
+        public virtual ObjectResult<proc_DeleteAlbumToFavorites_Result> proc_DeleteAlbumToFavorites(Nullable<int> idAlbum, Nullable<int> idUser)
+        {
+            var idAlbumParameter = idAlbum.HasValue ?
+                new ObjectParameter("idAlbum", idAlbum) :
+                new ObjectParameter("idAlbum", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_DeleteAlbumToFavorites_Result>("proc_DeleteAlbumToFavorites", idAlbumParameter, idUserParameter);
+        }
+    
+        public virtual ObjectResult<proc_DeleteArtistToFavorites_Result> proc_DeleteArtistToFavorites(Nullable<int> idArtist, Nullable<int> idUser)
+        {
+            var idArtistParameter = idArtist.HasValue ?
+                new ObjectParameter("idArtist", idArtist) :
+                new ObjectParameter("idArtist", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_DeleteArtistToFavorites_Result>("proc_DeleteArtistToFavorites", idArtistParameter, idUserParameter);
+        }
+    
+        public virtual ObjectResult<proc_DeleteTrackToFavorites_Result> proc_DeleteTrackToFavorites(Nullable<int> idTrack, Nullable<int> idUser)
+        {
+            var idTrackParameter = idTrack.HasValue ?
+                new ObjectParameter("idTrack", idTrack) :
+                new ObjectParameter("idTrack", typeof(int));
+    
+            var idUserParameter = idUser.HasValue ?
+                new ObjectParameter("idUser", idUser) :
+                new ObjectParameter("idUser", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_DeleteTrackToFavorites_Result>("proc_DeleteTrackToFavorites", idTrackParameter, idUserParameter);
+        }
     }
 }

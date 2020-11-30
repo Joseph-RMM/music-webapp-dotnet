@@ -185,6 +185,18 @@
           <Parameter Name="idTrack" Type="int" Mode="In" />
           <Parameter Name="idUser" Type="int" Mode="In" />
         </Function>
+        <Function Name="proc_DeleteAlbumToFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAlbum" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+        </Function>
+        <Function Name="proc_DeleteArtistToFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idArtist" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+        </Function>
+        <Function Name="proc_DeleteTrackToFavorites" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTrack" Type="int" Mode="In" />
+          <Parameter Name="idUser" Type="int" Mode="In" />
+        </Function>
         <Function Name="proc_GetVotesByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idUser" Type="int" Mode="In" />
         </Function>
@@ -449,6 +461,18 @@
           <FunctionImport Name="proc_RankingDiarioAlbum" ReturnType="Collection(NaverMusicBDModel.proc_RankingDiarioAlbum_Result)" />
           <FunctionImport Name="proc_RankingMensualAlbum" ReturnType="Collection(NaverMusicBDModel.proc_RankingMensualAlbum_Result)" />
           <FunctionImport Name="proc_RankingSemanalAlbum" ReturnType="Collection(NaverMusicBDModel.proc_RankingSemanalAlbum_Result)" />
+          <FunctionImport Name="proc_DeleteAlbumToFavorites" ReturnType="Collection(NaverMusicBDModel.proc_DeleteAlbumToFavorites_Result)">
+            <Parameter Name="idAlbum" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_DeleteArtistToFavorites" ReturnType="Collection(NaverMusicBDModel.proc_DeleteArtistToFavorites_Result)">
+            <Parameter Name="idArtist" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_DeleteTrackToFavorites" ReturnType="Collection(NaverMusicBDModel.proc_DeleteTrackToFavorites_Result)">
+            <Parameter Name="idTrack" Mode="In" Type="Int32" />
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_RankingDiarioArtistas_Result">
           <Property Type="Int32" Name="idArtist" Nullable="true" />
@@ -571,6 +595,15 @@
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
         <ComplexType Name="proc_AddTracksToFavorite_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_DeleteAlbumToFavorites_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_DeleteArtistToFavorites_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="proc_DeleteTrackToFavorites_Result">
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
       </Schema>
@@ -808,6 +841,27 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_RankingSemanalAlbum_Result">
                 <ScalarProperty Name="idAlbumm" ColumnName="idAlbumm" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_DeleteAlbumToFavorites" FunctionName="NaverMusicBDModel.Store.proc_DeleteAlbumToFavorites" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_DeleteAlbumToFavorites_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_DeleteArtistToFavorites" FunctionName="NaverMusicBDModel.Store.proc_DeleteArtistToFavorites" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_DeleteArtistToFavorites_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_DeleteTrackToFavorites" FunctionName="NaverMusicBDModel.Store.proc_DeleteTrackToFavorites" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_DeleteTrackToFavorites_Result">
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>
             </ResultMapping>

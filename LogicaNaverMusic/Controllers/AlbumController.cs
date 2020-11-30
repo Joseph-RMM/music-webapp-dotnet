@@ -37,6 +37,19 @@ namespace LogicaNaverMusic.Controllers
             return add;
         }
 
+        public proc_DeleteAlbumToFavorites_Result DeleteAlbumToFavorites(int idUser, int idAlbum)
+        {
+            FavAlbum favAlbum = new FavAlbum();
+
+            favAlbum.idAlbum = idAlbum;
+            favAlbum.idUser = idUser;
+
+            proc_DeleteAlbumToFavorites_Result delete = new proc_DeleteAlbumToFavorites_Result();
+            delete = modelDb.proc_DeleteAlbumToFavorites(idAlbum, idUser).FirstOrDefault();
+            modelDb.SaveChanges();
+            return delete;
+        }
+
         public int GetVotesOfAlbum(int idAlbum)
         {
             int votos = 0;

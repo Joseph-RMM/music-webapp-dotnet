@@ -41,5 +41,7 @@ namespace LogicaNaverMusic.Controllers
             modldb.proc_VotarAlbum(idalbum, iduser, fecha);
             return true;
         }
+
+
     }
 }
