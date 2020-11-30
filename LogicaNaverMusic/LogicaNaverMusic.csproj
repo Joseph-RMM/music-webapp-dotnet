@@ -93,6 +93,15 @@
     <Compile Include="BaseDatos\proc_AddTracksToFavorite_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaseDatos\proc_DeleteAlbumToFavorites_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_DeleteArtistToFavorites_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\proc_DeleteTrackToFavorites_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\proc_GetVotesByUser_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

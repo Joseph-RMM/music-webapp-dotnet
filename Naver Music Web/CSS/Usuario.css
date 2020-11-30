@@ -5,78 +5,58 @@
     --btn-hover
     --txt-color
 */
-
-.btn {
-    background-color: var(--bg-oscuro);
-    color: white;
-    font-size: 1.2em;
-    border: none;
-    padding: 0.3em;
-    border-radius: 5px;
-    margin-top: 1em;
-    width: 100%;
-}
-
-    .btn:hover {
-        background-color: var(--btn-hover);
-        cursor: pointer;
-    }
-
-.textbox {
-    height: 1.2em;
-    border-color: whitesmoke;
-    font-size: 1.1em;
-    padding: 0.1em 0.3em;
-    background-color: var(--bg-aunmasclaro);
-    color: var(--txt-color);
-}
-
-.error {
-    border-color: red;
-}
-
 .wrapper-row {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.wrappper-column {
+.wrapper-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: auto 1em;
+    align-content: center;
+    align-items: center;
 }
 
-.user-img {
-    justify-content: center;
+.userImage {
+    width: 40%;
+    border-radius: 50%;
 }
 
-.user-info {
-    margin: 1em 5%;
-    background-color: var(--bg-claro);
+.userName {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.user-data {
     border-radius: 1em;
-    padding-bottom: 1.5em;
+    background-color: var(--bg-claro);
+    padding: 1em;
 }
 
-.imgperfil {
-    width: 30%;
-    max-width: 300px;
-}
-.wrapper-cambiarimg {
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 5%;
+.lbl {
+    color: var(--txt-color);
+    font-size: 1.1em;
+    margin: 0.5em 0em;
 }
 
-h1 {
+.btn {
+    background-color: var(--bg-oscuro);
+    color: white;
+    font-size: 1.2em;
+    padding: 0.5em;
     width: 100%;
-    text-align: center;
+    border-radius: 0.5em;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    margin-top: 1em;
 }
 
-.no-margin {
-    margin-top: 0em;
+.btn:hover {
+    background-color: var(--btn-hover);
 }
 
 @media only screen and (max-width: 600px) {
@@ -84,34 +64,11 @@ h1 {
         flex-direction: column;
     }
 
-    .imgperfil {
-        width: 100%;
-        max-width: none;
+    .userImage {
+        width: 80%;
     }
 
-    .user-info {
-        margin: 1em 0.4em;
-        background-color: var(--bg-claro);
-        border-radius: 1em;
-        padding: 0em 1em 1em 1em;
-    }
-
-    .btn {
-        margin-bottom: 2em;
-    }
-
-    .no-margin {
-        margin-top: 0.5em;
-    }
-
-}
-
-@media only screen and (max-width: 900px) {
-    .user-info {
-        flex-direction: column; 
-    }
-
-    table {
-        width: 100%;
+    .wrapper-column {
+        margin: 1em 0em;
     }
 }

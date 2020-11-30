@@ -75,6 +75,13 @@ namespace ConsoleAppTest
                                     "26 para buscar cancion en lista de favoritos de usuario\n   " +
                                     "27 para buscar album en lista de favoritos de usuario\n   " +
                                     "28 para buscar artista en lista de favoritos de usuario\n\n" +
+                                    "36 agregar a favoritos cancion (regresa el valor de 1 si ya esta en fav o 0 si aun no esta en fav)\n   " +
+                                    "37 agregar a favoritos artista (regresa el valor de 1 si ya esta en fav o 0 si aun no esta en fav)\n   " +
+                                    "38 agregar a favoritos album (regresa el valor de 1 si ya esta en fav o 0 si aun no esta en fav)\n   " +
+
+                                    "39 quitar de favoritos cancion (regresa el valor de 1 si fue eliminada de fav)\n   " +
+                                    "40 quitar de favoritos artista (regresa el valor de 1 si fue eliminada de fav)\n   " +
+                                    "41 quitar de favoritos album (regresa el valor de 1 si fue eliminada de fav)\n   " +
                                     "SALIR\n   " +
                                     "100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
@@ -179,6 +186,24 @@ namespace ConsoleAppTest
                         break;
                     case 35:
                         RankingMensualAlbum();
+                        break;
+                    case 36:
+                        AddTrackToFav();
+                        break;
+                    case 39:
+                        DeleteTrackToFavorites();
+                        break;
+                    case 37:
+                        AddArtistToFav();
+                        break;
+                    case 40:
+                        DeleteArtistToFavorites();
+                        break;
+                    case 38:
+                        AddAlbumToFav();
+                        break;
+                    case 41:
+                        DeleteAlbumToFavorites();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -744,6 +769,90 @@ namespace ConsoleAppTest
             {
                 Console.WriteLine(current.idAlbumm + " " + current.total + "\n");
             }
+        }
+
+        ///
+        /// ///////////////////////////////////////////////
+        /// 
+        static void AddTrackToFav()
+        {
+            CancionController cancionController = new CancionController();
+
+            Console.WriteLine("Ingrese el ID de cancion");
+            int idcancion = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el ID de usuario");
+            int iduser = int.Parse(Console.ReadLine());
+
+            proc_AddTracksToFavorite_Result proc = new proc_AddTracksToFavorite_Result();
+            proc = cancionController.AddTrackToFav(idcancion, iduser);
+            Console.WriteLine(proc.total + "");
+        }
+        static void DeleteTrackToFavorites()
+        {
+            CancionController cancionController = new CancionController();
+
+            Console.WriteLine("Ingrese el ID de cancion");
+            int idcancion = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el ID de usuario");
+            int iduser = int.Parse(Console.ReadLine());
+
+            proc_DeleteTrackToFavorites_Result proc = new proc_DeleteTrackToFavorites_Result();
+            proc = cancionController.DeleteTrackToFavorites(idcancion, iduser);
+            Console.WriteLine(proc.total + "");
+        }
+
+        static void AddArtistToFav()
+        {
+            ArtistaController artistaController = new ArtistaController();
+
+            Console.WriteLine("Ingrese el ID de artista");
+            int idartista = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el ID de usuario");
+            int iduser = int.Parse(Console.ReadLine());
+
+            proc_AddArtistToFavorite_Result proc = new proc_AddArtistToFavorite_Result();
+            proc = artistaController.AddArtistToFav(iduser, idartista);
+            Console.WriteLine(proc.total + "");
+        }
+        static void DeleteArtistToFavorites()
+        {
+            ArtistaController artistaController = new ArtistaController();
+
+            Console.WriteLine("Ingrese el ID de artista");
+            int idartista = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el ID de usuario");
+            int iduser = int.Parse(Console.ReadLine());
+
+            proc_DeleteArtistToFavorites_Result proc = new proc_DeleteArtistToFavorites_Result();
+            proc = artistaController.DeleteArtistToFavorites(iduser, idartista);
+            Console.WriteLine(proc.total + "");
+        }
+
+        static void AddAlbumToFav()
+        {
+            AlbumController albumController = new AlbumController();
+
+            Console.WriteLine("Ingrese el ID de album");
+            int idalbum = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el ID de usuario");
+            int iduser = int.Parse(Console.ReadLine());
+
+            proc_AddAlbumToFavorite_Result proc = new proc_AddAlbumToFavorite_Result();
+            proc = albumController.AddAlbumToFav(iduser, idalbum);
+            Console.WriteLine(proc.total + "");
+        }
+        static void DeleteAlbumToFavorites()
+        {
+            AlbumController albumController = new AlbumController();
+
+            Console.WriteLine("Ingrese el ID de album");
+            int idalbum = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese el ID de usuario");
+            int iduser = int.Parse(Console.ReadLine());
+
+            proc_DeleteAlbumToFavorites_Result proc = new proc_DeleteAlbumToFavorites_Result();
+            proc = albumController.DeleteAlbumToFavorites(iduser, idalbum);
+            Console.WriteLine(proc.total + "");
         }
     }
 }
