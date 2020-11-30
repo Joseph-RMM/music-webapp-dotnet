@@ -268,29 +268,21 @@ namespace Naver_Music_Web {
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
             int iduser = currentUser.idUsuario;
             VotoController votoController = new VotoController();
-            proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();
-            proc = votoController.GetVotesByUser(currentUser.idUsuario);
-            int votosUsados = proc.total ?? 0;
-            int votosRestantes = 100 - votosUsados;
-            if (votosRestantes > 0) {
-                DateTime fecha = DateTime.Now;
-                bool voto = false;
-                if (type == 1) { //Cancion
-                    voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+            DateTime fecha = DateTime.Now;
+            bool voto = false;
+            if (type == 1) { //Cancion
+                voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+            } else {
+                if (type == 2) { //Album
+                    voto = votoController.proc_VotarAlbum(SongID, iduser, fecha);
                 } else {
-                    if (type == 2) { //Album
-                        voto = votoController.proc_VotarAlbum(SongID, iduser, fecha);
-                    } else {
-                        if (type == 3) { //Artista
-                            voto = votoController.proc_VotarArtista(SongID, iduser, fecha);
-                        }
+                    if (type == 3) { //Artista
+                        voto = votoController.proc_VotarArtista(SongID, iduser, fecha);
                     }
                 }
-
-                Response.Redirect("Favoritos.aspx");
-            } else {
-                ClientScript.RegisterStartupScript(GetType(), "NoMoreVotes" + e.GetHashCode(), "alert('Has alcanzado tu límite de votos por  hoy\n¡Sigue votando mañana!');", true);
             }
+
+            Response.Redirect("Favoritos.aspx");
         }
 
         public void FavClick(object sender, EventArgs e, int SongID, int type) {

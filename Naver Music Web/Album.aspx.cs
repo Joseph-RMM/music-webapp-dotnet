@@ -99,22 +99,14 @@ namespace Naver_Music_Web {
                     UsuariosModels currentUser = (UsuariosModels)Session["userData"];
                     int iduser = currentUser.idUsuario;
                     VotoController votoController = new VotoController();
-                    proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();
-                    proc = votoController.GetVotesByUser(currentUser.idUsuario);
-                    int votosUsados = proc.total ?? 0;
-                    int votosRestantes = 100 - votosUsados;
-                    if (votosRestantes > 0) {
-                        gvCanciones.Columns[0].Visible = true;
-                        gvCanciones.DataBind();
-                        DateTime fecha = DateTime.Now;
-                        GridViewRow row = gvCanciones.Rows[rowIndex];
-                        int SongID = int.Parse(row.Cells[0].Text);
-                        bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
-                        gvCanciones.Columns[0].Visible = false;
-                        Response.Redirect("Album.aspx");
-                    } else {
-                        ClientScript.RegisterStartupScript(GetType(), "NoMoreVotes" + e.GetHashCode(), "alert('Has alcanzado tu límite de votos por  hoy\n¡Sigue votando mañana!');", true);
-                    }
+                    gvCanciones.Columns[0].Visible = true;
+                    gvCanciones.DataBind();
+                    DateTime fecha = DateTime.Now;
+                    GridViewRow row = gvCanciones.Rows[rowIndex];
+                    int SongID = int.Parse(row.Cells[0].Text);
+                    bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+                    gvCanciones.Columns[0].Visible = false;
+                    Response.Redirect("Album.aspx");
                 } else {
                     if (e.CommandName == "Fav") {
                         gvCanciones.Columns[0].Visible = true;
@@ -142,18 +134,10 @@ namespace Naver_Music_Web {
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
             int iduser = currentUser.idUsuario;
             VotoController votoController = new VotoController();
-            proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();
-            proc = votoController.GetVotesByUser(currentUser.idUsuario);
-            int votosUsados = proc.total ?? 0;
-            int votosRestantes = 100 - votosUsados;
-            if (votosRestantes > 0) {
-                DateTime fecha = DateTime.Now;
-                int albumID = (int)Session["albumViewID"];
-                bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
-                Response.Redirect("Album.aspx");
-            } else {
-                ClientScript.RegisterStartupScript(GetType(), "NoMoreVotes" + e.GetHashCode(), "alert('Has alcanzado tu límite de votos por  hoy\n¡Sigue votando mañana!');", true);
-            }
+            DateTime fecha = DateTime.Now;
+            int albumID = (int)Session["albumViewID"];
+            bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
+            Response.Redirect("Album.aspx");
         }
 
         protected void btnFav_Click(object sender, EventArgs e) {
