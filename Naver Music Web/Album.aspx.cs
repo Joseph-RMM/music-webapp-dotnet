@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using LogicaNaverMusic;
 using LogicaNaverMusic.Controllers; //CONTROLADORES DE LOGICA NEGOCIOS
 using LogicaNaverMusic.Models;      //MODELOS DE LOGICA NEGOCIOS     
+using LogicaNaverMusic.BaseDatos;   //MODELOS DE BASE DE DATOS  
 
 namespace Naver_Music_Web {
     public partial class Album : System.Web.UI.Page {
@@ -95,17 +96,25 @@ namespace Naver_Music_Web {
                 gvCanciones.Columns[1].Visible = false;
             } else {
                 if (e.CommandName == "Vote") {
-                    gvCanciones.Columns[0].Visible = true;
-                    gvCanciones.DataBind();
                     UsuariosModels currentUser = (UsuariosModels)Session["userData"];
                     int iduser = currentUser.idUsuario;
                     VotoController votoController = new VotoController();
-                    DateTime fecha = DateTime.Now;
-                    GridViewRow row = gvCanciones.Rows[rowIndex];
-                    int SongID = int.Parse(row.Cells[0].Text);
-                    bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
-                    gvCanciones.Columns[0].Visible = false;
-                    Response.Redirect("Album.aspx");
+                    proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();
+                    proc = votoController.GetVotesByUser(currentUser.idUsuario);
+                    int votosUsados = proc.total ?? 0;
+                    int votosRestantes = 100 - votosUsados;
+                    if (votosRestantes > 0) {
+                        gvCanciones.Columns[0].Visible = true;
+                        gvCanciones.DataBind();
+                        DateTime fecha = DateTime.Now;
+                        GridViewRow row = gvCanciones.Rows[rowIndex];
+                        int SongID = int.Parse(row.Cells[0].Text);
+                        bool voto = votoController.proc_VotarCancion(SongID, iduser, fecha);
+                        gvCanciones.Columns[0].Visible = false;
+                        Response.Redirect("Album.aspx");
+                    } else {
+                        ClientScript.RegisterStartupScript(GetType(), "NoMoreVotes" + e.GetHashCode(), "alert('Has alcanzado tu límite de votos por  hoy\n¡Sigue votando mañana!');", true);
+                    }
                 } else {
                     if (e.CommandName == "Fav") {
                         gvCanciones.Columns[0].Visible = true;
@@ -133,10 +142,18 @@ namespace Naver_Music_Web {
             UsuariosModels currentUser = (UsuariosModels)Session["userData"];
             int iduser = currentUser.idUsuario;
             VotoController votoController = new VotoController();
-            DateTime fecha = DateTime.Now;
-            int albumID = (int)Session["albumViewID"];
-            bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
-            Response.Redirect("Album.aspx");
+            proc_GetVotesByUser_Result proc = new proc_GetVotesByUser_Result();
+            proc = votoController.GetVotesByUser(currentUser.idUsuario);
+            int votosUsados = proc.total ?? 0;
+            int votosRestantes = 100 - votosUsados;
+            if (votosRestantes > 0) {
+                DateTime fecha = DateTime.Now;
+                int albumID = (int)Session["albumViewID"];
+                bool voto = votoController.proc_VotarAlbum(albumID, iduser, fecha);
+                Response.Redirect("Album.aspx");
+            } else {
+                ClientScript.RegisterStartupScript(GetType(), "NoMoreVotes" + e.GetHashCode(), "alert('Has alcanzado tu límite de votos por  hoy\n¡Sigue votando mañana!');", true);
+            }
         }
 
         protected void btnFav_Click(object sender, EventArgs e) {
