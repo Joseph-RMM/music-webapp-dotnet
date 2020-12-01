@@ -157,6 +157,7 @@
 
 .gv {
     width: 100%;
+    border-radius: 0.5em;
 }
 
 .btnPlay {

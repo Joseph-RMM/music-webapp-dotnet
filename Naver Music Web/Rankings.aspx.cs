@@ -224,8 +224,42 @@ namespace Naver_Music_Web {
 
 
             //Top 10 Artists
-            List<proc_topTenArtists_Result> procArtists = new List<proc_topTenArtists_Result>();
-            procArtists = rankingController.TopTenArtists();
+            List<int> IDsArtista = new List<int>();
+            List<int> votosArtista = new List<int>();
+            switch (selection) {
+                case 1: //Diario
+                    List<proc_RankingDiarioArtistas_Result> proc = new List<proc_RankingDiarioArtistas_Result>();
+                    proc = rankingController.RankingDiarioArtistas();
+                    foreach (proc_RankingDiarioArtistas_Result artist in proc) {
+                        IDsArtista.Add(artist.idArtist ?? 0);
+                        votosArtista.Add(artist.total ?? 0);
+                    }
+                    break;
+                case 2: //Semanal
+                    List<proc_RankingSemanalArtistas_Result> proc2 = new List<proc_RankingSemanalArtistas_Result>();
+                    proc2 = rankingController.RankingSemanalArtistas();
+                    foreach (proc_RankingSemanalArtistas_Result artist in proc2) {
+                        IDsArtista.Add(artist.idArtist ?? 0);
+                        votosArtista.Add(artist.total ?? 0);
+                    }
+                    break;
+                case 3: //Mensual
+                    List<proc_RankingMensualArtistas_Result> proc3 = new List<proc_RankingMensualArtistas_Result>();
+                    proc3 = rankingController.RankingMensualArtistas();
+                    foreach (proc_RankingMensualArtistas_Result artist in proc3) {
+                        IDsArtista.Add(artist.idArtist ?? 0);
+                        votosArtista.Add(artist.total ?? 0);
+                    }
+                    break;
+                case 4: //General
+                    List<proc_topTenArtists_Result> proc4 = new List<proc_topTenArtists_Result>();
+                    proc4 = rankingController.TopTenArtists();
+                    foreach (proc_topTenArtists_Result artist in proc4) {
+                        IDsArtista.Add(artist.idArtist);
+                        votosArtista.Add(artist.total ?? 0);
+                    }
+                    break;
+            }
             //Crear un gridView para las canciones que no son top 3
             DataSet dataSetArtistas = new DataSet();
             DataTable artistTable = new DataTable("Songs");
@@ -233,10 +267,9 @@ namespace Naver_Music_Web {
             artistTable.Columns.Add("puesto");
             artistTable.Columns.Add("artist");
             artistTable.Columns.Add("votes");
-            for (int i = 0; i < procArtists.Count; i++) {
-                proc_topTenArtists_Result topArtist = procArtists[i];
-                int ArtistID = topArtist.idArtist;
-                int Votes = topArtist.total ?? 0;
+            for (int i = 0; i < IDsArtista.Count; i++) {
+                int ArtistID = IDsArtista[i];
+                int Votes = votosArtista[i];
                 Artist artist = ObtenerArtista(ArtistID);
                 if(artist.picture_medium != "" && artist.picture_medium!= "") {
                     if(i == 0) {
