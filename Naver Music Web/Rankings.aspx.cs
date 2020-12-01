@@ -16,28 +16,66 @@ namespace Naver_Music_Web {
             if (Session["RSelected"] == null) {
                 Session["RSelected"] = "General";
             }
+            int selection = 0;
             string RankingSeleccionado = (string) Session["RSelected"];
             switch (RankingSeleccionado) {
                 case "Diario":
                     btnDiario.CssClass = "btn-selected";
+                    selection = 1;
                     break;
                 case "Semanal":
                     btnSemanal.CssClass = "btn-selected";
+                    selection = 2;
                     break;
                 case "Mensual":
                     btnMensual.CssClass = "btn-selected";
+                    selection = 3;
                     break;
                 case "General":
                     btnGeneral.CssClass = "btn-selected";
+                    selection = 4;
                     break;
             }
 
 
             RankingController rankingController = new RankingController();
             //Top 10 Tracks
-
-            List<proc_topTenTracks_Result> proc = new List<proc_topTenTracks_Result>();
-            proc = rankingController.TopTenTrack();
+            List<int> IDs = new List<int>();
+            List<int> votos = new List<int>();
+            switch (selection) {
+                case 1: //Diario
+                    List<proc_RankingDiarioTracks_Result> proc = new List<proc_RankingDiarioTracks_Result>();
+                    proc = rankingController.RankingDiarioTracks();
+                    foreach (proc_RankingDiarioTracks_Result track in proc) {
+                        IDs.Add(track.idTrack ?? 0);
+                        votos.Add(track.total ?? 0);
+                    }
+                    break;
+                case 2: //Semanal
+                    List<proc_RankingSemanalTracks_Result> proc2 = new List<proc_RankingSemanalTracks_Result>();
+                    proc2 = rankingController.RankingSemanalTracks();
+                    foreach (proc_RankingSemanalTracks_Result track in proc2) {
+                        IDs.Add(track.idTrack ?? 0);
+                        votos.Add(track.total ?? 0);
+                    }
+                    break;
+                case 3: //Mensual
+                    List<proc_RankingMensualTracks_Result> proc3 = new List<proc_RankingMensualTracks_Result>();
+                    proc3 = rankingController.RankingMensualTracks();
+                    foreach (proc_RankingMensualTracks_Result track in proc3) {
+                        IDs.Add(track.idTrack ?? 0);
+                        votos.Add(track.total ?? 0);
+                    }
+                    break;
+                case 4: //General
+                    List<proc_topTenTracks_Result> proc4 = new List<proc_topTenTracks_Result>();
+                    proc4 = rankingController.TopTenTrack();
+                    foreach (proc_topTenTracks_Result track in proc4) {
+                        IDs.Add(track.idTrack);
+                        votos.Add(track.total ?? 0);
+                    }
+                    break;
+            }
             //Crear un gridView para las canciones que no son top 3
             DataSet dataSetSongs = new DataSet();
             DataTable canciones = new DataTable("Songs");
@@ -48,11 +86,10 @@ namespace Naver_Music_Web {
             canciones.Columns.Add("tittle");
             canciones.Columns.Add("artist");
             canciones.Columns.Add("votes");
-            for (int i = 0; i < proc.Count; i++) {
-                proc_topTenTracks_Result topSong = proc[i];
-                int songID = topSong.idTrack;
+            for (int i = 0; i < IDs.Count; i++) {
+                int songID = IDs[i];
                 Data song = ObtenerCancion(songID);
-                int Votos = topSong.total ?? 0;
+                int Votos = votos[i];
                 if (song.artist != null) {
                     if (i == 0) {//Top One
                         playSong1.ImageUrl = song.album.cover_medium;
@@ -97,8 +134,42 @@ namespace Naver_Music_Web {
 
 
             //Top 10 Albums
-            List<proc_topTenAlbum_Result> procAlbum = new List<proc_topTenAlbum_Result>();
-            procAlbum = rankingController.TopTenAlbum();
+            List<int> IDsAlbum = new List<int>();
+            List<int> votosAlbum = new List<int>();
+            switch (selection) {
+                case 1: //Diario
+                    List<proc_RankingDiarioAlbum_Result> proc = new List<proc_RankingDiarioAlbum_Result>();
+                    proc = rankingController.RankingDiarioAlbum();
+                    foreach (proc_RankingDiarioAlbum_Result track in proc) {
+                        IDsAlbum.Add(track.idAlbumm);
+                        votosAlbum.Add(track.total ?? 0);
+                    }
+                    break;
+                case 2: //Semanal
+                    List<proc_RankingSemanalAlbum_Result> proc2 = new List<proc_RankingSemanalAlbum_Result>();
+                    proc2 = rankingController.RankingSemanalAlbum();
+                    foreach (proc_RankingSemanalAlbum_Result track in proc2) {
+                        IDsAlbum.Add(track.idAlbumm);
+                        votosAlbum.Add(track.total ?? 0);
+                    }
+                    break;
+                case 3: //Mensual
+                    List<proc_RankingMensualAlbum_Result> proc3 = new List<proc_RankingMensualAlbum_Result>();
+                    proc3 = rankingController.RankingMensualAlbum();
+                    foreach (proc_RankingMensualAlbum_Result track in proc3) {
+                        IDsAlbum.Add(track.idAlbumm);
+                        votosAlbum.Add(track.total ?? 0);
+                    }
+                    break;
+                case 4: //General
+                    List<proc_topTenAlbum_Result> proc4 = new List<proc_topTenAlbum_Result>();
+                    proc4 = rankingController.TopTenAlbum();
+                    foreach (proc_topTenAlbum_Result track in proc4) {
+                        IDsAlbum.Add(track.idAlbumm);
+                        votosAlbum.Add(track.total ?? 0);
+                    }
+                    break;
+            }
             //Crear un gridView para las canciones que no son top 3
             DataSet dataSetAlbums = new DataSet();
             DataTable albums = new DataTable("Songs");
@@ -107,10 +178,9 @@ namespace Naver_Music_Web {
             albums.Columns.Add("tittle");
             albums.Columns.Add("artist");
             albums.Columns.Add("votes");
-            for (int i = 0; i < procAlbum.Count; i++) {
-                proc_topTenAlbum_Result topAlbum = procAlbum[i];
-                int AlbumID = topAlbum.idAlbumm;
-                int Votos = topAlbum.total ?? 0;
+            for (int i = 0; i < IDsAlbum.Count; i++) {
+                int AlbumID = IDsAlbum[i];
+                int Votos = votosAlbum[i];
                 AlbumModel album = ObtenerAlbum(AlbumID);
                 if (album.artist != null) {
                     if(i == 0) {//Top One
@@ -233,6 +303,7 @@ namespace Naver_Music_Web {
             btnSemanal.CssClass = "btn-menu";
             btnMensual.CssClass = "btn-menu";
             btnGeneral.CssClass = "btn-menu";
+            Response.Redirect("Rankings.aspx");
         }
 
         protected void btnSemanal_Click(object sender, EventArgs e) {
@@ -241,6 +312,7 @@ namespace Naver_Music_Web {
             btnSemanal.CssClass = "btn-selected";
             btnMensual.CssClass = "btn-menu";
             btnGeneral.CssClass = "btn-menu";
+            Response.Redirect("Rankings.aspx");
         }
 
         protected void btnMensual_Click(object sender, EventArgs e) {
@@ -249,6 +321,7 @@ namespace Naver_Music_Web {
             btnSemanal.CssClass = "btn-menu";
             btnMensual.CssClass = "btn-selected";
             btnGeneral.CssClass = "btn-menu";
+            Response.Redirect("Rankings.aspx");
         }
 
         protected void btnGeneral_Click(object sender, EventArgs e) {
@@ -257,6 +330,7 @@ namespace Naver_Music_Web {
             btnSemanal.CssClass = "btn-menu";
             btnMensual.CssClass = "btn-menu";
             btnGeneral.CssClass = "btn-selected";
+            Response.Redirect("Rankings.aspx");
         }
 
 
