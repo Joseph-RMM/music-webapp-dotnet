@@ -13,7 +13,17 @@ namespace Naver_Music_Web {
 
         protected void btnRegistrar_Click(object sender, EventArgs e) {
             bool isCorrect = true;
-            txbUsuario.CssClass = txbEmail.CssClass = txbContrasena.CssClass = "txb";
+            txbUsuario.CssClass = txbEmail.CssClass = txbContrasena.CssClass = txbRepetir.CssClass = "txb";
+            if (txbContrasena.Text != txbRepetir.Text) {
+                txbContrasena.CssClass = txbRepetir.CssClass = "txb error";
+                lblInfo.Text = "Las contraseñas no coinciden";
+                isCorrect = false;
+            }
+            if (txbRepetir.Text == "") {
+                txbContrasena.CssClass = "txb error";
+                lblInfo.Text = "Repita su contraseña";
+                isCorrect = false;
+            }
             if (txbContrasena.Text == "") {
                 txbContrasena.CssClass = "txb error";
                 lblInfo.Text = "Escriba una contraseña";

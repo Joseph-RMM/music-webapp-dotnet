@@ -15,10 +15,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <header>
-            <img src="assets/logofake.png" class="logo"/>
-            <span class="logoText">Naver Music</span>
-        </header>
+        <a href="Default.aspx">
+            <header>
+                    <img src="assets/logofake.png" class="logo"/>
+                    <span class="logoText">Naver Music</span>
+            </header>
+        </a>
         <div class="big-wrapper">
             <div class="mini-wrapper">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

@@ -26,47 +26,51 @@ namespace Naver_Music_Web {
             string pass = (string)Session["pass"];
 
             //Obtener  Imagen
-            int Size = FileUpload1.PostedFile.ContentLength;
-            byte[] profileImage = new byte[Size];
-            FileUpload1.PostedFile.InputStream.Read(profileImage, 0, Size);
-            Bitmap bitImage = new Bitmap(FileUpload1.PostedFile.InputStream);
+            if (FileUpload1.HasFile) {
+                int Size = FileUpload1.PostedFile.ContentLength;
+                byte[] profileImage = new byte[Size];
+                FileUpload1.PostedFile.InputStream.Read(profileImage, 0, Size);
+                Bitmap bitImage = new Bitmap(FileUpload1.PostedFile.InputStream);
 
-            //Redimensionar Imagen
-            System.Drawing.Image imageThumbnail;
-            int ThumbSize = 250;
-            imageThumbnail = RedimencionarImg(bitImage, ThumbSize);
-            byte[] bitImageThumb = new byte[ThumbSize];
+                //Redimensionar Imagen
+                System.Drawing.Image imageThumbnail;
+                int ThumbSize = 250;
+                imageThumbnail = RedimencionarImg(bitImage, ThumbSize);
+                byte[] bitImageThumb = new byte[ThumbSize];
 
-            ImageConverter converter = new ImageConverter();
-            bitImageThumb = (byte[])converter.ConvertTo(imageThumbnail, typeof(byte[]));
+                ImageConverter converter = new ImageConverter();
+                bitImageThumb = (byte[])converter.ConvertTo(imageThumbnail, typeof(byte[]));
 
-            string Data64 = "data:" + FileUpload1.PostedFile.ContentType + ";base64," + Convert.ToBase64String(bitImageThumb);
+                string Data64 = "data:" + FileUpload1.PostedFile.ContentType + ";base64," + Convert.ToBase64String(bitImageThumb);
 
-            string telefono = txbTelefono.Text;
-            string sexo = RadioButtonList1.SelectedValue;
+                string telefono = txbTelefono.Text;
+                string sexo = RadioButtonList1.SelectedValue;
 
-            //Enviar a la bd
+                //Enviar a la bd
 
-            UserController userController = new UserController();
-            bool userCreated = true;
-            userCreated = userController.CreateUser(userName, pass, " ", " ", sexo, Data64, "No Premium", email, telefono);
+                UserController userController = new UserController();
+                bool userCreated = true;
+                userCreated = userController.CreateUser(userName, pass, " ", " ", sexo, Data64, "No Premium", email, telefono);
 
-            
-            if (userCreated) { //Verificar la creación y logear al usuario
-                UsuariosModels currentUser = userController.LoginUser(email, pass);
-                if (currentUser.idUsuario != 0) {
-                    Session["userData"] = currentUser;
-                    if (chbAuto.Checked) {
-                        Session.Timeout = 525600;
+
+                if (userCreated) { //Verificar la creación y logear al usuario
+                    UsuariosModels currentUser = userController.LoginUser(email, pass);
+                    if (currentUser.idUsuario != 0) {
+                        Session["userData"] = currentUser;
+                        if (chbAuto.Checked) {
+                            Session.Timeout = 525600;
+                        } else {
+                            //Las variables de sessión tienen un timeout de 20 minutos por default, por lo que no se recordará al usuario
+                        }
+                        Response.Redirect("Inicio.aspx");
                     } else {
-                        //Las variables de sessión tienen un timeout de 20 minutos por default, por lo que no se recordará al usuario
+                        lblInfo.Text = "Error al registrar usuario";
                     }
-                    Response.Redirect("Inicio.aspx");
                 } else {
-                    lblInfo.Text = "Error al registrar usuario";
+                    lblInfo.Text = "No se ha podido establecer conexión con la db";
                 }
             } else {
-                lblInfo.Text = "Aprende a programar porfa xd";
+                lblInfo.Text = "Por favor, seleccione una foto de perfil";
             }
         }
 
