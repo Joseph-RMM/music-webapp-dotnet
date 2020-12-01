@@ -19,7 +19,7 @@
         <nav class="navbar">
             <ul class="navbar-nav">
                 <li class="logo">
-                    <span class="link-text logo-text">Naver Music</span>
+                    <img class="imagotipo link-text logo-text" src="assets/imagotipo.png" />
                     <img src="assets/logofake.png" alt="" class="logoimg">
                 </li>
                 <li class="usuario">

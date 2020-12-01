@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="Naver_Music_Web.Inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="CSS/inicio.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-linea-m">
-        <h1>Naver Music</h1>
+        <h1 class="titulo">NAVER MUSIC</h1>
+        <h1 class="frase">&nbsp - ¡A votar!</h1>
         <a href="Usuario.aspx"><asp:Image ID="mobileUserImg" runat="server"  CssClass="mobileUserImg" ImageUrl="~/assets/nouser.png" /></a>
     </div>
-    <p>¡A votar!</p>
     <div class="buscar">
         <h3>Buscar</h3>
         <div class="wrapper-linea">

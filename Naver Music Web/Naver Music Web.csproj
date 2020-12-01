@@ -67,6 +67,7 @@
     <Content Include="Album.aspx" />
     <Content Include="ArtistPage.aspx" />
     <Content Include="assets\background.jpg" />
+    <Content Include="assets\imagotipo.png" />
     <Content Include="assets\logofake.png" />
     <Content Include="assets\music.png" />
     <Content Include="assets\nouser.png" />

@@ -58,7 +58,7 @@
 /*Propiedades*/
 :root {
     font-size: 16px;
-    font-family: 'Open Sans','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Titillium Web','Open Sans','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -147,6 +147,9 @@ body {
     font-size: 1.5rem;
     letter-spacing: 0.4ch;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .logoimg {
@@ -154,6 +157,11 @@ body {
     align-self: center;
     padding: 10% 10%;
     margin-top: 3vh;
+}
+
+.imagotipo {
+    width: 90%;
+    margin-left: -0.3em;
 }
 
 .logo-text {

@@ -10,6 +10,18 @@ h1 {
     margin: 0.5em 0px;
 }
 
+.titulo {
+    font-family: 'Oxanium', cursive;
+    font-weight: 500;
+    font-size: 2em;
+    text-align: center;
+}
+
+.frase {
+    font-weight: 500;
+    font-size: 1.8em;
+}
+
 .site-name {
     margin: 0px 0px;
     font-size: 1.6em;
@@ -168,8 +180,14 @@ h1 {
     .mobileUserImg {
         display: flex;
     }
-    h1 {
+    .titulo {
         width: calc(100% - 3em);
+    }
+    .frase {
+        display: none;
+    }
+    h1 {
+        margin: auto;
     }
 }
 
