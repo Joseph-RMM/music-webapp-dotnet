@@ -227,6 +227,8 @@
           <Parameter Name="idUser" Type="int" Mode="In" />
           <Parameter Name="fecha" Type="date" Mode="In" />
         </Function>
+        <Function Name="Sp_ProcesoDSMUpdate_By_Day" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_ProcesoDSMUpdate_By_Week" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NaverMusicBDModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Artista" EntityType="Self.Artista" Schema="dbo" store:Type="Tables" />
@@ -473,6 +475,8 @@
             <Parameter Name="idTrack" Mode="In" Type="Int32" />
             <Parameter Name="idUser" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Sp_ProcesoDSMUpdate_By_Day" ReturnType="Collection(NaverMusicBDModel.Sp_ProcesoDSMUpdate_By_Day_Result)" />
+          <FunctionImport Name="Sp_ProcesoDSMUpdate_By_Week" ReturnType="Collection(NaverMusicBDModel.Sp_ProcesoDSMUpdate_By_Week_Result)" />
         </EntityContainer>
         <ComplexType Name="proc_RankingDiarioArtistas_Result">
           <Property Type="Int32" Name="idArtist" Nullable="true" />
@@ -604,6 +608,12 @@
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
         <ComplexType Name="proc_DeleteTrackToFavorites_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_ProcesoDSMUpdate_By_Day_Result">
+          <Property Type="Int32" Name="total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_ProcesoDSMUpdate_By_Week_Result">
           <Property Type="Int32" Name="total" Nullable="true" />
         </ComplexType>
       </Schema>
@@ -862,6 +872,20 @@
           <FunctionImportMapping FunctionImportName="proc_DeleteTrackToFavorites" FunctionName="NaverMusicBDModel.Store.proc_DeleteTrackToFavorites" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="NaverMusicBDModel.proc_DeleteTrackToFavorites_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_ProcesoDSMUpdate_By_Day" FunctionName="NaverMusicBDModel.Store.Sp_ProcesoDSMUpdate_By_Day">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.Sp_ProcesoDSMUpdate_By_Day_Result">
+                <ScalarProperty Name="total" ColumnName="total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_ProcesoDSMUpdate_By_Week" FunctionName="NaverMusicBDModel.Store.Sp_ProcesoDSMUpdate_By_Week">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NaverMusicBDModel.Sp_ProcesoDSMUpdate_By_Week_Result">
                 <ScalarProperty Name="total" ColumnName="total" />
               </ComplexTypeMapping>
             </ResultMapping>

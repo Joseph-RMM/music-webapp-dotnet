@@ -74,14 +74,16 @@ namespace ConsoleAppTest
                                     "25 para obtener artistas favoritos de usuario\n   " +
                                     "26 para buscar cancion en lista de favoritos de usuario\n   " +
                                     "27 para buscar album en lista de favoritos de usuario\n   " +
-                                    "28 para buscar artista en lista de favoritos de usuario\n\n" +
+                                    "28 para buscar artista en lista de favoritos de usuario\n" +
                                     "36 agregar a favoritos cancion (regresa el valor de 1 si ya esta en fav o 0 si aun no esta en fav)\n   " +
                                     "37 agregar a favoritos artista (regresa el valor de 1 si ya esta en fav o 0 si aun no esta en fav)\n   " +
                                     "38 agregar a favoritos album (regresa el valor de 1 si ya esta en fav o 0 si aun no esta en fav)\n   " +
-
                                     "39 quitar de favoritos cancion (regresa el valor de 1 si fue eliminada de fav)\n   " +
                                     "40 quitar de favoritos artista (regresa el valor de 1 si fue eliminada de fav)\n   " +
-                                    "41 quitar de favoritos album (regresa el valor de 1 si fue eliminada de fav)\n   " +
+                                    "41 quitar de favoritos album (regresa el valor de 1 si fue eliminada de fav)\n\n" +
+                                   "ACTUALIZACIONES DE VOTOS\n   " +
+                                    "51 actualizar votos de artista, cancion, album por dia (regresa el valor 1 si la actualizacion fue exitosa)\n   " +
+                                    "52 actualizar votos de artista, cancion, album por semana (regresa el valor 1 si la actualizacion fue exitosa)\n   " +
                                     "SALIR\n   " +
                                     "100 para salir");
                 eleccion = (int.Parse(Console.ReadLine()));
@@ -204,6 +206,12 @@ namespace ConsoleAppTest
                         break;
                     case 41:
                         DeleteAlbumToFavorites();
+                        break;
+                    case 51:
+                        Update_By_Day();
+                        break;
+                    case 52:
+                        Update_By_Week();
                         break;
                     case 100:
                         Environment.Exit(0);
@@ -853,6 +861,38 @@ namespace ConsoleAppTest
             proc_DeleteAlbumToFavorites_Result proc = new proc_DeleteAlbumToFavorites_Result();
             proc = albumController.DeleteAlbumToFavorites(iduser, idalbum);
             Console.WriteLine(proc.total + "");
+        }
+
+        static void Update_By_Day()
+        {
+            ActualizaVotoController actualizaVotoController = new ActualizaVotoController();
+
+            Sp_ProcesoDSMUpdate_By_Day_Result sp = new Sp_ProcesoDSMUpdate_By_Day_Result();
+            sp = actualizaVotoController.Update_By_Day();
+            if (sp.total == 1)
+            {
+                Console.WriteLine("se ha actualizado exitosamente: " + sp.total);
+            }
+            else
+            {
+                Console.WriteLine("no se actualizo");
+            }
+        }
+
+        static void Update_By_Week()
+        {
+            ActualizaVotoController actualizaVotoController = new ActualizaVotoController();
+
+            Sp_ProcesoDSMUpdate_By_Week_Result sp = new Sp_ProcesoDSMUpdate_By_Week_Result();
+            sp = actualizaVotoController.Update_By_Week();
+            if (sp.total == 1)
+            {
+                Console.WriteLine("se ha actualizado exitosamente: " + sp.total);
+            }
+            else
+            {
+                Console.WriteLine("no se actualizo");
+            }
         }
     }
 }

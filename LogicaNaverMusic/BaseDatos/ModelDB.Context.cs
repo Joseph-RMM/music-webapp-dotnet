@@ -236,5 +236,15 @@ namespace LogicaNaverMusic.BaseDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_DeleteTrackToFavorites_Result>("proc_DeleteTrackToFavorites", idTrackParameter, idUserParameter);
         }
+    
+        public virtual ObjectResult<Sp_ProcesoDSMUpdate_By_Day_Result> Sp_ProcesoDSMUpdate_By_Day()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_ProcesoDSMUpdate_By_Day_Result>("Sp_ProcesoDSMUpdate_By_Day");
+        }
+    
+        public virtual ObjectResult<Sp_ProcesoDSMUpdate_By_Week_Result> Sp_ProcesoDSMUpdate_By_Week()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_ProcesoDSMUpdate_By_Week_Result>("Sp_ProcesoDSMUpdate_By_Week");
+        }
     }
 }

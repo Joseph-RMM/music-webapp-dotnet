@@ -141,6 +141,12 @@
     <Compile Include="BaseDatos\proc_topTenTracks_Result.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaseDatos\Sp_ProcesoDSMUpdate_By_Day_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos\Sp_ProcesoDSMUpdate_By_Week_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\Usuarios.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -154,6 +160,7 @@
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\ActualizaVotoController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\APIDeezerController.cs" />
     <Compile Include="Controllers\ArtistaController.cs" />
