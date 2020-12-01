@@ -35,9 +35,10 @@ header {
 }
 
 .logoText {
-    font-weight: bold;
     color: white;
     font-size: 2em;
+    font-family: 'Oxanium', cursive;
+    font-weight: 500;
 }
 
 .big-wrapper {

@@ -32,7 +32,7 @@ namespace Naver_Music_Web {
 
                 //Lenar la información
                 lblTitulo.Text = album.title;
-                lblArtistas.Text = album.artist.name;
+                btnArtistas.Text = album.artist.name;
                 albumCover.ImageUrl = album.cover_big;
                 btnVote.Text = "♥ "+albumController.GetVotesOfAlbum(albumID);
                 btnFav.Text = (userController.VerifyFavoriteAlbum(idUser, albumID)) ? "★" : "✩";
@@ -153,6 +153,16 @@ namespace Naver_Music_Web {
                 albumController.DeleteAlbumToFavorites(iduser, albumID);
             }
             Response.Redirect("Album.aspx");
+        }
+
+        protected void btnArtistas_Click(object sender, EventArgs e) {
+            int albumID = (int)Session["albumViewID"];
+            //Consultar a la lógica la información
+            APIDeezerController aPIDeezer = new APIDeezerController();  
+            AlbumModel album = new AlbumModel();
+            album = aPIDeezer.GetAlbum(albumID);
+            Session["artistViewID"] = int.Parse(album.artist.id);
+            Response.Redirect("ArtistPage.aspx");
         }
     }
 }

@@ -49,6 +49,7 @@
 
 .lblArtistas {
     font-size: 1.8em;
+    color: var(--txt-color);
 }
 
 .wrapper-votefav {

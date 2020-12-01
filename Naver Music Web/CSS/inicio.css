@@ -124,13 +124,7 @@ h1 {
     display: none;
 }
 
-.wrapper-playmusic:hover .imgcovermusic {
-    display: none;
-}
 
-.wrapper-playmusic:hover .imgplaymusic {
-    display: unset;
-}
 
 .songname {
     width: 80%;
@@ -205,5 +199,15 @@ h1 {
     .btnverde {
         width: 100%;
         height: 1.4em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .wrapper-playmusic:hover .imgcovermusic {
+        display: none;
+    }
+
+    .wrapper-playmusic:hover .imgplaymusic {
+        display: unset;
     }
 }

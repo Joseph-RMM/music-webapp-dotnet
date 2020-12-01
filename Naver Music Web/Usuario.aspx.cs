@@ -32,6 +32,7 @@ namespace Naver_Music_Web {
 
         protected void btnCerrarSesión_Click(object sender, EventArgs e) {
             Session.Abandon();
+            Response.Redirect("Default.aspx");
         }
     }
 }

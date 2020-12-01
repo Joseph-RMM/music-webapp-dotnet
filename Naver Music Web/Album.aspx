@@ -5,13 +5,13 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-volver">
-        <a href="Inicio.aspx" class="backTxt">🡸 Volver</a>
+        <a href="Inicio.aspx" class="backTxt">	&lt;- Volver</a>
     </div>
     <div class="wrapper-albumTittle">
         <asp:Image runat="server" ID="albumCover" CssClass="albumCover" ImageUrl="~/assets/music.png" ></asp:Image>
         <div class="wrapper-albumInfo">
             <asp:Label runat="server" ID="lblTitulo" Text="Título del álbum" CssClass="lblTitulo"></asp:Label>
-            <asp:Label runat="server" ID="lblArtistas" Text="Artista(s)" CssClass="lblArtistas"></asp:Label>
+            <asp:Button ID="btnArtistas" runat="server" Text="Artista" CssClass="lblArtistas nobtn" OnClick="btnArtistas_Click" />
             <div class="wrapper-votefav">
                 <asp:Button runat="server" ID="btnVote" Text="♥ votos" CssClass="btnVote nobtn" OnClick="btnVote_Click" />
                 <asp:Button runat="server" ID="btnFav" Text="☆" CssClass="btnFav nobtn" OnClick="btnFav_Click" />

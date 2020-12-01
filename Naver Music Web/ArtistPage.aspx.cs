@@ -160,7 +160,7 @@ namespace Naver_Music_Web {
             int idUser = currentUser.idUsuario;
             int artistID = (int)Session["artistViewID"];
             bool isFav = userController.VerifyFavoriteArtist(idUser, artistID);
-            if (isFav) {
+            if (!isFav) {
                 artistaController.AddArtistToFav(idUser, artistID);
             } else {
                 artistaController.DeleteArtistToFavorites(idUser, artistID);

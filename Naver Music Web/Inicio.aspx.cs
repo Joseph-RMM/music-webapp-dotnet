@@ -31,16 +31,30 @@ namespace Naver_Music_Web {
                 }
                 List<Data> data = (List<Data>)Session["busqueda"];
                 panelResultados.Controls.Clear();
+
                 if (data != null) {
-                    List<AlbumModel> listaAlbums = albumsInData(data);
-                    foreach (AlbumModel albumModel in listaAlbums) {
-                        panelResultAlbums.Controls.Add(createAlbumItem(albumModel));
-                    }
-                    foreach (Data song in data) {
-                        panelResultados.Controls.Add(createMusicItem(song));
+                    if (data.Count > 0) {
+                        List<AlbumModel> listaAlbums = albumsInData(data);
+                        foreach (AlbumModel albumModel in listaAlbums) {
+                            panelResultAlbums.Controls.Add(createAlbumItem(albumModel));
+                        }
+                        foreach (Data song in data) {
+                            panelResultados.Controls.Add(createMusicItem(song));
+                        }
+                    } else {
+                        Label lblInfo = new Label {
+                            CssClass = "lblPanelInfo",
+                            Text = "No se han encontrado resultados :("
+                        };
+                        Label lblInfo2 = new Label {
+                            CssClass = "lblPanelInfo",
+                            Text = "No se han encontrado resultados :("
+                        };
+                        panelResultados.Controls.Add(lblInfo);
+                        panelResultAlbums.Controls.Add(lblInfo2);
                     }
                     divBuscar.Visible = true;
-                }
+                } 
                 //Recomendar las más votadas
                 RankingController rankingController = new RankingController();
                 APIDeezerController aPIDeezer = new APIDeezerController();

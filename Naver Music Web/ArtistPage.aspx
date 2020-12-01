@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="wrapper-volver">
-        <a href="Inicio.aspx" class="backTxt">🡸 Volver</a>
+        <a href="Inicio.aspx" class="backTxt">	&lt;- Volver</a>
     </div>
     <div class="wrapper-albumTittle">
         <asp:Image runat="server" ID="artistImg" CssClass="artistImg" ImageUrl="~/assets/music.png" ></asp:Image>
